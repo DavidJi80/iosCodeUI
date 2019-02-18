@@ -13,6 +13,7 @@
 		27D0BD482216B99E00C7AD30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D0BD462216B99E00C7AD30 /* LaunchScreen.storyboard */; };
 		27D0BD4B2216B99E00C7AD30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD4A2216B99E00C7AD30 /* main.m */; };
 		27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD522216C49D00C7AD30 /* HomeViewController.m */; };
+		27D0BD56221A573000C7AD30 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD55221A573000C7AD30 /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		27D0BD4A2216B99E00C7AD30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		27D0BD512216C49D00C7AD30 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27D0BD522216C49D00C7AD30 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		27D0BD54221A573000C7AD30 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		27D0BD55221A573000C7AD30 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
 				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
 				27D0BD512216C49D00C7AD30 /* HomeViewController.h */,
+				27D0BD54221A573000C7AD30 /* Person.h */,
+				27D0BD55221A573000C7AD30 /* Person.m */,
 				27D0BD522216C49D00C7AD30 /* HomeViewController.m */,
 				27D0BD442216B99E00C7AD30 /* Assets.xcassets */,
 				27D0BD462216B99E00C7AD30 /* LaunchScreen.storyboard */,
@@ -144,6 +149,7 @@
 			files = (
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
+				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */,
 			);

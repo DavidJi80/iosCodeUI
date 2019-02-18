@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HomeViewController.h"
+#import "Person.h"
 
 @interface ViewController ()
 
@@ -24,6 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initView];
+    
+    [self assignError];
+
+}
+
+-(void)initView{
     _phoneLabel=[[UILabel alloc]init];
     _phoneLabel.frame=CGRectMake(30, 130, 100, 20);
     _phoneLabel.text=@"Phone";
@@ -47,6 +55,16 @@
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
+}
+
+-(void)assignError{
+    Person * person=[Person new];
+    NSMutableString * s =[[NSMutableString alloc] initWithString:@"David ji"];
+    person.nameError=s;
+    NSLog(@"%p %p",person.nameError,s);
+    s=nil;
+    NSLog(@"%p",person.nameError);
+    
 }
 
 -(void)login:(UIButton*)sender{
