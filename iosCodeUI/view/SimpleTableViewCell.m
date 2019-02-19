@@ -7,6 +7,7 @@
 //
 
 #import "SimpleTableViewCell.h"
+#import "Person.h"
 
 @implementation SimpleTableViewCell
 
@@ -32,7 +33,14 @@
         [button setTitle:@"No" forState:UIControlStateSelected];
         [button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
+        _ageLabel=[[UILabel alloc]init];
+        _ageLabel.frame=CGRectMake(100, 40, 50, 50);
+        _ageLabel.text=@"";
+        _ageLabel.textColor=[UIColor redColor];
+        _ageLabel.font=[UIFont systemFontOfSize:(17)];
+        
         [self addSubview:button];
+        [self addSubview:_ageLabel];
     }
     return self;
 }
@@ -40,5 +48,6 @@
 -(void)buttonPressed:(UIButton *)button{
     button.selected=!button.selected;
 }
+
 
 @end

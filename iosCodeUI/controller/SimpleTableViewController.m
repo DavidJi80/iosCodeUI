@@ -8,11 +8,14 @@
 
 #import "SimpleTableViewController.h"
 #import "SimpleTableViewCell.h"
+#import "Person.h"
 
 @interface SimpleTableViewController (){
     NSArray * data;
     //定义数据源
 }
+
+@property (nonatomic,strong) NSArray * dataSource;
 
 @end
 
@@ -26,8 +29,21 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    data=@[@"David",@"Ji Zhou"];
+    //data=@[@"David",@"Ji Zhou"];
     //初始化数据
+    [self initDataSource];
+}
+
+-(void)initDataSource{
+    
+    NSMutableArray * dataArray=@[].mutableCopy;
+    for(int i=0;i<10;i++){
+        Person * person=[Person new];
+        person.name=@"jz";
+        person.age=i;
+        [dataArray addObject:person];
+    }
+    self.dataSource=dataArray.copy;
 }
 
 #pragma mark - Table view data source
@@ -45,7 +61,8 @@
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //warning Incomplete implementation, return the number of rows
-    return data.count;
+    //return data.count;
+    return self.dataSource.count;
 }
 
 /**
@@ -61,8 +78,10 @@
         cell=[[SimpleTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    NSString * name=data[indexPath.row];
-    cell.textLabel.text=name;
+    //NSString * name=data[indexPath.row];
+    Person * person=self.dataSource[indexPath.row];
+    cell.textLabel.text=person.name;
+    cell.ageLabel.text=[NSString stringWithFormat:@"%zd",person.age];
     return cell;
 }
 

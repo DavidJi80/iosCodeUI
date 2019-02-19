@@ -68,17 +68,14 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
-				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
-				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
-				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
-				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
+				27EDB1DF221BDB89008F5C94 /* view */,
+				27EDB1DE221BDB7E008F5C94 /* controller */,
+				27EDB1DD221BDB59008F5C94 /* modal */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
 				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
 				27D0BD512216C49D00C7AD30 /* HomeViewController.h */,
-				27D0BD54221A573000C7AD30 /* Person.h */,
-				27D0BD55221A573000C7AD30 /* Person.m */,
 				27D0BD522216C49D00C7AD30 /* HomeViewController.m */,
 				27D0BD442216B99E00C7AD30 /* Assets.xcassets */,
 				27D0BD462216B99E00C7AD30 /* LaunchScreen.storyboard */,
@@ -86,6 +83,33 @@
 				27D0BD4A2216B99E00C7AD30 /* main.m */,
 			);
 			path = iosCodeUI;
+			sourceTree = "<group>";
+		};
+		27EDB1DD221BDB59008F5C94 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				27D0BD54221A573000C7AD30 /* Person.h */,
+				27D0BD55221A573000C7AD30 /* Person.m */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		27EDB1DE221BDB7E008F5C94 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
+				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		27EDB1DF221BDB89008F5C94 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
+				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

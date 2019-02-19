@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SimpleTableViewCell : UITableViewCell
 
+@property IBOutlet UILabel * ageLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END
