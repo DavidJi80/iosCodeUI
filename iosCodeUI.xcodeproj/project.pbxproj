@@ -14,6 +14,8 @@
 		27D0BD4B2216B99E00C7AD30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD4A2216B99E00C7AD30 /* main.m */; };
 		27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD522216C49D00C7AD30 /* HomeViewController.m */; };
 		27D0BD56221A573000C7AD30 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD55221A573000C7AD30 /* Person.m */; };
+		27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */; };
+		27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		27D0BD522216C49D00C7AD30 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		27D0BD54221A573000C7AD30 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		27D0BD55221A573000C7AD30 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewController.h; sourceTree = "<group>"; };
+		27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewController.m; sourceTree = "<group>"; };
+		27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewCell.h; sourceTree = "<group>"; };
+		27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
+				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
+				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
@@ -148,10 +158,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
+				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */,
+				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

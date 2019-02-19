@@ -9,14 +9,17 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "Person.h"
+#import "SimpleTableViewController.h"
 
 @interface ViewController ()
 
 @property(nonatomic,strong) UILabel * phoneLabel;
-
 @property(nonatomic,strong) UITextView * phoneTextField;
-
 @property(nonatomic,strong) UIButton * enterBtn;
+@property(nonatomic,strong) UIButton * tableViewBtn;
+
+
+@property (nonatomic,strong) NSArray * dataSource;
 
 @end
 
@@ -26,10 +29,9 @@
     [super viewDidLoad];
     
     [self initView];
-    
-    [self assignError];
 
 }
+
 
 -(void)initView{
     _phoneLabel=[[UILabel alloc]init];
@@ -51,10 +53,18 @@
     // 添加事件
     [_enterBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     
+    // 添加按钮，绑定事件
+    _tableViewBtn=[UIButton new];
+    _tableViewBtn.backgroundColor=[UIColor blueColor];
+    _tableViewBtn.frame=CGRectMake(30, 320, 315, 45);
+    [_tableViewBtn setTitle:@"Open Table View" forState:UIControlStateNormal];
+    [_tableViewBtn.layer setCornerRadius:10.0];
+    [_tableViewBtn addTarget:self action:@selector(openTableView:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
+    [self.view addSubview:self.tableViewBtn];
 }
 
 -(void)assignError{
@@ -73,6 +83,18 @@
         HomeViewController * homeViewController=[[HomeViewController alloc]init];
         homeViewController.phone=self.phoneTextField.text;
         [self presentViewController:homeViewController animated:YES completion:nil];
+    });
+    
+}
+
+/**
+ 打开Table View
+ */
+-(void)openTableView:(UIButton*)sender{
+    NSLog(@"click do sth");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SimpleTableViewController * tableViewController=[[SimpleTableViewController alloc]init];
+        [self presentViewController:tableViewController animated:YES completion:nil];
     });
     
 }
