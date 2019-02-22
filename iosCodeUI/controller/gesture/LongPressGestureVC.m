@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"Long Press!!";
+    self.title=@"Long Press!!chang by github";
     
     _longPressBtn=[UIButton new];
     _longPressBtn.backgroundColor=[UIColor blueColor];
