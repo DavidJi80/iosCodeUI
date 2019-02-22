@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "Person.h"
 #import "SimpleTableViewController.h"
+#import "GestureTableViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,7 @@
 @property(nonatomic,strong) UITextView * phoneTextField;
 @property(nonatomic,strong) UIButton * enterBtn;
 @property(nonatomic,strong) UIButton * tableViewBtn;
+@property(nonatomic,strong) UIButton * gestureBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -35,17 +37,17 @@
 
 -(void)initView{
     _phoneLabel=[[UILabel alloc]init];
-    _phoneLabel.frame=CGRectMake(30, 130, 100, 20);
+    _phoneLabel.frame=CGRectMake(30, 30, 100, 20);
     _phoneLabel.text=@"Phone";
     _phoneLabel.textColor=[UIColor redColor];
     _phoneLabel.font=[UIFont systemFontOfSize:(17)];
     
     _phoneTextField=[UITextView new];
-    _phoneTextField.frame=CGRectMake(80, 130, 270, 20);
+    _phoneTextField.frame=CGRectMake(80, 30, 270, 20);
     
     _enterBtn=[UIButton new];
     _enterBtn.backgroundColor=[UIColor greenColor];
-    _enterBtn.frame=CGRectMake(30, 255, 315, 45);
+    _enterBtn.frame=CGRectMake(30, 90, 315, 45);
     _enterBtn.titleLabel.font=[UIFont systemFontOfSize:20];
     _enterBtn.titleLabel.textColor=[UIColor whiteColor];
     [_enterBtn setTitle:@"Login" forState:UIControlStateNormal];
@@ -56,15 +58,24 @@
     // 添加按钮，绑定事件
     _tableViewBtn=[UIButton new];
     _tableViewBtn.backgroundColor=[UIColor blueColor];
-    _tableViewBtn.frame=CGRectMake(30, 320, 315, 45);
+    _tableViewBtn.frame=CGRectMake(30, 150, 315, 45);
     [_tableViewBtn setTitle:@"Open Table View" forState:UIControlStateNormal];
     [_tableViewBtn.layer setCornerRadius:10.0];
     [_tableViewBtn addTarget:self action:@selector(openTableView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 添加按钮
+    _gestureBtn=[UIButton new];
+    _gestureBtn.backgroundColor=[UIColor blackColor];
+    _gestureBtn.frame=CGRectMake(30, 210, 315, 45);
+    [_gestureBtn setTitle:@"Open Gesture View" forState:UIControlStateNormal];
+    [_gestureBtn.layer setCornerRadius:10.0];
+    [_gestureBtn addTarget:self action:@selector(openGestureView:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
     [self.view addSubview:self.tableViewBtn];
+    [self.view addSubview:self.gestureBtn];
 }
 
 -(void)assignError{
@@ -91,10 +102,20 @@
  打开Table View
  */
 -(void)openTableView:(UIButton*)sender{
-    NSLog(@"click do sth");
     dispatch_async(dispatch_get_main_queue(), ^{
         SimpleTableViewController * tableViewController=[[SimpleTableViewController alloc]init];
         [self presentViewController:tableViewController animated:YES completion:nil];
+    });
+    
+}
+
+/**
+ 打开Gesture View
+ */
+-(void)openGestureView:(UIButton*)sender{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GestureTableViewController * vc=[[GestureTableViewController alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
     });
     
 }

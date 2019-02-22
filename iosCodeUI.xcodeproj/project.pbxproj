@@ -14,8 +14,10 @@
 		27D0BD4B2216B99E00C7AD30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD4A2216B99E00C7AD30 /* main.m */; };
 		27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD522216C49D00C7AD30 /* HomeViewController.m */; };
 		27D0BD56221A573000C7AD30 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD55221A573000C7AD30 /* Person.m */; };
+		27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */; };
 		27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */; };
 		27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */; };
+		27F116BD221FCAD1003D27F6 /* LongPressGestureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F116BC221FCAD1003D27F6 /* LongPressGestureVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +34,14 @@
 		27D0BD522216C49D00C7AD30 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		27D0BD54221A573000C7AD30 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		27D0BD55221A573000C7AD30 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureTableViewController.h; sourceTree = "<group>"; };
+		27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureTableViewController.m; sourceTree = "<group>"; };
 		27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewController.h; sourceTree = "<group>"; };
 		27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewController.m; sourceTree = "<group>"; };
 		27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTableViewCell.h; sourceTree = "<group>"; };
 		27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTableViewCell.m; sourceTree = "<group>"; };
+		27F116BB221FCAD1003D27F6 /* LongPressGestureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LongPressGestureVC.h; sourceTree = "<group>"; };
+		27F116BC221FCAD1003D27F6 /* LongPressGestureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LongPressGestureVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,11 @@
 		27EDB1DE221BDB7E008F5C94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				27F0192C221FA91800632F6F /* gesture */,
 				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
 				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
+				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -110,6 +119,15 @@
 				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		27F0192C221FA91800632F6F /* gesture */ = {
+			isa = PBXGroup;
+			children = (
+				27F116BB221FCAD1003D27F6 /* LongPressGestureVC.h */,
+				27F116BC221FCAD1003D27F6 /* LongPressGestureVC.m */,
+			);
+			path = gesture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +203,8 @@
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
+				27F116BD221FCAD1003D27F6 /* LongPressGestureVC.m in Sources */,
+				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27D0BD532216C49D00C7AD30 /* HomeViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
