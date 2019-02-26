@@ -32,7 +32,6 @@
 		27D0BD472216B99E00C7AD30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27D0BD492216B99E00C7AD30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D0BD4A2216B99E00C7AD30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		27D0BD512216C49D00C7AD30 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27D0BD54221A573000C7AD30 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		27D0BD55221A573000C7AD30 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureTableViewController.h; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		27F61909222538450026BE03 /* SimpleNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleNavigationController.h; sourceTree = "<group>"; };
 		27F6190A222538450026BE03 /* SimpleNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleNavigationController.m; sourceTree = "<group>"; };
 		27F6190E222543AF0026BE03 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		27F619102225453F0026BE03 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../../../../HomeViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,6 @@
 				27EDB1DD221BDB59008F5C94 /* modal */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
-				27D0BD512216C49D00C7AD30 /* HomeViewController.h */,
-				27F6190E222543AF0026BE03 /* HomeViewController.m */,
 				27F6190622252F340026BE03 /* SimpleTabBarController.h */,
 				27F6190722252F340026BE03 /* SimpleTabBarController.m */,
 				27F61909222538450026BE03 /* SimpleNavigationController.h */,
@@ -114,6 +112,8 @@
 				27F0192C221FA91800632F6F /* gesture */,
 				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
 				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+				27F619102225453F0026BE03 /* HomeViewController.h */,
+				27F6190E222543AF0026BE03 /* HomeViewController.m */,
 				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
 				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
 				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
