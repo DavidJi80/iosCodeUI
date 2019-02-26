@@ -8,7 +8,7 @@
 
 #import "LongPressGestureVC.h"
 
-@interface LongPressGestureVC ()<UIGestureRecognizerDelegate>
+@interface LongPressGestureVC ()
 
 @property(nonatomic,strong) UIButton * longPressBtn;
 
@@ -30,7 +30,7 @@
     
     UILongPressGestureRecognizer * longPressGR=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressView:)];
     
-    longPressGR.minimumPressDuration=3;
+//    longPressGR.minimumPressDuration=3;
     
     longPressGR.allowableMovement=30;
     [self.longPressBtn addGestureRecognizer:longPressGR];
@@ -41,7 +41,7 @@
     NSLog(@"%ld",longPressGest.state);
     if (longPressGest.state==UIGestureRecognizerStateBegan){
         NSLog(@"Long Press Began!");
-    }else{
+    }else if(longPressGest.state==UIGestureRecognizerStateEnded){
         NSLog(@"Long Press End!");
     }
 }

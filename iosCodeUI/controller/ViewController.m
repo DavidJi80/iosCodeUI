@@ -19,6 +19,7 @@
 @property(nonatomic,strong) UIButton * enterBtn;
 @property(nonatomic,strong) UIButton * tableViewBtn;
 @property(nonatomic,strong) UIButton * gestureBtn;
+@property(nonatomic,strong) UIButton * collectionBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -71,11 +72,20 @@
     [_gestureBtn.layer setCornerRadius:10.0];
     [_gestureBtn addTarget:self action:@selector(openGestureView:) forControlEvents:UIControlEventTouchUpInside];
     
+    // 添加按钮
+    _collectionBtn=[UIButton new];
+    _collectionBtn.backgroundColor=[UIColor redColor];
+    _collectionBtn.frame=CGRectMake(30, 270, 315, 45);
+    [_collectionBtn setTitle:@"Open Collection View" forState:UIControlStateNormal];
+    [_collectionBtn.layer setCornerRadius:10.0];
+    [_collectionBtn addTarget:self action:@selector(openCollectionView:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
     [self.view addSubview:self.tableViewBtn];
     [self.view addSubview:self.gestureBtn];
+    [self.view addSubview:self.collectionBtn];
 }
 
 -(void)assignError{
@@ -117,6 +127,13 @@
         GestureTableViewController * vc=[[GestureTableViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
     });
+    
+}
+
+/**
+ Open Collection View
+ */
+-(void)openCollectionView:(UIButton*)sender{
     
 }
 

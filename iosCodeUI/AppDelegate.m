@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+//#import "ViewController.h"
+#import "SimpleTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -22,10 +23,10 @@
     // 设置UIWindows的背景色
     self.window.backgroundColor=[UIColor whiteColor];
     // 创建ViewController
-    ViewController *vc=[[ViewController alloc]init];
+    //ViewController *vc=[[ViewController alloc]init];
     // 设置root view
-    self.window.rootViewController =vc;
-    // 显示
+    self.window.rootViewController =[SimpleTabBarController new];
+    // 设置window为主window且可见
     [self.window makeKeyAndVisible];
     return YES;
 }
