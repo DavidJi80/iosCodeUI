@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  iosCodeUI
+//
+//  Created by 季舟 on 2019/2/26.
+//  Copyright © 2019 季舟. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Constant.h"
+
+#endif /* PrefixHeader_pch */

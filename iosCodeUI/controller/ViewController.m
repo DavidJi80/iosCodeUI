@@ -11,6 +11,7 @@
 #import "Person.h"
 #import "SimpleTableViewController.h"
 #import "GestureTableViewController.h"
+#import "CollectionViewController.h"
 
 @interface ViewController ()
 
@@ -38,17 +39,17 @@
 
 -(void)initView{
     _phoneLabel=[[UILabel alloc]init];
-    _phoneLabel.frame=CGRectMake(30, 30, 100, 20);
+    _phoneLabel.frame=CGRectMake(30, 90, 100, 20);
     _phoneLabel.text=@"Phone";
     _phoneLabel.textColor=[UIColor redColor];
     _phoneLabel.font=[UIFont systemFontOfSize:(17)];
     
     _phoneTextField=[UITextView new];
-    _phoneTextField.frame=CGRectMake(80, 30, 270, 20);
+    _phoneTextField.frame=CGRectMake(80, 90, 100, 20);
     
     _enterBtn=[UIButton new];
     _enterBtn.backgroundColor=[UIColor greenColor];
-    _enterBtn.frame=CGRectMake(30, 90, 315, 45);
+    _enterBtn.frame=CGRectMake(200, 90, 145, 45);
     _enterBtn.titleLabel.font=[UIFont systemFontOfSize:20];
     _enterBtn.titleLabel.textColor=[UIColor whiteColor];
     [_enterBtn setTitle:@"Login" forState:UIControlStateNormal];
@@ -134,7 +135,10 @@
  Open Collection View
  */
 -(void)openCollectionView:(UIButton*)sender{
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CollectionViewController * vc=[[CollectionViewController alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
 }
 
 
