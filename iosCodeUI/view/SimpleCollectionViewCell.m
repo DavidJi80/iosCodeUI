@@ -8,6 +8,12 @@
 
 #import "SimpleCollectionViewCell.h"
 
+@interface SimpleCollectionViewCell()
+
+
+
+@end
+
 @implementation SimpleCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -17,6 +23,14 @@
         self.layer.cornerRadius = 10.f;
         self.backgroundColor = [UIColor greenColor];
         self.clipsToBounds = YES;
+        
+        _titleLabel=[[UILabel alloc]init];
+        _titleLabel.frame=CGRectMake(5, 0, 30, 30);
+        _titleLabel.text=@"A";
+        _titleLabel.textColor=[UIColor redColor];
+        _titleLabel.font=[UIFont systemFontOfSize:(17)];
+        
+        [self addSubview:_titleLabel];
     }
     return self;
     

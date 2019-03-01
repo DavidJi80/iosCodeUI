@@ -28,20 +28,21 @@
     // 定义水平间隔
     flowLayout.minimumInteritemSpacing=10;
     // 定义item的大小
-    flowLayout.itemSize = CGSizeMake(100, 100);
+    flowLayout.itemSize = CGSizeMake(30, 30);
     // 定义滚动方式
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     // 定义内边距
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 15, 10, 15);
     
     // 初始化CollectionView
-    CGFloat viewHeight = 120;
+    CGFloat viewHeight = 50;
     SimpleCollectionView *collectionView = [[SimpleCollectionView alloc]initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, viewHeight) collectionViewLayout:flowLayout];
     collectionView.pagingEnabled = YES;
     // 设置分页滑动的width是SCREEN_WIDTH,不符合要求
     //collectionView.scrollEnabled = NO;
     // 设置分页行不通，改用手势控制滑动，需要把滑动交互关掉
     collectionView.contentSize = CGSizeMake((290+10)*5+15, 0);
+    collectionView.decelerationRate=UIScrollViewDecelerationRateFast;
     
     [self.view addSubview:collectionView];
     

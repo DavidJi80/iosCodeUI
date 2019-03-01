@@ -8,12 +8,17 @@
 
 #import "SimpleCollectionView.h"
 #import "SimpleCollectionViewCell.h"
+#import "Person.h"
 
-#define Count 25
+#define Count 100
 
 static NSString *CellIdentiifer = @"CellIdentiifer";
 
-@interface SimpleCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface SimpleCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>{
+    
+}
+
+@property (nonatomic,strong) NSArray * personDataSource;
 
 @end
 
@@ -23,7 +28,7 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
  重写initWithFrame方法
  */
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    
+    _personDataSource=[Person initPersonDataSource];
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
         self.delegate = self;
@@ -32,11 +37,12 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
         self.showsHorizontalScrollIndicator = NO;
         self.backgroundColor = [UIColor redColor];
         
-        //[self addGesture];
         [self registerClass:[SimpleCollectionViewCell class] forCellWithReuseIdentifier:CellIdentiifer];
     }
     return self;
 }
+
+
 
 /**
  指定Section的个数
@@ -49,7 +55,7 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
  指定每格Section的Cell的个数
  */
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return Count;
+    return _personDataSource.count;
 }
 
 /**
@@ -57,7 +63,18 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
  */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SimpleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentiifer forIndexPath:indexPath];
+    Person * person=self.personDataSource[indexPath.row];
+    cell.titleLabel.text=[NSString stringWithFormat:@"%zd",person.age];
     return cell;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if (scrollView.tracking){
+        NSLog(@"--------- is tracking!");
+    }else if (scrollView.decelerating){
+        NSLog(@"--------- is decelerating!");
+    }
 }
 
 @end

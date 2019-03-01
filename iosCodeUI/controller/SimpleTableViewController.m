@@ -36,14 +36,7 @@
 
 -(void)initDataSource{
     
-    NSMutableArray * dataArray=@[].mutableCopy;
-    for(int i=0;i<10;i++){
-        Person * person=[Person new];
-        person.name=@"jz";
-        person.age=i;
-        [dataArray addObject:person];
-    }
-    self.dataSource=dataArray.copy;
+    self.dataSource=[Person initPersonDataSource];
 }
 
 #pragma mark - Table view data source
