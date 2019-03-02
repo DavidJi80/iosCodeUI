@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
+		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
 		27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3F2216B99B00C7AD30 /* ViewController.m */; };
 		27D0BD452216B99E00C7AD30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D0BD442216B99E00C7AD30 /* Assets.xcassets */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
+		2723BEE7222933E200CC552B /* GcdDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GcdDemoViewController.m; sourceTree = "<group>"; };
 		27D0BD382216B99A00C7AD30 /* iosCodeUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosCodeUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
 				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
 				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
+				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
+				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
+				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
 				27F6190822252F340026BE03 /* SimpleTabBarController.m in Sources */,
 			);

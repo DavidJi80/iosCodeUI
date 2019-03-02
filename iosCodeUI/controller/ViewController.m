@@ -12,6 +12,7 @@
 #import "SimpleTableViewController.h"
 #import "GestureTableViewController.h"
 #import "CollectionViewController.h"
+#import "GcdDemoViewController.h"
 
 @interface ViewController ()
 
@@ -21,6 +22,7 @@
 @property(nonatomic,strong) UIButton * tableViewBtn;
 @property(nonatomic,strong) UIButton * gestureBtn;
 @property(nonatomic,strong) UIButton * collectionBtn;
+@property(nonatomic,strong) UIButton * gcdBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -81,12 +83,20 @@
     [_collectionBtn.layer setCornerRadius:10.0];
     [_collectionBtn addTarget:self action:@selector(openCollectionView:) forControlEvents:UIControlEventTouchUpInside];
     
+    _gcdBtn=[UIButton new];
+    _gcdBtn.backgroundColor=[UIColor darkGrayColor];
+    _gcdBtn.frame=CGRectMake(30, 330, 315, 45);
+    [_gcdBtn setTitle:@"Open GCD Demo View" forState:UIControlStateNormal];
+    [_gcdBtn.layer setCornerRadius:10.0];
+    [_gcdBtn addTarget:self action:@selector(openGCDDemoView:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
     [self.view addSubview:self.tableViewBtn];
     [self.view addSubview:self.gestureBtn];
     [self.view addSubview:self.collectionBtn];
+    [self.view addSubview:self.gcdBtn];
 }
 
 -(void)assignError{
@@ -137,6 +147,16 @@
 -(void)openCollectionView:(UIButton*)sender{
     dispatch_async(dispatch_get_main_queue(), ^{
         CollectionViewController * vc=[[CollectionViewController alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+}
+
+/**
+ Open GCD Demo View
+ */
+-(void)openGCDDemoView:(UIButton*)sender{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        GcdDemoViewController * vc=[[GcdDemoViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
     });
 }
