@@ -13,6 +13,7 @@
 #import "GestureTableViewController.h"
 #import "CollectionViewController.h"
 #import "GcdDemoViewController.h"
+#import "VideoPlayerViewController.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,7 @@
 @property(nonatomic,strong) UIButton * gestureBtn;
 @property(nonatomic,strong) UIButton * collectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
+@property(nonatomic,strong) UIButton * videoBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -90,6 +92,13 @@
     [_gcdBtn.layer setCornerRadius:10.0];
     [_gcdBtn addTarget:self action:@selector(openGCDDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
+    _videoBtn=[UIButton new];
+    _videoBtn.backgroundColor=[UIColor lightGrayColor];
+    _videoBtn.frame=CGRectMake(30, 330, 315, 45);
+    [_videoBtn setTitle:@"Open Video Player Demo View" forState:UIControlStateNormal];
+    [_videoBtn.layer setCornerRadius:10.0];
+    [_videoBtn addTarget:self action:@selector(openVideoPlayDemoView:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
@@ -97,6 +106,7 @@
     [self.view addSubview:self.gestureBtn];
     [self.view addSubview:self.collectionBtn];
     [self.view addSubview:self.gcdBtn];
+    [self.view addSubview:self.videoBtn];
 }
 
 -(void)assignError{
@@ -157,6 +167,17 @@
 -(void)openGCDDemoView:(UIButton*)sender{
     dispatch_async(dispatch_get_main_queue(), ^{
         GcdDemoViewController * vc=[[GcdDemoViewController alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+}
+
+
+/**
+ Open Video Play Demo View
+ */
+-(void)openVideoPlayDemoView:(UIButton*)sender{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        VideoPlayerViewController * vc=[[VideoPlayerViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
     });
 }

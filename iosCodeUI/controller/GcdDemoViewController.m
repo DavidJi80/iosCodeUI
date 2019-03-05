@@ -12,6 +12,8 @@
     dispatch_semaphore_t semaphoreLock;
 }
 
+@property(nonatomic,strong) UIButton * backBtn;
+
 @property(nonatomic,strong) UIButton * syncSerialBtn;
 @property(nonatomic,strong) UIButton * asyncSerialBtn;
 @property(nonatomic,strong) UIButton * syncConcurrentBtn;
@@ -42,6 +44,16 @@
     // Do any additional setup after loading the view.
     
     self.count=0;
+    
+    _backBtn=[UIButton new];
+    _backBtn.backgroundColor=[UIColor purpleColor];
+    _backBtn.frame=CGRectMake(30, 30, 80, 45);
+    _backBtn.titleLabel.font=[UIFont systemFontOfSize:20];
+    _backBtn.titleLabel.textColor=[UIColor whiteColor];
+    [_backBtn setTitle:@"返回" forState:UIControlStateNormal];
+    [_backBtn.layer setCornerRadius:10.0];
+    // 添加事件
+    [_backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
     _syncSerialBtn=[UIButton new];
     _syncSerialBtn.backgroundColor=[UIColor greenColor];
@@ -209,6 +221,8 @@
     [_threadSafeBtn.layer setCornerRadius:10.0];
     [_threadSafeBtn addTarget:self action:@selector(gcdThreadSafe:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    [self.view addSubview:self.backBtn];
     [self.view addSubview:self.syncSerialBtn];
     [self.view addSubview:self.asyncSerialBtn];
     [self.view addSubview:self.syncConcurrentBtn];
@@ -227,6 +241,14 @@
     [self.view addSubview:self.semaphoreSynBtn];
     [self.view addSubview:self.threadNotSafeBtn];
     [self.view addSubview:self.threadSafeBtn];
+}
+
+-(void)back:(UIButton*)sender{
+//    self.navigationController.tabBarController.hidesBottomBarWhenPushed=NO;
+//    self.navigationController.tabBarController.selectedIndex=0;
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    UIViewController * vc=self.navigationController.viewControllers[1];
+    [self.navigationController popToViewController:vc animated:YES];
 }
 
 /**
