@@ -14,6 +14,7 @@
 #import "CollectionViewController.h"
 #import "GcdDemoViewController.h"
 #import "VideoPlayerViewController.h"
+#import "ProcessViewController.h"
 
 @interface ViewController ()
 
@@ -25,6 +26,7 @@
 @property(nonatomic,strong) UIButton * collectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
 @property(nonatomic,strong) UIButton * videoBtn;
+@property(nonatomic,strong) UIButton * processBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -99,6 +101,13 @@
     [_videoBtn.layer setCornerRadius:10.0];
     [_videoBtn addTarget:self action:@selector(openVideoPlayDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
+    _processBtn=[UIButton new];
+    _processBtn.backgroundColor=[UIColor magentaColor];
+    _processBtn.frame=CGRectMake(30, 390, 145, 45);
+    [_processBtn setTitle:@"Process Demo" forState:UIControlStateNormal];
+    [_processBtn.layer setCornerRadius:10.0];
+    [_processBtn addTarget:self action:@selector(openProcessDemoView:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
@@ -107,6 +116,7 @@
     [self.view addSubview:self.collectionBtn];
     [self.view addSubview:self.gcdBtn];
     [self.view addSubview:self.videoBtn];
+    [self.view addSubview:self.processBtn];
 }
 
 -(void)assignError{
@@ -178,6 +188,16 @@
 -(void)openVideoPlayDemoView:(UIButton*)sender{
     dispatch_async(dispatch_get_main_queue(), ^{
         VideoPlayerViewController * vc=[[VideoPlayerViewController alloc]init];
+        [self presentViewController:vc animated:YES completion:nil];
+    });
+}
+
+/**
+ Open Process Demo View
+ */
+-(void)openProcessDemoView:(UIButton*)sender{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        ProcessViewController * vc=[[ProcessViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
     });
 }

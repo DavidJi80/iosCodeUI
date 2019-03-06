@@ -25,6 +25,8 @@
 		27F6190822252F340026BE03 /* SimpleTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F6190722252F340026BE03 /* SimpleTabBarController.m */; };
 		27F6190B222538450026BE03 /* SimpleNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F6190A222538450026BE03 /* SimpleNavigationController.m */; };
 		27F9092A222E390C00B5C22F /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F90929222E390C00B5C22F /* VideoPlayerViewController.m */; };
+		27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE7B91222F630D002069FB /* ProcessViewController.m */; };
+		27FE7B95222F698D002069FB /* LineProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE7B94222F698D002069FB /* LineProcessView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,10 @@
 		27F6190A222538450026BE03 /* SimpleNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleNavigationController.m; sourceTree = "<group>"; };
 		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
 		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
+		27FE7B90222F630D002069FB /* ProcessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
+		27FE7B91222F630D002069FB /* ProcessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
+		27FE7B93222F698D002069FB /* LineProcessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineProcessView.h; sourceTree = "<group>"; };
+		27FE7B94222F698D002069FB /* LineProcessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineProcessView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,8 @@
 				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
 				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
 				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
+				27FE7B90222F630D002069FB /* ProcessViewController.h */,
+				27FE7B91222F630D002069FB /* ProcessViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -155,6 +163,8 @@
 				27F36FEB22264198009AEACD /* SimpleCollectionViewCell.m */,
 				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
 				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
+				27FE7B93222F698D002069FB /* LineProcessView.h */,
+				27FE7B94222F698D002069FB /* LineProcessView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 			files = (
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
+				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
 				27F6190B222538450026BE03 /* SimpleNavigationController.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
@@ -260,6 +271,7 @@
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
+				27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
 				27F6190822252F340026BE03 /* SimpleTabBarController.m in Sources */,
 			);
