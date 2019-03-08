@@ -17,10 +17,12 @@
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 //进度条
 @property(nonatomic,strong) LineProcessView * lineProcessView;
+@property(nonatomic,strong) LineProcessView * loadProcessView;
 //时间标签
 @property(nonatomic,strong) UILabel * currentTimeLabel;
 @property(nonatomic,strong) UILabel * totalTimeLabel;
-
+//
+@property(nonatomic,strong) UISlider * slider;
 @end
 
 @implementation VideoPlayerViewController
@@ -45,10 +47,22 @@
     _totalTimeLabel.textColor=[UIColor whiteColor];
     _totalTimeLabel.font=[UIFont systemFontOfSize:(15)];
     
+    _slider=[UISlider new];
+    _slider.frame=CGRectMake(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 20);
+    _slider.maximumValue=100.0;
+    _slider.minimumValue=0.0;
+    _slider.value=0;
+    //添加事件
+    [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
     [self.view addSubview:self.currentTimeLabel];
     [self.view addSubview:self.totalTimeLabel];
     // 添加进度条
     [self.view addSubview:self.lineProcessView];
+    [self.view addSubview:self.loadProcessView];
+    [self.view addSubview:self.slider];
 }
 
 -(void)initAVPlay{
@@ -76,13 +90,16 @@
     // 观察loadedTimeRanges，可以获取缓存进度，实现缓冲进度条
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     
-    
+    /**
+     插入周期时间观察器
+     */
     __weak __typeof(self) weakSelf=self;
-    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time){
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 24) queue:dispatch_get_main_queue() usingBlock:^(CMTime time){
         NSTimeInterval currentTime=CMTimeGetSeconds(time);
         NSTimeInterval totalTime=CMTimeGetSeconds(weakSelf.playerItem.duration);
         [weakSelf.lineProcessView setProcessValue:currentTime/totalTime];
         [weakSelf.currentTimeLabel setText:[weakSelf formatTimeWithTimeInterVal:currentTime]];
+        [weakSelf.slider setValue:(currentTime*100)/totalTime];
     }];
     
     
@@ -92,12 +109,15 @@
  转换时间格式的方法
  */
 - (NSString *)formatTimeWithTimeInterVal:(NSTimeInterval)timeInterVal{
-    int minute = 0, hour = 0, secend = timeInterVal;
+    int minute = 0, hour = 0, secend = timeInterVal,microsecond=0;
     minute = (secend % 3600)/60;
     hour = secend / 3600;
     secend = secend % 60;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d", hour, minute, secend];
+    microsecond=(timeInterVal-secend)*1000;
+//    return [NSString stringWithFormat:@"%02d:%02d:%02d:%3d", hour, minute, secend,microsecond];
+    return [NSString stringWithFormat:@"%02d:%3d", secend,microsecond];
 }
+
 
 /**
  初始化进度条
@@ -111,6 +131,19 @@
 }
 
 /**
+ 初始化进度条
+ */
+-(LineProcessView *)loadProcessView{
+    if (!_loadProcessView) {
+        _loadProcessView = [[LineProcessView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-60, SCREEN_WIDTH, 2)];
+        _loadProcessView.fillColor=[UIColor yellowColor];
+        _loadProcessView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, SCREEN_HEIGHT-58);
+    }
+    return _loadProcessView;
+}
+
+/**
+ 观察者监听方法
  */
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"status"]){
@@ -154,10 +187,26 @@
         //更新显示：视频的总时长
         //_totalNeedLoadTimeLabel.text = [self formatTimeWithTimeInterVal:CMTimeGetSeconds(self.player.currentItem.duration)];
         //更新显示：缓冲进度条的值
-        //_progressView.progress = currentLoadTotalTime/CMTimeGetSeconds(self.player.currentItem.duration);
+        [_loadProcessView setProcessValue:loadDurationSeconds/CMTimeGetSeconds(self.playerItem.duration)];
     }
     
 }
+
+/**
+ UISlider事件相应方法
+ */
+-(void)sliderValueChanged:(UISlider *)slider{
+    if(self.player.status == AVPlayerStatusReadyToPlay){
+        float sliderVal=slider.value;
+        Float64 duration= CMTimeGetSeconds(self.playerItem.duration);
+        Float64 seetTime=((sliderVal/100) * duration);
+        CMTime seekCMTime = CMTimeMake(seetTime, 1);
+        [self.player seekToTime:seekCMTime completionHandler:^(BOOL finished) {
+        }];
+        //NSLog(@"%f",sliderVal);
+    }
+}
+
 
 
 
