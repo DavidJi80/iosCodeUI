@@ -46,7 +46,7 @@
     _layer.lineWidth = height;//线宽
     _layer.lineCap = @"round";//圆角
     [self.layer addSublayer:_layer];
-    self.layer.cornerRadius=  height/2;
+    //self.layer.cornerRadius=  height/2;
     self.clipsToBounds = YES;
     self.backgroundColor = RGBA(216, 216, 216, 1);
 }
