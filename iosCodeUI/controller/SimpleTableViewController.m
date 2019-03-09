@@ -9,6 +9,7 @@
 #import "SimpleTableViewController.h"
 #import "SimpleTableViewCell.h"
 #import "Person.h"
+#import "GestureTableViewController.h"
 
 @interface SimpleTableViewController (){
     NSArray * data;
@@ -24,19 +25,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initNavigationItem];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //data=@[@"David",@"Ji Zhou"];
     //初始化数据
     [self initDataSource];
+}
+
+-(void)initNavigationItem{
+    self.navigationItem.title=@"Table View";
+    
+    //self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"Lfet Bar" style:(UIBarButtonItemStylePlain) target:self action:@selector(goGesture)];
+    //UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Table View" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //self.navigationItem.backBarButtonItem = barButtonItem;
+    self.navigationItem.hidesBackButton=YES;
+    
+    
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"Gesture" style:(UIBarButtonItemStylePlain) target:self action:@selector(goGesture)];
+    
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    
 }
 
 -(void)initDataSource{
     
     self.dataSource=[Person initPersonDataSource];
+}
+
+-(void)goGesture{
+    GestureTableViewController * vc=[[GestureTableViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Table view data source

@@ -30,8 +30,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initNavigationItem];
+    
     [self initAVPlay];
     [self initView];
+}
+
+-(void)initNavigationItem{
+    
+    self.navigationController.navigationBarHidden=YES;
+    
 }
 
 -(void)initView{

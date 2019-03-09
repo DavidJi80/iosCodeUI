@@ -22,10 +22,13 @@
 @property(nonatomic,strong) UITextView * phoneTextField;
 @property(nonatomic,strong) UIButton * enterBtn;
 @property(nonatomic,strong) UIButton * tableViewBtn;
+@property(nonatomic,strong) UIButton * tableViewNavBtn;
 @property(nonatomic,strong) UIButton * gestureBtn;
+@property(nonatomic,strong) UIButton * gestureNavBtn;
 @property(nonatomic,strong) UIButton * collectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
 @property(nonatomic,strong) UIButton * videoBtn;
+@property(nonatomic,strong) UIButton * videoNavBtn;
 @property(nonatomic,strong) UIButton * processBtn;
 
 
@@ -37,9 +40,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self initNavigationItem];
     [self initView];
 
+}
+
+-(void)initNavigationItem{
+    
+    //设置UINavigationBar的外观
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
+    
+    /**
+     设置UINavigationBar的内容
+     */
+    //设置标题视图
+    self.navigationItem.titleView=[UIButton buttonWithType:UIButtonTypeInfoDark];
+    //设置标题文字
+    self.navigationItem.title=@"根控制器";
+    
+    //设置UIToolbar的隐藏状态
+    self.navigationController.toolbarHidden=NO;
+    //设置UIToolbar的外观
+    self.navigationController.toolbar.barStyle=UIBarStyleBlackOpaque;
+    
+    
+    
 }
 
 
@@ -66,18 +91,32 @@
     // 添加按钮，绑定事件
     _tableViewBtn=[UIButton new];
     _tableViewBtn.backgroundColor=[UIColor blueColor];
-    _tableViewBtn.frame=CGRectMake(30, 150, 315, 45);
-    [_tableViewBtn setTitle:@"Open Table View" forState:UIControlStateNormal];
+    _tableViewBtn.frame=CGRectMake(30, 150, 145, 45);
+    [_tableViewBtn setTitle:@"Table View" forState:UIControlStateNormal];
     [_tableViewBtn.layer setCornerRadius:10.0];
     [_tableViewBtn addTarget:self action:@selector(openTableView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _tableViewNavBtn=[UIButton new];
+    _tableViewNavBtn.backgroundColor=[UIColor blueColor];
+    _tableViewNavBtn.frame=CGRectMake(200, 150, 145, 45);
+    [_tableViewNavBtn setTitle:@"Table View Nav" forState:UIControlStateNormal];
+    [_tableViewNavBtn.layer setCornerRadius:10.0];
+    [_tableViewNavBtn addTarget:self action:@selector(navTableView:) forControlEvents:UIControlEventTouchUpInside];
     
     // 添加按钮
     _gestureBtn=[UIButton new];
     _gestureBtn.backgroundColor=[UIColor blackColor];
-    _gestureBtn.frame=CGRectMake(30, 210, 315, 45);
-    [_gestureBtn setTitle:@"Open Gesture View" forState:UIControlStateNormal];
+    _gestureBtn.frame=CGRectMake(30, 210, 145, 45);
+    [_gestureBtn setTitle:@"Gesture View" forState:UIControlStateNormal];
     [_gestureBtn.layer setCornerRadius:10.0];
     [_gestureBtn addTarget:self action:@selector(openGestureView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _gestureNavBtn=[UIButton new];
+    _gestureNavBtn.backgroundColor=[UIColor blackColor];
+    _gestureNavBtn.frame=CGRectMake(200, 210, 145, 45);
+    [_gestureNavBtn setTitle:@"Gesture View Nav" forState:UIControlStateNormal];
+    [_gestureNavBtn.layer setCornerRadius:10.0];
+    [_gestureNavBtn addTarget:self action:@selector(openGestureNavView:) forControlEvents:UIControlEventTouchUpInside];
     
     // 添加按钮
     _collectionBtn=[UIButton new];
@@ -96,14 +135,21 @@
     
     _videoBtn=[UIButton new];
     _videoBtn.backgroundColor=[UIColor lightGrayColor];
-    _videoBtn.frame=CGRectMake(30, 330, 315, 45);
-    [_videoBtn setTitle:@"Open Video Player Demo View" forState:UIControlStateNormal];
+    _videoBtn.frame=CGRectMake(30, 390, 145, 45);
+    [_videoBtn setTitle:@"Video Player" forState:UIControlStateNormal];
     [_videoBtn.layer setCornerRadius:10.0];
     [_videoBtn addTarget:self action:@selector(openVideoPlayDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
+    _videoNavBtn=[UIButton new];
+    _videoNavBtn.backgroundColor=[UIColor lightGrayColor];
+    _videoNavBtn.frame=CGRectMake(200, 390, 145, 45);
+    [_videoNavBtn setTitle:@"Video Player Nav" forState:UIControlStateNormal];
+    [_videoNavBtn.layer setCornerRadius:10.0];
+    [_videoNavBtn addTarget:self action:@selector(openVideoPlayDemoNavView:) forControlEvents:UIControlEventTouchUpInside];
+    
     _processBtn=[UIButton new];
     _processBtn.backgroundColor=[UIColor magentaColor];
-    _processBtn.frame=CGRectMake(30, 390, 145, 45);
+    _processBtn.frame=CGRectMake(30, 450, 145, 45);
     [_processBtn setTitle:@"Process Demo" forState:UIControlStateNormal];
     [_processBtn.layer setCornerRadius:10.0];
     [_processBtn addTarget:self action:@selector(openProcessDemoView:) forControlEvents:UIControlEventTouchUpInside];
@@ -112,10 +158,13 @@
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
     [self.view addSubview:self.tableViewBtn];
+    [self.view addSubview:self.tableViewNavBtn];
     [self.view addSubview:self.gestureBtn];
+    [self.view addSubview:self.gestureNavBtn];
     [self.view addSubview:self.collectionBtn];
     [self.view addSubview:self.gcdBtn];
     [self.view addSubview:self.videoBtn];
+    [self.view addSubview:self.videoNavBtn];
     [self.view addSubview:self.processBtn];
 }
 
@@ -150,6 +199,11 @@
     
 }
 
+-(void)navTableView:(UIButton*)sender{
+    SimpleTableViewController * tableViewController=[[SimpleTableViewController alloc]init];
+    [self.navigationController pushViewController:tableViewController animated:YES];
+}
+
 /**
  打开Gesture View
  */
@@ -159,6 +213,11 @@
         [self presentViewController:vc animated:YES completion:nil];
     });
     
+}
+
+-(void)openGestureNavView:(UIButton*)sender{
+    GestureTableViewController * vc=[[GestureTableViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /**
@@ -191,6 +250,12 @@
         [self presentViewController:vc animated:YES completion:nil];
     });
 }
+
+-(void)openVideoPlayDemoNavView:(UIButton*)sender{
+    VideoPlayerViewController * vc=[[VideoPlayerViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 /**
  Open Process Demo View

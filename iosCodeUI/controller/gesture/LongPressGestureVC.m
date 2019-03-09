@@ -20,6 +20,9 @@
     [super viewDidLoad];
     //self.title=@"Long Press";
     
+    [self initNavigationItem];
+    
+    
     _longPressBtn=[UIButton new];
     _longPressBtn.backgroundColor=[UIColor blueColor];
     _longPressBtn.frame=CGRectMake(100, 100, 150, 150);
@@ -34,6 +37,16 @@
     
     longPressGR.allowableMovement=30;
     [self.longPressBtn addGestureRecognizer:longPressGR];
+}
+
+-(void)initNavigationItem{
+    self.navigationItem.title=@"Table View";
+    
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"首页" style:(UIBarButtonItemStylePlain) target:self action:@selector(goHome)];
+}
+
+-(void)goHome{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

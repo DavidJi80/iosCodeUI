@@ -21,12 +21,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initNavigationItem];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     data=@[@"Long Press Gesture",@"Ji Zhou"];
+}
+
+-(void)initNavigationItem{
+    self.navigationItem.title=@"Gesture View";
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"Back" style:(UIBarButtonItemStylePlain) target:self action:@selector(back)];
+}
+
+-(void)back{
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self.navigationController.childViewControllers[0] animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -72,10 +79,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row==0){
+        /*
         dispatch_async(dispatch_get_main_queue(), ^{
             LongPressGestureVC * vc=[[LongPressGestureVC alloc]init];
             [self presentViewController:vc animated:YES completion:nil];
         });
+         */
+        LongPressGestureVC * vc=[[LongPressGestureVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"MSG" message:data[indexPath.row] preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
