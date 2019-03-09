@@ -1,8 +1,8 @@
 //
-//  SimpleNavigationController.h
+//  MyHomeViewController.h
 //  iosCodeUI
 //
-//  Created by 季舟 on 2019/2/26.
+//  Created by mac on 2019/3/9.
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SimpleNavigationController : UINavigationController
+@interface MyHomeViewController : UIViewController
 
 @end
 

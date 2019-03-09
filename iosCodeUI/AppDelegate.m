@@ -18,8 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //[self tabbedApp];
-    [self navigationApp];
+    [self tabbedApp];
+    //[self navigationApp];
     return YES;
 }
 
@@ -28,8 +28,6 @@
     self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     // 设置UIWindows的背景色
     self.window.backgroundColor=[UIColor whiteColor];
-    // 创建ViewController
-    //ViewController *vc=[[ViewController alloc]init];
     // 设置root view
     self.window.rootViewController =[SimpleTabBarController new];
     // 设置window为主window且可见

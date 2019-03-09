@@ -59,9 +59,9 @@
     self.navigationItem.title=@"根控制器";
     
     //设置UIToolbar的隐藏状态
-    self.navigationController.toolbarHidden=NO;
+    //self.navigationController.toolbarHidden=NO;
     //设置UIToolbar的外观
-    self.navigationController.toolbar.barStyle=UIBarStyleBlackOpaque;
+    //self.navigationController.toolbar.barStyle=UIBarStyleBlackOpaque;
     
     
     
