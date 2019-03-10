@@ -107,6 +107,28 @@
 			path = multimedia;
 			sourceTree = "<group>";
 		};
+		04217D7A2234CCBD006202A4 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				27F0192C221FA91800632F6F /* gesture */,
+				27167FF1222780B9000CBD47 /* HomeViewController.h */,
+				27167FF2222780B9000CBD47 /* HomeViewController.m */,
+				27F36FE722263D86009AEACD /* CollectionViewController.h */,
+				27F36FE822263D86009AEACD /* CollectionViewController.m */,
+				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
+				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
+				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
+				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
+				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
+				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
+				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
+				27FE7B90222F630D002069FB /* ProcessViewController.h */,
+				27FE7B91222F630D002069FB /* ProcessViewController.m */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
 		27D0BD2F2216B99A00C7AD30 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +155,6 @@
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27F36FED22264F62009AEACD /* Constant.h */,
 				27F36FEE22265025009AEACD /* PrefixHeader.pch */,
-				27F6190622252F340026BE03 /* SimpleTabBarController.h */,
-				27F6190722252F340026BE03 /* SimpleTabBarController.m */,
 				27D0BD442216B99E00C7AD30 /* Assets.xcassets */,
 				27D0BD462216B99E00C7AD30 /* LaunchScreen.storyboard */,
 				27D0BD492216B99E00C7AD30 /* Info.plist */,
@@ -155,23 +175,11 @@
 		27EDB1DE221BDB7E008F5C94 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				27F6190622252F340026BE03 /* SimpleTabBarController.h */,
+				27F6190722252F340026BE03 /* SimpleTabBarController.m */,
+				04217D7A2234CCBD006202A4 /* home */,
 				04217D762234C3F0006202A4 /* multimedia */,
 				04217D6F2233E9B5006202A4 /* my */,
-				27F0192C221FA91800632F6F /* gesture */,
-				27167FF1222780B9000CBD47 /* HomeViewController.h */,
-				27167FF2222780B9000CBD47 /* HomeViewController.m */,
-				27F36FE722263D86009AEACD /* CollectionViewController.h */,
-				27F36FE822263D86009AEACD /* CollectionViewController.m */,
-				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
-				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
-				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
-				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
-				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
-				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
-				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
-				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
-				27FE7B90222F630D002069FB /* ProcessViewController.h */,
-				27FE7B91222F630D002069FB /* ProcessViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";

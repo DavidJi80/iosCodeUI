@@ -8,6 +8,7 @@
 
 #import "VideoViewController.h"
 #import "VideoPlayerViewController.h"
+#import <Photos/Photos.h>
 
 @interface VideoViewController ()
 
@@ -20,6 +21,9 @@
     // Do any additional setup after loading the view.
     
     [self initNavigation];
+    
+    
+    
 }
 
 -(void)initNavigation{
