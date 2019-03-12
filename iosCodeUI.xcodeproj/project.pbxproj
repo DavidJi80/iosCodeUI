@@ -13,6 +13,7 @@
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
 		046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB42237439B00FF7D44 /* AssetCollection.m */; };
+		046D0DB82237560F00FF7D44 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB72237560F00FF7D44 /* AlertViewController.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -47,6 +48,8 @@
 		046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionTableViewCell.m; sourceTree = "<group>"; };
 		046D0DB32237439B00FF7D44 /* AssetCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCollection.h; sourceTree = "<group>"; };
 		046D0DB42237439B00FF7D44 /* AssetCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCollection.m; sourceTree = "<group>"; };
+		046D0DB62237560F00FF7D44 /* AlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		046D0DB72237560F00FF7D44 /* AlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
 				27FE7B90222F630D002069FB /* ProcessViewController.h */,
 				27FE7B91222F630D002069FB /* ProcessViewController.m */,
+				046D0DB62237560F00FF7D44 /* AlertViewController.h */,
+				046D0DB72237560F00FF7D44 /* AlertViewController.m */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 				04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
 				27F6190822252F340026BE03 /* SimpleTabBarController.m in Sources */,
+				046D0DB82237560F00FF7D44 /* AlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "GcdDemoViewController.h"
 #import "VideoPlayerViewController.h"
 #import "ProcessViewController.h"
+#import "AlertViewController.h"
 
 @interface ViewController ()
 
@@ -27,7 +28,7 @@
 @property(nonatomic,strong) UIButton * gestureNavBtn;
 @property(nonatomic,strong) UIButton * collectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
-@property(nonatomic,strong) UIButton * videoBtn;
+@property(nonatomic,strong) UIButton * alertBtn;
 @property(nonatomic,strong) UIButton * videoNavBtn;
 @property(nonatomic,strong) UIButton * processBtn;
 
@@ -133,12 +134,12 @@
     [_gcdBtn.layer setCornerRadius:10.0];
     [_gcdBtn addTarget:self action:@selector(openGCDDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
-    _videoBtn=[UIButton new];
-    _videoBtn.backgroundColor=[UIColor lightGrayColor];
-    _videoBtn.frame=CGRectMake(30, 390, 145, 45);
-    [_videoBtn setTitle:@"Video Player" forState:UIControlStateNormal];
-    [_videoBtn.layer setCornerRadius:10.0];
-    [_videoBtn addTarget:self action:@selector(openVideoPlayDemoView:) forControlEvents:UIControlEventTouchUpInside];
+    _alertBtn=[UIButton new];
+    _alertBtn.backgroundColor=[UIColor blackColor];
+    _alertBtn.frame=CGRectMake(30, 390, 145, 45);
+    [_alertBtn setTitle:@"Alert Controller" forState:UIControlStateNormal];
+    [_alertBtn.layer setCornerRadius:10.0];
+    [_alertBtn addTarget:self action:@selector(openAlertDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
     _videoNavBtn=[UIButton new];
     _videoNavBtn.backgroundColor=[UIColor lightGrayColor];
@@ -163,7 +164,7 @@
     [self.view addSubview:self.gestureNavBtn];
     [self.view addSubview:self.collectionBtn];
     [self.view addSubview:self.gcdBtn];
-    [self.view addSubview:self.videoBtn];
+    [self.view addSubview:self.alertBtn];
     [self.view addSubview:self.videoNavBtn];
     [self.view addSubview:self.processBtn];
 }
@@ -241,16 +242,15 @@
 }
 
 
+
+-(void)openAlertDemoView:(UIButton*)sender{
+    AlertViewController * vc=[[AlertViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 /**
  Open Video Play Demo View
  */
--(void)openVideoPlayDemoView:(UIButton*)sender{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        VideoPlayerViewController * vc=[[VideoPlayerViewController alloc]init];
-        [self presentViewController:vc animated:YES completion:nil];
-    });
-}
-
 -(void)openVideoPlayDemoNavView:(UIButton*)sender{
     VideoPlayerViewController * vc=[[VideoPlayerViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
