@@ -14,6 +14,8 @@
 @interface PhotosViewController ()
 
 @property (nonatomic,strong) NSArray * dataSource;
+@property (nonatomic,assign) int type;
+@property (nonatomic,assign) long subType;
 
 @end
 
@@ -22,7 +24,80 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _type=PHAssetCollectionTypeAlbum;
+    _subType=PHAssetCollectionSubtypeAlbumRegular;
+    [self initNavigation];
     [self getAssetCollection];
+}
+
+-(void)initNavigation{
+    UIBarButtonItem * typeBBI=[[UIBarButtonItem alloc]initWithTitle:@"Type" style:(UIBarButtonItemStylePlain) target:self action:@selector(fetchByType)];
+    UIBarButtonItem * subTypeBBI=[[UIBarButtonItem alloc]initWithTitle:@"SubType" style:(UIBarButtonItemStylePlain) target:self action:@selector(fetchBySubType)];
+    self.navigationItem.rightBarButtonItems=@[subTypeBBI,typeBBI];
+}
+
+-(void)fetchByType{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *type1Action = [UIAlertAction actionWithTitle:@"PHAssetCollectionTypeAlbum" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _type=PHAssetCollectionTypeAlbum;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *type2Action = [UIAlertAction actionWithTitle:@"PHAssetCollectionTypeSmartAlbum" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _type=PHAssetCollectionTypeSmartAlbum;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *type3Action = [UIAlertAction actionWithTitle:@"PHAssetCollectionTypeMoment" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _type=PHAssetCollectionTypeMoment;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [cancelAction setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [alert addAction:type1Action];
+    [alert addAction:type2Action];
+    [alert addAction:type3Action];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)fetchBySubType{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *type1Action = [UIAlertAction actionWithTitle:@"PHAssetCollectionSubtypeAlbumRegular" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _subType=PHAssetCollectionSubtypeAlbumRegular;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *type2Action = [UIAlertAction actionWithTitle:@"NSIntegerMax" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _subType=NSIntegerMax;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *type3Action = [UIAlertAction actionWithTitle:@"PHAssetCollectionSubtypeSmartAlbumVideos" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        _subType=PHAssetCollectionSubtypeSmartAlbumVideos;
+        [self getAssetCollection];
+        [self.tableView reloadData];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [cancelAction setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [alert addAction:type1Action];
+    [alert addAction:type2Action];
+    [alert addAction:type3Action];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void)getAssetCollection{
@@ -33,7 +108,7 @@
      PHAssetCollectionTypeAlbum - 在[照片]APP中创建的相簿或者通过iTunes同步的在iOS设备上显示的相簿
      PHAssetCollectionSubtypeAlbumRegular - 在[相册]APP中创建的相簿
      */
-    PHFetchResult<PHAssetCollection *> * collectionResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    PHFetchResult<PHAssetCollection *> * collectionResult = [PHAssetCollection fetchAssetCollectionsWithType:_type subtype:_subType options:nil];
     if (collectionResult.count == 0) {
         return;
     }
