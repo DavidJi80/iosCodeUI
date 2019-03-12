@@ -1,17 +1,16 @@
 //
-//  VideoViewController.h
+//  PhotosViewController.h
 //  iosCodeUI
 //
-//  Created by mac on 2019/3/10.
+//  Created by mac on 2019/3/11.
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <Photos/Photos.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VideoViewController : UIViewController
+@interface PhotosViewController : UITableViewController
 
 @end
 

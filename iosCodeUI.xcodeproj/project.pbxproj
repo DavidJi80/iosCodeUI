@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
+		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
+		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
+		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
+		046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB42237439B00FF7D44 /* AssetCollection.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -35,6 +39,14 @@
 		04217D712233E9F7006202A4 /* MyHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeViewController.m; sourceTree = "<group>"; };
 		04217D772234C50F006202A4 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		04217D782234C50F006202A4 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
+		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
+		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
+		046D0DAD2236452200FF7D44 /* PhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		046D0DB0223670C600FF7D44 /* CollectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionTableViewCell.h; sourceTree = "<group>"; };
+		046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionTableViewCell.m; sourceTree = "<group>"; };
+		046D0DB32237439B00FF7D44 /* AssetCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCollection.h; sourceTree = "<group>"; };
+		046D0DB42237439B00FF7D44 /* AssetCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCollection.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -99,10 +111,14 @@
 		04217D762234C3F0006202A4 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
-				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
+				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 				04217D772234C50F006202A4 /* VideoViewController.h */,
 				04217D782234C50F006202A4 /* VideoViewController.m */,
+				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
+				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
+				046D0DAC2236452200FF7D44 /* PhotosViewController.h */,
+				046D0DAD2236452200FF7D44 /* PhotosViewController.m */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -127,6 +143,15 @@
 				27FE7B91222F630D002069FB /* ProcessViewController.m */,
 			);
 			path = home;
+			sourceTree = "<group>";
+		};
+		046D0DAF2236703900FF7D44 /* multimedia */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DB0223670C600FF7D44 /* CollectionTableViewCell.h */,
+				046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */,
+			);
+			path = multimedia;
 			sourceTree = "<group>";
 		};
 		27D0BD2F2216B99A00C7AD30 = {
@@ -168,6 +193,8 @@
 			children = (
 				27D0BD54221A573000C7AD30 /* Person.h */,
 				27D0BD55221A573000C7AD30 /* Person.m */,
+				046D0DB32237439B00FF7D44 /* AssetCollection.h */,
+				046D0DB42237439B00FF7D44 /* AssetCollection.m */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -178,8 +205,8 @@
 				27F6190622252F340026BE03 /* SimpleTabBarController.h */,
 				27F6190722252F340026BE03 /* SimpleTabBarController.m */,
 				04217D7A2234CCBD006202A4 /* home */,
-				04217D762234C3F0006202A4 /* multimedia */,
 				04217D6F2233E9B5006202A4 /* my */,
+				04217D762234C3F0006202A4 /* multimedia */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -187,6 +214,7 @@
 		27EDB1DF221BDB89008F5C94 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DAF2236703900FF7D44 /* multimedia */,
 				27F36FEF222652C6009AEACD /* SimpleCollectionView.h */,
 				27F36FF0222652C6009AEACD /* SimpleCollectionView.m */,
 				27F36FEA22264198009AEACD /* SimpleCollectionViewCell.h */,
@@ -277,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */,
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
 				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
@@ -284,8 +313,11 @@
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */,
+				046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
+				046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */,
 				27F116BD221FCAD1003D27F6 /* LongPressGestureVC.m in Sources */,
+				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				27F9092A222E390C00B5C22F /* VideoPlayerViewController.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,

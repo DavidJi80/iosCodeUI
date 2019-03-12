@@ -21,6 +21,8 @@
 //时间标签
 @property(nonatomic,strong) UILabel * currentTimeLabel;
 @property(nonatomic,strong) UILabel * totalTimeLabel;
+//返回按钮
+@property(nonatomic,strong) UIButton * backBtn;
 //
 @property(nonatomic,strong) UISlider * slider;
 @end
@@ -30,15 +32,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initNavigationItem];
-    
+    [self initNavigation];
     [self initAVPlay];
     [self initView];
 }
 
--(void)initNavigationItem{
+-(void)initNavigation{
     
-    self.navigationController.navigationBarHidden=YES;
     
 }
 
@@ -55,6 +55,12 @@
     _totalTimeLabel.textColor=[UIColor whiteColor];
     _totalTimeLabel.font=[UIFont systemFontOfSize:(15)];
     
+    _backBtn=[[UIButton alloc]init];
+    _backBtn.frame=CGRectMake(10, 30, 60, 25);
+    [_backBtn setTitle:@"< 返回" forState:UIControlStateNormal];
+    [_backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     _slider=[UISlider new];
     _slider.frame=CGRectMake(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 20);
     _slider.maximumValue=100.0;
@@ -67,6 +73,7 @@
     
     [self.view addSubview:self.currentTimeLabel];
     [self.view addSubview:self.totalTimeLabel];
+    [self.view addSubview:self.backBtn];
     // 添加进度条
     [self.view addSubview:self.lineProcessView];
     [self.view addSubview:self.loadProcessView];
@@ -81,7 +88,12 @@
      */
     
     // AVPlayerItem 创建播放元素
-    NSURL *url = [NSURL URLWithString:@"http://v.daqiu360.com/8253a0517d9a4be6b7c1b99f5bd3a103/87f5ccaaf62a434eb1c232d345fa7029-4eb1a625b6df899b5699af1d17ef27c2-ld.mp4"];
+    NSURL *url = nil;
+    if (_mediaUrl!=nil){
+        url=_mediaUrl;
+    }else{
+        url=[NSURL URLWithString:@"http://v.daqiu360.com/8253a0517d9a4be6b7c1b99f5bd3a103/87f5ccaaf62a434eb1c232d345fa7029-4eb1a625b6df899b5699af1d17ef27c2-ld.mp4"];
+    }
     self.playerItem = [[AVPlayerItem alloc] initWithURL:url];
     // AVPlayer 创建播放器
     self.player = [[AVPlayer alloc] initWithPlayerItem:self.playerItem];
@@ -215,8 +227,23 @@
     }
 }
 
+/**
+ 重载viewWillAppear方法，隐藏TabBar
+ */
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = YES;
+    self.navigationController.navigationBarHidden=YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.navigationBarHidden=NO;
+    
+}
+
+-(void)back:(UIButton*)sender{
+    [self.player pause];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

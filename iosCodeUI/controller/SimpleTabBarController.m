@@ -9,7 +9,7 @@
 #import "SimpleTabBarController.h"
 #import "ViewController.h"
 #import "MyHomeViewController.h"
-#import "VideoViewController.h"
+#import "MediaHomeViewController.h"
 
 @interface SimpleTabBarController ()
 
@@ -53,13 +53,13 @@
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:homeController];
     [self addChildViewController:nav];
     
-    VideoViewController * videoVC=[VideoViewController new];
-    videoVC.title=@"视频";
-    videoVC.tabBarItem.image = [UIImage imageNamed:@"Home"];
-    videoVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Home"];
+    MediaHomeViewController * mhVC=[MediaHomeViewController new];
+    mhVC.title=@"Media";
+    mhVC.tabBarItem.image = [UIImage imageNamed:@"Home"];
+    mhVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Home"];
 
-    UINavigationController * videoNav=[[UINavigationController alloc]initWithRootViewController:videoVC];
-    [self addChildViewController:videoNav];
+    UINavigationController * mhNav=[[UINavigationController alloc]initWithRootViewController:mhVC];
+    [self addChildViewController:mhNav];
     
     MyHomeViewController * myHomeVC=[MyHomeViewController new];
     myHomeVC.title=@"我的";
