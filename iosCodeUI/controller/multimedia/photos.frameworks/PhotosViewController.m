@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "CollectionTableViewCell.h"
 #import "AssetCollection.h"
+#import "PhotosAssetViewController.h"
 
 @interface PhotosViewController ()
 
@@ -24,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type=PHAssetCollectionTypeAlbum;
+    _type=PHAssetCollectionTypeSmartAlbum;
     _subType=PHAssetCollectionSubtypeAlbumRegular;
     [self initNavigation];
     [self getAssetCollection];
@@ -122,7 +123,7 @@
     [collectionResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AssetCollection * ac=[AssetCollection new];
         ac.title=obj.localizedTitle;
-        ac.collectionDescription=@"";
+        ac.localIdentifier=obj.localIdentifier;
         
         /**
          从指定的资源集合中检索资源
@@ -149,9 +150,7 @@
         
         ac.collectionDescription=[NSString stringWithFormat:@"文件数量：%ld（图片：%ld，视频：%ld，音频：%ld）", assetResult.count ,[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeImage] ,[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo],[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeAudio]];
         
-        
         [dataArray addObject:ac];
-        
     }];
     _dataSource=dataArray.copy;
 }
@@ -188,6 +187,16 @@
  */
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AssetCollection * ac=_dataSource[indexPath.row];
+    //UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"MSG" message:ac.localIdentifier preferredStyle:UIAlertControllerStyleAlert];
+    //[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    //[self presentViewController:alert animated:true completion:nil];
+    PhotosAssetViewController * vc=[[PhotosAssetViewController alloc]init];
+    vc.localIdentifier=ac.localIdentifier;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

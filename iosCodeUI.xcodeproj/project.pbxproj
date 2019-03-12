@@ -14,6 +14,7 @@
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
 		046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB42237439B00FF7D44 /* AssetCollection.m */; };
 		046D0DB82237560F00FF7D44 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB72237560F00FF7D44 /* AlertViewController.m */; };
+		046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -50,6 +51,8 @@
 		046D0DB42237439B00FF7D44 /* AssetCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCollection.m; sourceTree = "<group>"; };
 		046D0DB62237560F00FF7D44 /* AlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
 		046D0DB72237560F00FF7D44 /* AlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		046D0DBA2237854900FF7D44 /* PhotosAssetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosAssetViewController.h; sourceTree = "<group>"; };
+		046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosAssetViewController.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -114,14 +117,13 @@
 		04217D762234C3F0006202A4 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DB92237841D00FF7D44 /* photos.frameworks */,
 				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
 				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 				04217D772234C50F006202A4 /* VideoViewController.h */,
 				04217D782234C50F006202A4 /* VideoViewController.m */,
 				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
 				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
-				046D0DAC2236452200FF7D44 /* PhotosViewController.h */,
-				046D0DAD2236452200FF7D44 /* PhotosViewController.m */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -157,6 +159,17 @@
 				046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */,
 			);
 			path = multimedia;
+			sourceTree = "<group>";
+		};
+		046D0DB92237841D00FF7D44 /* photos.frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DAC2236452200FF7D44 /* PhotosViewController.h */,
+				046D0DAD2236452200FF7D44 /* PhotosViewController.m */,
+				046D0DBA2237854900FF7D44 /* PhotosAssetViewController.h */,
+				046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */,
+			);
+			path = photos.frameworks;
 			sourceTree = "<group>";
 		};
 		27D0BD2F2216B99A00C7AD30 = {
@@ -310,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */,
 				046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */,
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
