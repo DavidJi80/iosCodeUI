@@ -28,7 +28,6 @@
     _imageView.frame=CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_WIDTH);
     [self.view addSubview:self.imageView];
     
-    //[self getImages];
 }
 
 -(void)initMedia{
@@ -41,7 +40,6 @@
     //self.type==5 ? PHAssetMediaTypeImage:PHAssetMediaTypeVideo;
     
     PHFetchResult *result = [PHAsset fetchAssetsWithMediaType:type options:option];
-    __weak typeof(self) weakSelf= self;
     //__strong typeof(weakSelf) strongSelf=weakSelf;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -60,9 +58,6 @@
             //complate(assets);
         });
     });
-    
-    
-   
 }
 
 -(void)getVideo{
@@ -81,7 +76,6 @@
 }
 
 -(void)getImages{
-    
     // 先试试用图片的identifier
     NSMutableArray * assetIdentifierArr = [NSMutableArray array];
     NSMutableArray * identifierArr = [NSMutableArray array];
@@ -115,8 +109,7 @@
 /**
  初始化UIImagePickerController
  */
-- (UIImagePickerController *)picker
-{
+- (UIImagePickerController *)picker{
     if (!_picker) {
         _picker = [[UIImagePickerController alloc]init];
     }
@@ -166,7 +159,7 @@
         //self.picker.showsCameraControls=YES;
         self.picker.delegate = self;
         [self presentViewController:self.picker animated:YES completion:nil];
-    }else {
+    } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错误" message:@"相机不可用" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:action];

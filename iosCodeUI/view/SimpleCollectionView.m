@@ -68,6 +68,8 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
     return cell;
 }
 
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     if (scrollView.tracking){

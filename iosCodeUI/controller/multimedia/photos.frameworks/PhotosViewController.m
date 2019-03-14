@@ -150,7 +150,7 @@
         
         ac.collectionDescription=[NSString stringWithFormat:@"文件数量：%ld（图片：%ld，视频：%ld，音频：%ld）", assetResult.count ,[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeImage] ,[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeVideo],[assetResult countOfAssetsWithMediaType:PHAssetMediaTypeAudio]];
         
-        [dataArray addObject:ac];
+        if (assetResult.count>0)[dataArray addObject:ac];
     }];
     _dataSource=dataArray.copy;
 }

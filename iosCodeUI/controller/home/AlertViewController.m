@@ -198,7 +198,6 @@
 
 
 -(void)openCountDown:(UIButton*)sender{
-    __weak __typeof__ (self)weakSelf = self;
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"%@向您发起连麦请求", @"username"] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"拒绝" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {

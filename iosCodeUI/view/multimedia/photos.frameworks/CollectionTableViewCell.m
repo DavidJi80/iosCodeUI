@@ -8,6 +8,7 @@
 
 #import "CollectionTableViewCell.h"
 
+
 @implementation CollectionTableViewCell
 
 - (void)awakeFromNib {

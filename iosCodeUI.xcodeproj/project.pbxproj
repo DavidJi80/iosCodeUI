@@ -15,6 +15,10 @@
 		046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB42237439B00FF7D44 /* AssetCollection.m */; };
 		046D0DB82237560F00FF7D44 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB72237560F00FF7D44 /* AlertViewController.m */; };
 		046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */; };
+		046D0DBF2237BE2A00FF7D44 /* AssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DBE2237BE2A00FF7D44 /* AssetCollectionViewCell.m */; };
+		046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DC12237BFAC00FF7D44 /* AssetCollectionView.m */; };
+		046D0DC822389F6D00FF7D44 /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DC722389F6D00FF7D44 /* Asset.m */; };
+		046D0DCC22390E5500FF7D44 /* PhotosFrameworksUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -53,6 +57,14 @@
 		046D0DB72237560F00FF7D44 /* AlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		046D0DBA2237854900FF7D44 /* PhotosAssetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosAssetViewController.h; sourceTree = "<group>"; };
 		046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosAssetViewController.m; sourceTree = "<group>"; };
+		046D0DBD2237BE2A00FF7D44 /* AssetCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCollectionViewCell.h; sourceTree = "<group>"; };
+		046D0DBE2237BE2A00FF7D44 /* AssetCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCollectionViewCell.m; sourceTree = "<group>"; };
+		046D0DC02237BFAC00FF7D44 /* AssetCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCollectionView.h; sourceTree = "<group>"; };
+		046D0DC12237BFAC00FF7D44 /* AssetCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCollectionView.m; sourceTree = "<group>"; };
+		046D0DC622389F6D00FF7D44 /* Asset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
+		046D0DC722389F6D00FF7D44 /* Asset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
+		046D0DCA22390E5500FF7D44 /* PhotosFrameworksUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosFrameworksUtility.h; sourceTree = "<group>"; };
+		046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosFrameworksUtility.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -155,8 +167,7 @@
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
-				046D0DB0223670C600FF7D44 /* CollectionTableViewCell.h */,
-				046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */,
+				046D0DC32237BFC500FF7D44 /* photos.frameworks */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -170,6 +181,47 @@
 				046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */,
 			);
 			path = photos.frameworks;
+			sourceTree = "<group>";
+		};
+		046D0DC32237BFC500FF7D44 /* photos.frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DC02237BFAC00FF7D44 /* AssetCollectionView.h */,
+				046D0DC12237BFAC00FF7D44 /* AssetCollectionView.m */,
+				046D0DBD2237BE2A00FF7D44 /* AssetCollectionViewCell.h */,
+				046D0DBE2237BE2A00FF7D44 /* AssetCollectionViewCell.m */,
+				046D0DB0223670C600FF7D44 /* CollectionTableViewCell.h */,
+				046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */,
+			);
+			path = photos.frameworks;
+			sourceTree = "<group>";
+		};
+		046D0DC422389EFF00FF7D44 /* multimedia */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DC522389F1D00FF7D44 /* potos.frameworks */,
+			);
+			path = multimedia;
+			sourceTree = "<group>";
+		};
+		046D0DC522389F1D00FF7D44 /* potos.frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DB32237439B00FF7D44 /* AssetCollection.h */,
+				046D0DB42237439B00FF7D44 /* AssetCollection.m */,
+				046D0DC622389F6D00FF7D44 /* Asset.h */,
+				046D0DC722389F6D00FF7D44 /* Asset.m */,
+			);
+			path = potos.frameworks;
+			sourceTree = "<group>";
+		};
+		046D0DC922390E0400FF7D44 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DCA22390E5500FF7D44 /* PhotosFrameworksUtility.h */,
+				046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */,
+			);
+			path = utility;
 			sourceTree = "<group>";
 		};
 		27D0BD2F2216B99A00C7AD30 = {
@@ -191,6 +243,7 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DC922390E0400FF7D44 /* utility */,
 				27EDB1DF221BDB89008F5C94 /* view */,
 				27EDB1DE221BDB7E008F5C94 /* controller */,
 				27EDB1DD221BDB59008F5C94 /* modal */,
@@ -209,10 +262,9 @@
 		27EDB1DD221BDB59008F5C94 /* modal */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DC422389EFF00FF7D44 /* multimedia */,
 				27D0BD54221A573000C7AD30 /* Person.h */,
 				27D0BD55221A573000C7AD30 /* Person.m */,
-				046D0DB32237439B00FF7D44 /* AssetCollection.h */,
-				046D0DB42237439B00FF7D44 /* AssetCollection.m */,
 			);
 			path = modal;
 			sourceTree = "<group>";
@@ -324,6 +376,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */,
+				046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */,
+				046D0DBF2237BE2A00FF7D44 /* AssetCollectionViewCell.m in Sources */,
 				046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */,
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
@@ -343,9 +397,11 @@
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
+				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,
 				27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */,
 				04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
+				046D0DCC22390E5500FF7D44 /* PhotosFrameworksUtility.m in Sources */,
 				27F6190822252F340026BE03 /* SimpleTabBarController.m in Sources */,
 				046D0DB82237560F00FF7D44 /* AlertViewController.m in Sources */,
 			);
