@@ -98,8 +98,8 @@
 		27F36FF0222652C6009AEACD /* SimpleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleCollectionView.m; sourceTree = "<group>"; };
 		27F6190622252F340026BE03 /* SimpleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTabBarController.h; sourceTree = "<group>"; };
 		27F6190722252F340026BE03 /* SimpleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTabBarController.m; sourceTree = "<group>"; };
-		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
-		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
+		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/image.picker/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
+		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/image.picker/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
 		27FE7B90222F630D002069FB /* ProcessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
 		27FE7B91222F630D002069FB /* ProcessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
 		27FE7B93222F698D002069FB /* LineProcessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineProcessView.h; sourceTree = "<group>"; };
@@ -129,13 +129,8 @@
 		04217D762234C3F0006202A4 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DCD223A600F00FF7D44 /* image.picker */,
 				046D0DB92237841D00FF7D44 /* photos.frameworks */,
-				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
-				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
-				04217D772234C50F006202A4 /* VideoViewController.h */,
-				04217D782234C50F006202A4 /* VideoViewController.m */,
-				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
-				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -222,6 +217,19 @@
 				046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */,
 			);
 			path = utility;
+			sourceTree = "<group>";
+		};
+		046D0DCD223A600F00FF7D44 /* image.picker */ = {
+			isa = PBXGroup;
+			children = (
+				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
+				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
+				04217D772234C50F006202A4 /* VideoViewController.h */,
+				04217D782234C50F006202A4 /* VideoViewController.m */,
+				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
+				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
+			);
+			path = image.picker;
 			sourceTree = "<group>";
 		};
 		27D0BD2F2216B99A00C7AD30 = {
