@@ -19,6 +19,8 @@
 		046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DC12237BFAC00FF7D44 /* AssetCollectionView.m */; };
 		046D0DC822389F6D00FF7D44 /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DC722389F6D00FF7D44 /* Asset.m */; };
 		046D0DCC22390E5500FF7D44 /* PhotosFrameworksUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */; };
+		046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */; };
+		046D0DD3223B39C100FF7D44 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD2223B39C100FF7D44 /* Utility.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -65,6 +67,10 @@
 		046D0DC722389F6D00FF7D44 /* Asset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
 		046D0DCA22390E5500FF7D44 /* PhotosFrameworksUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosFrameworksUtility.h; sourceTree = "<group>"; };
 		046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosFrameworksUtility.m; sourceTree = "<group>"; };
+		046D0DCE223A626F00FF7D44 /* LivePhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivePhotoViewController.h; sourceTree = "<group>"; };
+		046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePhotoViewController.m; sourceTree = "<group>"; };
+		046D0DD1223B39C100FF7D44 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		046D0DD2223B39C100FF7D44 /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -98,8 +104,8 @@
 		27F36FF0222652C6009AEACD /* SimpleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleCollectionView.m; sourceTree = "<group>"; };
 		27F6190622252F340026BE03 /* SimpleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTabBarController.h; sourceTree = "<group>"; };
 		27F6190722252F340026BE03 /* SimpleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTabBarController.m; sourceTree = "<group>"; };
-		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/image.picker/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
-		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/image.picker/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
+		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
+		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
 		27FE7B90222F630D002069FB /* ProcessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
 		27FE7B91222F630D002069FB /* ProcessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
 		27FE7B93222F698D002069FB /* LineProcessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineProcessView.h; sourceTree = "<group>"; };
@@ -131,6 +137,10 @@
 			children = (
 				046D0DCD223A600F00FF7D44 /* image.picker */,
 				046D0DB92237841D00FF7D44 /* photos.frameworks */,
+				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
+				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
+				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
+				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -174,6 +184,8 @@
 				046D0DAD2236452200FF7D44 /* PhotosViewController.m */,
 				046D0DBA2237854900FF7D44 /* PhotosAssetViewController.h */,
 				046D0DBB2237854900FF7D44 /* PhotosAssetViewController.m */,
+				046D0DCE223A626F00FF7D44 /* LivePhotoViewController.h */,
+				046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */,
 			);
 			path = photos.frameworks;
 			sourceTree = "<group>";
@@ -215,6 +227,8 @@
 			children = (
 				046D0DCA22390E5500FF7D44 /* PhotosFrameworksUtility.h */,
 				046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */,
+				046D0DD1223B39C100FF7D44 /* Utility.h */,
+				046D0DD2223B39C100FF7D44 /* Utility.m */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -222,12 +236,8 @@
 		046D0DCD223A600F00FF7D44 /* image.picker */ = {
 			isa = PBXGroup;
 			children = (
-				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
-				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 				04217D772234C50F006202A4 /* VideoViewController.h */,
 				04217D782234C50F006202A4 /* VideoViewController.m */,
-				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
-				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
 			);
 			path = image.picker;
 			sourceTree = "<group>";
@@ -394,6 +404,8 @@
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */,
+				046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */,
+				046D0DD3223B39C100FF7D44 /* Utility.m in Sources */,
 				046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */,

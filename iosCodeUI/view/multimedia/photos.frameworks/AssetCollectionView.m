@@ -10,6 +10,8 @@
 #import "AssetCollectionViewCell.h"
 #import "Asset.h"
 #import "PhotosFrameworksUtility.h"
+#import "LivePhotoViewController.h"
+#import "Utility.h"
 
 static NSString *CellIdentiifer = @"CellIdentiifer";
 
@@ -110,10 +112,23 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             info NSDictionary - 关于请求状态的信息。查看Image Result Info Keys获取可能出现的键合值。
          */
         [[PHCachingImageManager defaultManager] requestLivePhotoForAsset:phAsset targetSize:CGSizeMake(100, 100) contentMode:PHImageContentModeDefault options:nil resultHandler:^(PHLivePhoto * _Nullable livePhoto, NSDictionary * _Nullable info) {
+            UIViewController * superVc=[Utility getViewControllerByView:self];
             
+            //在本页播放
+//            PHLivePhotoView *photoView = [[PHLivePhotoView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT)];
+//            photoView.livePhoto = livePhoto;
+//            photoView.contentMode = UIViewContentModeScaleAspectFill;
+//            [photoView startPlaybackWithStyle:PHLivePhotoViewPlaybackStyleHint];
+//            [superVc.view addSubview:photoView];
+            
+            //在新的ViewController中播放
+            LivePhotoViewController * vc=[[LivePhotoViewController alloc]init];
+            vc.livePhoto=livePhoto;
+            [superVc.navigationController pushViewController:vc animated:YES];
         }];
     }
 }
+
 
 @end
 
