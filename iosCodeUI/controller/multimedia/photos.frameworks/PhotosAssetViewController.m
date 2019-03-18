@@ -169,7 +169,7 @@
                 videoAsset.duration=[asset duration];
                 NSString* sandboxExtensionTokenKey = info[@"PHImageFileSandboxExtensionTokenKey"];
                 NSArray* arr = [sandboxExtensionTokenKey componentsSeparatedByString:@";"];
-                NSString* filePath = [arr.lastObject substringFromIndex:9];
+                NSString* filePath = [NSString stringWithFormat:@"file://%@",arr.lastObject];//[arr.lastObject substringFromIndex:9];
                 videoAsset.url=filePath;
             }];
             

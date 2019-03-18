@@ -21,6 +21,7 @@
 		046D0DCC22390E5500FF7D44 /* PhotosFrameworksUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCB22390E5500FF7D44 /* PhotosFrameworksUtility.m */; };
 		046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */; };
 		046D0DD3223B39C100FF7D44 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD2223B39C100FF7D44 /* Utility.m */; };
+		046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -71,6 +72,8 @@
 		046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePhotoViewController.m; sourceTree = "<group>"; };
 		046D0DD1223B39C100FF7D44 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		046D0DD2223B39C100FF7D44 /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		046D0DD8223B88B000FF7D44 /* AVPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
+		046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -104,8 +107,8 @@
 		27F36FF0222652C6009AEACD /* SimpleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleCollectionView.m; sourceTree = "<group>"; };
 		27F6190622252F340026BE03 /* SimpleTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleTabBarController.h; sourceTree = "<group>"; };
 		27F6190722252F340026BE03 /* SimpleTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTabBarController.m; sourceTree = "<group>"; };
-		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
-		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
+		27F90928222E390C00B5C22F /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerViewController.h; path = iosCodeUI/controller/multimedia/av.foundation/VideoPlayerViewController.h; sourceTree = SOURCE_ROOT; };
+		27F90929222E390C00B5C22F /* VideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerViewController.m; path = iosCodeUI/controller/multimedia/av.foundation/VideoPlayerViewController.m; sourceTree = SOURCE_ROOT; };
 		27FE7B90222F630D002069FB /* ProcessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProcessViewController.h; sourceTree = "<group>"; };
 		27FE7B91222F630D002069FB /* ProcessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProcessViewController.m; sourceTree = "<group>"; };
 		27FE7B93222F698D002069FB /* LineProcessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineProcessView.h; sourceTree = "<group>"; };
@@ -135,12 +138,11 @@
 		04217D762234C3F0006202A4 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				046D0DD4223B6EF400FF7D44 /* av.foundation */,
 				046D0DCD223A600F00FF7D44 /* image.picker */,
 				046D0DB92237841D00FF7D44 /* photos.frameworks */,
 				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
 				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
-				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
-				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
 			);
 			path = multimedia;
 			sourceTree = "<group>";
@@ -240,6 +242,17 @@
 				04217D782234C50F006202A4 /* VideoViewController.m */,
 			);
 			path = image.picker;
+			sourceTree = "<group>";
+		};
+		046D0DD4223B6EF400FF7D44 /* av.foundation */ = {
+			isa = PBXGroup;
+			children = (
+				27F90928222E390C00B5C22F /* VideoPlayerViewController.h */,
+				27F90929222E390C00B5C22F /* VideoPlayerViewController.m */,
+				046D0DD8223B88B000FF7D44 /* AVPlayerViewController.h */,
+				046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */,
+			);
+			path = av.foundation;
 			sourceTree = "<group>";
 		};
 		27D0BD2F2216B99A00C7AD30 = {
@@ -415,6 +428,7 @@
 				27F9092A222E390C00B5C22F /* VideoPlayerViewController.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
+				046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,
@@ -559,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9T858GDHRR;
+				DEVELOPMENT_TEAM = Y5JAPXR9CH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iosCodeUI/PrefixHeader.pch;
 				INFOPLIST_FILE = iosCodeUI/Info.plist;
@@ -579,7 +593,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9T858GDHRR;
+				DEVELOPMENT_TEAM = Y5JAPXR9CH;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iosCodeUI/PrefixHeader.pch;
 				INFOPLIST_FILE = iosCodeUI/Info.plist;

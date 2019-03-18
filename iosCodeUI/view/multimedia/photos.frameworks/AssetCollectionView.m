@@ -12,6 +12,7 @@
 #import "PhotosFrameworksUtility.h"
 #import "LivePhotoViewController.h"
 #import "Utility.h"
+#import "AVPlayerViewController.h"
 
 static NSString *CellIdentiifer = @"CellIdentiifer";
 
@@ -74,11 +75,7 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
  UICollectionView被选中时调用的方法
  */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld",(long)indexPath.row);
     Asset * asset=self.assetDataSource[indexPath.row];
-    NSString * localIdentifier=asset.localIdentifier;
-    PHFetchResult<PHAsset *> * assetResult=[PHAsset fetchAssetsWithLocalIdentifiers:@[localIdentifier] options:nil];
-    PHAsset * phAsset=[assetResult firstObject];
     if (asset.type==1){
         /**
          asset PHAsset - 要播放的视频资源。
@@ -87,8 +84,16 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             playerItem AVPlayerItem - 获取到的视频数据。
             info NSDictionary - 关于请求状态的信息。查看Image Result Info Keys获取可能出现的键合值。
          */
+        /**
         [[PHCachingImageManager defaultManager] requestPlayerItemForVideo:phAsset options:nil resultHandler:^(AVPlayerItem * _Nullable playerItem, NSDictionary * _Nullable info) {
+            UIViewController * superVc=[Utility getViewControllerByView:self];
         }];
+         */
+        UIViewController * superVc=[Utility getViewControllerByView:self];
+        AVPlayerViewController *vc=[AVPlayerViewController new];
+        vc.fileUrl=asset.url;
+        [superVc.navigationController pushViewController:vc animated:NO];
+        
         
         /**
          asset PHAsset - 将要被创建导出会话的视频资源。
@@ -98,10 +103,15 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             exportSession AVAssetExportSession - 使用这个将视频资源数据写入文件
             info NSDictionary - 关于请求状态的信息。查看Image Result Info Keys获取可能出现的键合值。
          */
+        /**
         [[PHCachingImageManager defaultManager] requestExportSessionForVideo:phAsset options:nil exportPreset:@"xxx.mov" resultHandler:^(AVAssetExportSession * _Nullable exportSession, NSDictionary * _Nullable info) {
             
         }];
+         */
     }else if(asset.type==0){
+        NSString * localIdentifier=asset.localIdentifier;
+        PHFetchResult<PHAsset *> * assetResult=[PHAsset fetchAssetsWithLocalIdentifiers:@[localIdentifier] options:nil];
+        PHAsset * phAsset=[assetResult firstObject];
         /**
          asset PHAsset - 需要获取的PHAsset
          targetSize CGSize - 想要获取的图片的大小。
@@ -115,11 +125,13 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             UIViewController * superVc=[Utility getViewControllerByView:self];
             
             //在本页播放
-//            PHLivePhotoView *photoView = [[PHLivePhotoView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT)];
-//            photoView.livePhoto = livePhoto;
-//            photoView.contentMode = UIViewContentModeScaleAspectFill;
-//            [photoView startPlaybackWithStyle:PHLivePhotoViewPlaybackStyleHint];
-//            [superVc.view addSubview:photoView];
+            /**
+            PHLivePhotoView *photoView = [[PHLivePhotoView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT)];
+            photoView.livePhoto = livePhoto;
+            photoView.contentMode = UIViewContentModeScaleAspectFill;
+            [photoView startPlaybackWithStyle:PHLivePhotoViewPlaybackStyleHint];
+            [superVc.view addSubview:photoView];
+             */
             
             //在新的ViewController中播放
             LivePhotoViewController * vc=[[LivePhotoViewController alloc]init];

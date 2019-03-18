@@ -7,7 +7,6 @@
 //
 
 #import "VideoPlayerViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "LineProcessview.h"
 
 @interface VideoPlayerViewController ()
@@ -87,21 +86,26 @@
      Allow Arbitrary Loads  = YES
      */
     
-    // AVPlayerItem 创建播放元素
-    NSURL *url = nil;
-    if (_mediaUrl!=nil){
-        url=_mediaUrl;
+    // 1. AVPlayerItem 创建播放元素
+    if (_videoPlayerItem==nil){
+        NSURL *url = nil;
+        if (_mediaUrl!=nil){
+            url=_mediaUrl;
+        }else{
+            url=[NSURL URLWithString:@"http://v.daqiu360.com/8253a0517d9a4be6b7c1b99f5bd3a103/87f5ccaaf62a434eb1c232d345fa7029-4eb1a625b6df899b5699af1d17ef27c2-ld.mp4"];
+        }
+        self.playerItem = [[AVPlayerItem alloc] initWithURL:url];
     }else{
-        url=[NSURL URLWithString:@"http://v.daqiu360.com/8253a0517d9a4be6b7c1b99f5bd3a103/87f5ccaaf62a434eb1c232d345fa7029-4eb1a625b6df899b5699af1d17ef27c2-ld.mp4"];
+        self.playerItem =_videoPlayerItem;
     }
-    self.playerItem = [[AVPlayerItem alloc] initWithURL:url];
-    // AVPlayer 创建播放器
+    
+    // 2. AVPlayer 创建播放器
     self.player = [[AVPlayer alloc] initWithPlayerItem:self.playerItem];
-    // 创建视频显示图层
+    // 3. 创建视频显示图层
     AVPlayerLayer *avLayer=[AVPlayerLayer playerLayerWithPlayer:self.player];
     avLayer.videoGravity=AVLayerVideoGravityResizeAspect;
     avLayer.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    // 把视频显示图层添加到self.view上面
+    // 4. 把视频显示图层添加到self.view上面
     [self.view.layer addSublayer:avLayer];
     
     // 注册观察者，监听播放器属性
@@ -179,14 +183,12 @@
                 [self.player play];
                 break;
             }
-            case AVPlayerStatusFailed:{
+            case AVPlayerStatusFailed:
                 NSLog(@"don't konow ");
                 break;
-            }
-            case AVPlayerStatusUnknown:{
+            case AVPlayerStatusUnknown:
                 NSLog(@"error");
                 break;
-            }
             default:
                 break;
         }

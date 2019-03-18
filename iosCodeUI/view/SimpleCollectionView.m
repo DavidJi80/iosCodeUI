@@ -79,4 +79,22 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
     }
 }
 
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"点击cell %@",indexPath);
+    SimpleCollectionViewCell * cell = (SimpleCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.titleLabel.textColor =[UIColor whiteColor];
+    cell.backgroundColor=[UIColor greenColor];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"取消cell %@",indexPath);
+    SimpleCollectionViewCell * cell = (SimpleCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.titleLabel.textColor =[UIColor redColor];
+    cell.backgroundColor=[UIColor grayColor];
+}
+
 @end

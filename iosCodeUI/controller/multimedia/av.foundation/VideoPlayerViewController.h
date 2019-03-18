@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VideoPlayerViewController : UIViewController
 
 @property(strong,nonatomic) NSURL * mediaUrl;
+@property(strong,nonatomic) AVPlayerItem * videoPlayerItem;
 
 @end
 

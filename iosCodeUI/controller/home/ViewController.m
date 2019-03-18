@@ -122,8 +122,8 @@
     // 添加按钮
     _collectionBtn=[UIButton new];
     _collectionBtn.backgroundColor=[UIColor redColor];
-    _collectionBtn.frame=CGRectMake(30, 270, 315, 45);
-    [_collectionBtn setTitle:@"Open Collection View" forState:UIControlStateNormal];
+    _collectionBtn.frame=CGRectMake(30, 270, 145, 45);
+    [_collectionBtn setTitle:@"Collection View" forState:UIControlStateNormal];
     [_collectionBtn.layer setCornerRadius:10.0];
     [_collectionBtn addTarget:self action:@selector(openCollectionView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -225,10 +225,8 @@
  Open Collection View
  */
 -(void)openCollectionView:(UIButton*)sender{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CollectionViewController * vc=[[CollectionViewController alloc]init];
-        [self presentViewController:vc animated:YES completion:nil];
-    });
+    CollectionViewController * vc=[[CollectionViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /**

@@ -19,9 +19,9 @@
     microsecond=(timeInterVal-timeInterVal)*1000;
     NSString * timeString=@"";
     if (hour>0){
-        timeString=[NSString stringWithFormat:@"%d:%d:%02d", hour,minute,secend];
+        timeString=[NSString stringWithFormat:@"%d:%02d:%02d", hour,minute,secend];
     }else{
-        timeString=[NSString stringWithFormat:@"%d:%02d", minute,secend];
+        timeString=[NSString stringWithFormat:@"%02d:%02d", minute,secend];
     }
     return timeString;
 }

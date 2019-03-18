@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.layer.cornerRadius = 10.f;
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor grayColor];
         self.clipsToBounds = YES;
         
         _titleLabel=[[UILabel alloc]init];
