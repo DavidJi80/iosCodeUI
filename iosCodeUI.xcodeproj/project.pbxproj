@@ -255,6 +255,21 @@
 			path = av.foundation;
 			sourceTree = "<group>";
 		};
+		04B8A8FC223F92470004789E /* home */ = {
+			isa = PBXGroup;
+			children = (
+				27F36FEF222652C6009AEACD /* SimpleCollectionView.h */,
+				27F36FF0222652C6009AEACD /* SimpleCollectionView.m */,
+				27F36FEA22264198009AEACD /* SimpleCollectionViewCell.h */,
+				27F36FEB22264198009AEACD /* SimpleCollectionViewCell.m */,
+				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
+				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
+				27FE7B93222F698D002069FB /* LineProcessView.h */,
+				27FE7B94222F698D002069FB /* LineProcessView.m */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
 		27D0BD2F2216B99A00C7AD30 = {
 			isa = PBXGroup;
 			children = (
@@ -315,15 +330,8 @@
 		27EDB1DF221BDB89008F5C94 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				04B8A8FC223F92470004789E /* home */,
 				046D0DAF2236703900FF7D44 /* multimedia */,
-				27F36FEF222652C6009AEACD /* SimpleCollectionView.h */,
-				27F36FF0222652C6009AEACD /* SimpleCollectionView.m */,
-				27F36FEA22264198009AEACD /* SimpleCollectionViewCell.h */,
-				27F36FEB22264198009AEACD /* SimpleCollectionViewCell.m */,
-				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
-				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
-				27FE7B93222F698D002069FB /* LineProcessView.h */,
-				27FE7B94222F698D002069FB /* LineProcessView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
