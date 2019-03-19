@@ -1,8 +1,8 @@
 //
-//  Asset.h
+//  Video.h
 //  iosCodeUI
 //
-//  Created by mac on 2019/3/13.
+//  Created by mac on 2019/3/19.
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
@@ -11,13 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Asset : NSObject
+@interface Video : NSObject
 
-@property (nonatomic,assign) int type;
-@property (nonatomic,copy) NSString * localIdentifier;
-@property (nonatomic,copy) NSString * assetDescription;
-@property (nonatomic,strong) UIImage * image;
 @property (nonatomic,strong) NSString * url;
+@property (nonatomic,strong) UIImage * image;
 @property (nonatomic,assign) CMTime duration;
 
 @end

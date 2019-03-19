@@ -8,6 +8,8 @@
 
 #import "AVPlayerViewController.h"
 #import "PhotosFrameworksUtility.h"
+#import "VideoCollectionView.h"
+
 
 @interface AVPlayerViewController ()
 
@@ -18,9 +20,11 @@
 @property(nonatomic,strong) UISlider * slider;
 @property (nonatomic,strong) UILabel * durationLabel;
 
+@property (nonatomic,strong) VideoCollectionView * videoCollectionView;
+
 //视频播放
-@property (nonatomic, strong) AVPlayer * player;
-@property (nonatomic, strong) AVPlayerItem * playerItem;
+@property (nonatomic, strong) AVQueuePlayer * player;
+@property (nonatomic, strong) NSArray<AVPlayerItem *> * playerItems;
 
 @end
 
@@ -30,21 +34,28 @@
     [super viewDidLoad];
     
     [self initView];
-    [self initAVPlayer];
 }
 
 -(void)initView{
+    [self initPlayerItemsView];
+    [self initPlayControllerView];
+    [self initAVQueuePlayer];
+    
+    [self.view bringSubviewToFront:_backBtn];
+}
+
+-(void)initPlayControllerView{
+    float videoBtnHeight=SCREEN_HEIGHT-88;
+    
     _backBtn=[[UIButton alloc]init];
     _backBtn.frame=CGRectMake(10, 20, 30, 30);
     [_backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     [_backBtn setTitle:@"返回" forState:UIControlStateNormal];
     [_backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
-    float videoBtnHeight=SCREEN_HEIGHT-40;
-    
     _playBtn=[UIButton new];
     _playBtn.frame=CGRectMake(2, videoBtnHeight, 30, 30);
-    _playBtn.enabled=NO;
+    //_playBtn.enabled=NO;
     [_playBtn setImage:[UIImage imageNamed:@"播放"] forState:UIControlStateNormal];
     [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateSelected];
     [_playBtn addTarget:self action:@selector(playVideo:) forControlEvents:UIControlEventTouchUpInside];
@@ -66,18 +77,57 @@
     _durationLabel.text=@"00:00";
     _durationLabel.font=[UIFont systemFontOfSize:(12)];
     
-    
     [self.view addSubview:_backBtn];
     [self.view addSubview:_playBtn];
     [self.view addSubview:_currentTimeLabel];
     [self.view addSubview:_slider];
     [self.view addSubview:_durationLabel];
-    
-    
 }
 
+-(void)initPlayerItemsView{
+    UICollectionViewFlowLayout * flowLayout=[UICollectionViewFlowLayout new];
+    flowLayout.minimumLineSpacing = 1;
+    flowLayout.minimumInteritemSpacing=1;
+    flowLayout.itemSize = CGSizeMake(57, 57);
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    _videoCollectionView = [[VideoCollectionView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-57, SCREEN_WIDTH, 57) collectionViewLayout:flowLayout];
+    _videoCollectionView.videoDataSource=_videos;
+    _videoCollectionView.avPlayerDelegate=self;
+    
+    [self.view addSubview:_videoCollectionView];
+}
+
+-(void)initAVQueuePlayer{
+    NSMutableArray<AVPlayerItem * >* avPlayerItems=@[].mutableCopy;
+    for (Video * video in _videos){
+        NSURL * nsUrl=[NSURL URLWithString:video.url];
+        AVPlayerItem * avPlayerItem=[AVPlayerItem playerItemWithURL:nsUrl];
+        [avPlayerItems addObject:avPlayerItem];
+    }
+    _playerItems=avPlayerItems;
+    _player=[AVQueuePlayer queuePlayerWithItems:_playerItems];
+    //_player.actionAtItemEnd=AVPlayerActionAtItemEndPause;
+    // 插入周期时间观察器
+    __weak __typeof(self) weakSelf=self;
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 24) queue:dispatch_get_main_queue() usingBlock:^(CMTime time){
+        NSTimeInterval currentTime=CMTimeGetSeconds(time);
+        CMTime durationTime=weakSelf.player.currentItem.duration;
+        NSTimeInterval totalTime=CMTimeGetSeconds(durationTime);
+        weakSelf.currentTimeLabel.text=[PhotosFrameworksUtility formatCMTime:time];
+        weakSelf.durationLabel.text=[PhotosFrameworksUtility formatCMTime:durationTime];
+        [weakSelf.slider setValue:(currentTime*100)/totalTime];
+    }];
+    // 3. 创建视频显示图层
+    AVPlayerLayer *avLayer=[AVPlayerLayer playerLayerWithPlayer:_player];
+    avLayer.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-90);
+    avLayer.backgroundColor=[UIColor blackColor].CGColor;
+    // 4. 把视频显示图层添加到self.view上面
+    [self.view.layer addSublayer:avLayer];
+}
+
+/*
 -(void)initAVPlayer{
-    NSURL * url=[NSURL URLWithString:_fileUrl];
+    NSURL * url=[NSURL URLWithString:[_videos objectAtIndex:0].url];
     //1. 创建AVAsset
     AVAsset * asset = [AVAsset assetWithURL:url];
     _durationLabel.text=[PhotosFrameworksUtility formatCMTime:asset.duration];
@@ -111,13 +161,14 @@
     
     [self.view bringSubviewToFront:_backBtn];
 }
+ */
 
 -(void)sliderValueChanged:(UISlider *)slider{
     if(self.player.status == AVPlayerStatusReadyToPlay){
         [self.player pause];
         _playBtn.selected=NO;
         float sliderVal=slider.value;
-        Float64 duration= CMTimeGetSeconds(self.playerItem.duration);
+        Float64 duration= CMTimeGetSeconds(self.player.currentItem.duration);
         Float64 seetTime=((sliderVal/100) * duration);
         CMTime seekCMTime = CMTimeMake(seetTime, 1);
         [self.player seekToTime:seekCMTime completionHandler:^(BOOL finished) {
@@ -186,9 +237,9 @@
     [self.player pause];
     [self.player setRate:0];
     //[self.player.currentItem removeObserver:self forKeyPath:@"loadedTimeRange" context:&CGLayerGetContext];
-    [self.player.currentItem removeObserver:self forKeyPath:@"status" context:&CGLayerGetContext];
+    //[self.player.currentItem removeObserver:self forKeyPath:@"status" context:&CGLayerGetContext];
     [self.player replaceCurrentItemWithPlayerItem:nil];
-    self.playerItem = nil;
+    //self.playerItem = nil;
     self.player = nil;
 }
 
@@ -197,7 +248,20 @@
 }
 
 
-
+- (void) replacePlayerItem:(NSInteger)index{
+    [_player pause];
+    //[self.player advanceToNextItem];
+    //[self.player insertItem:[_playerItems objectAtIndex:0] afterItem:[_playerItems objectAtIndex:1]];
+    //[AVPlayerLooper playerLooperWithPlayer:self.player templateItem:[_playerItems objectAtIndex:0]];
+    [self.player removeAllItems];
+    //[self.player removeItem:[_playerItems objectAtIndex:1]];
+    for (int i=(int)index;i<_playerItems.count;i++){
+        [self.player insertItem:[_playerItems objectAtIndex:i] afterItem:self.player.currentItem];
+    }
+    [_player seekToTime:CMTimeMake(0, 1)];
+    _playBtn.selected=YES;
+    [_player play];
+}
 
 
 @end

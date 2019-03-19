@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 #import <AVFoundation/AVFoundation.h>
+#import "Video.h"
+#import "AVPlayerDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AVPlayerViewController : UIViewController
+@interface AVPlayerViewController : UIViewController<AVPlayerDelegate>
 
-@property (nonatomic,copy) NSString * fileUrl;
+@property (nonatomic,copy) NSMutableArray<Video *> * videos;
 
 @end
 

@@ -89,11 +89,17 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             UIViewController * superVc=[Utility getViewControllerByView:self];
         }];
          */
+        
+        AssetCollectionViewCell * cell = (AssetCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        //cell.durationLabel.textColor =[UIColor blackColor];
+        cell.selectedImg.hidden=NO;
+        
+        /**
         UIViewController * superVc=[Utility getViewControllerByView:self];
         AVPlayerViewController *vc=[AVPlayerViewController new];
         vc.fileUrl=asset.url;
         [superVc.navigationController pushViewController:vc animated:NO];
-        
+        */
         
         /**
          asset PHAsset - 将要被创建导出会话的视频资源。
@@ -139,6 +145,13 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
             [superVc.navigationController pushViewController:vc animated:YES];
         }];
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"取消cell %@",indexPath);
+    AssetCollectionViewCell * cell = (AssetCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    //cell.durationLabel.textColor =[UIColor whiteColor];
+    cell.selectedImg.hidden=YES;
 }
 
 

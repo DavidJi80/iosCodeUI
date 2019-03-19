@@ -25,17 +25,26 @@
         _imageView=[UIImageView new];
         _imageView.frame=CGRectMake(0, 0, SCREEN_WIDTH/4-1, SCREEN_WIDTH/4);
         
+        
         _durationLabel=[UILabel new];
         _durationLabel.frame=CGRectMake(0, SCREEN_WIDTH/4-20, SCREEN_WIDTH/4-5, 20);
         _durationLabel.textAlignment=NSTextAlignmentRight;
         _durationLabel.textColor=[UIColor whiteColor];
         _durationLabel.font=[UIFont systemFontOfSize:(12)];
         
+        _selectedImg=[UIImageView new];
+        _selectedImg.frame=CGRectMake(SCREEN_WIDTH/4-25,2, 20, 20);
+        _selectedImg.image=[UIImage imageNamed:@"选中"];
+        _selectedImg.hidden=YES;
+        
         [self addSubview:_imageView];
         [self addSubview:_descriptionLabel];
         [self addSubview:_durationLabel];
+        [self addSubview:_selectedImg];
     }
     return self;
 }
+
+
 
 @end

@@ -1,8 +1,8 @@
 //
-//  AssetCollectionViewCell.h
+//  VideoCollectionViewCell.h
 //  iosCodeUI
 //
-//  Created by mac on 2019/3/12.
+//  Created by mac on 2019/3/19.
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
@@ -10,12 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AssetCollectionViewCell : UICollectionViewCell
+@interface VideoCollectionViewCell : UICollectionViewCell
 
 @property IBOutlet UIImageView *imageView;
-@property IBOutlet UILabel * descriptionLabel;
 @property IBOutlet UILabel * durationLabel;
-@property IBOutlet UIImageView *selectedImg;
 
 @end
 

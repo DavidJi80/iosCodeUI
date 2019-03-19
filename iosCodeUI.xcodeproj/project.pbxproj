@@ -22,6 +22,9 @@
 		046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */; };
 		046D0DD3223B39C100FF7D44 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD2223B39C100FF7D44 /* Utility.m */; };
 		046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */; };
+		04B8A900224089B20004789E /* VideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A8FF224089B20004789E /* VideoCollectionView.m */; };
+		04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A902224089CC0004789E /* VideoCollectionViewCell.m */; };
+		04B8A90722408F7E0004789E /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A90622408F7E0004789E /* Video.m */; };
 		27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167FF2222780B9000CBD47 /* HomeViewController.m */; };
 		2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723BEE7222933E200CC552B /* GcdDemoViewController.m */; };
 		27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */; };
@@ -74,6 +77,13 @@
 		046D0DD2223B39C100FF7D44 /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		046D0DD8223B88B000FF7D44 /* AVPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
 		046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
+		04B8A8FE224089B20004789E /* VideoCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionView.h; sourceTree = "<group>"; };
+		04B8A8FF224089B20004789E /* VideoCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionView.m; sourceTree = "<group>"; };
+		04B8A901224089CC0004789E /* VideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionViewCell.h; sourceTree = "<group>"; };
+		04B8A902224089CC0004789E /* VideoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionViewCell.m; sourceTree = "<group>"; };
+		04B8A90522408F7E0004789E /* Video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		04B8A90622408F7E0004789E /* Video.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		04B8A9092240C1D50004789E /* AVPlayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerDelegate.h; sourceTree = "<group>"; };
 		27167FF1222780B9000CBD47 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		27167FF2222780B9000CBD47 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		2723BEE6222933E200CC552B /* GcdDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GcdDemoViewController.h; sourceTree = "<group>"; };
@@ -174,6 +184,7 @@
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				04B8A8FD2240892D0004789E /* av.foundation */,
 				046D0DC32237BFC500FF7D44 /* photos.frameworks */,
 			);
 			path = multimedia;
@@ -208,6 +219,7 @@
 		046D0DC422389EFF00FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
+				04B8A90422408F4C0004789E /* av.foundation */,
 				046D0DC522389F1D00FF7D44 /* potos.frameworks */,
 			);
 			path = multimedia;
@@ -270,6 +282,34 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		04B8A8FD2240892D0004789E /* av.foundation */ = {
+			isa = PBXGroup;
+			children = (
+				04B8A8FE224089B20004789E /* VideoCollectionView.h */,
+				04B8A8FF224089B20004789E /* VideoCollectionView.m */,
+				04B8A901224089CC0004789E /* VideoCollectionViewCell.h */,
+				04B8A902224089CC0004789E /* VideoCollectionViewCell.m */,
+			);
+			path = av.foundation;
+			sourceTree = "<group>";
+		};
+		04B8A90422408F4C0004789E /* av.foundation */ = {
+			isa = PBXGroup;
+			children = (
+				04B8A90522408F7E0004789E /* Video.h */,
+				04B8A90622408F7E0004789E /* Video.m */,
+			);
+			path = av.foundation;
+			sourceTree = "<group>";
+		};
+		04B8A9082240C1500004789E /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				04B8A9092240C1D50004789E /* AVPlayerDelegate.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
 		27D0BD2F2216B99A00C7AD30 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +329,7 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				04B8A9082240C1500004789E /* protocol */,
 				046D0DC922390E0400FF7D44 /* utility */,
 				27EDB1DF221BDB89008F5C94 /* view */,
 				27EDB1DE221BDB7E008F5C94 /* controller */,
@@ -426,11 +467,14 @@
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */,
 				046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */,
+				04B8A900224089B20004789E /* VideoCollectionView.m in Sources */,
+				04B8A90722408F7E0004789E /* Video.m in Sources */,
 				046D0DD3223B39C100FF7D44 /* Utility.m in Sources */,
 				046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */,
 				27F116BD221FCAD1003D27F6 /* LongPressGestureVC.m in Sources */,
+				04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */,
 				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				27F9092A222E390C00B5C22F /* VideoPlayerViewController.m in Sources */,
