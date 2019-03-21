@@ -34,24 +34,25 @@
 -(void)initView{
     UICollectionViewFlowLayout * flowLayout=[UICollectionViewFlowLayout new];
     // 定义垂直间隔
-    flowLayout.minimumLineSpacing = 10;
+    flowLayout.minimumLineSpacing = 1;
     // 定义水平间隔
-    flowLayout.minimumInteritemSpacing=10;
+    flowLayout.minimumInteritemSpacing=1;
     // 定义item的大小
     flowLayout.itemSize = CGSizeMake(60, 60);
     // 定义滚动方式
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    // 设置头视图尺寸大小
+    flowLayout.headerReferenceSize = CGSizeMake(50, 50);
+    // 设置尾视图尺寸大小
+    flowLayout.footerReferenceSize = CGSizeMake(50, 50);
     // 定义内边距
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 15, 10, 15);
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 20, 30, 40);
+    //flowLayout.sectionFootersPinToVisibleBounds = YES;
+    //flowLayout.sectionHeadersPinToVisibleBounds = YES;
     
     // 初始化CollectionView
-    CGFloat viewHeight = 80;
-    _collectionView = [[SimpleCollectionView alloc]initWithFrame:CGRectMake(0, 200, SCREEN_WIDTH, viewHeight) collectionViewLayout:flowLayout];
-    _collectionView.pagingEnabled = YES;
-    // 设置分页滑动的width是SCREEN_WIDTH,不符合要求
-    //collectionView.scrollEnabled = NO;
-    // 设置分页行不通，改用手势控制滑动，需要把滑动交互关掉
-    _collectionView.contentSize = CGSizeMake((290+10)*5+15, 0);
+    _collectionView = [[SimpleCollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowLayout];
     _collectionView.decelerationRate=UIScrollViewDecelerationRateFast;
     // 允许多选
     _collectionView.allowsMultipleSelection=YES;

@@ -9,16 +9,19 @@
 #import "SimpleCollectionView.h"
 #import "SimpleCollectionViewCell.h"
 #import "Person.h"
+#import "HeaderCollectionReusableView.h"
 
 #define Count 100
 
-static NSString *CellIdentiifer = @"CellIdentiifer";
+static NSString * CellIdentiifer = @"CellIdentiifer";
+static NSString * headerIdentiifer = @"HeaderIdentiifer";
+static NSString * footerIdentiifer = @"Footerdentiifer";
 
 @interface SimpleCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     
 }
 
-@property (nonatomic,strong) NSArray * personDataSource;
+@property (nonatomic,strong) NSArray<NSArray *> * personDataSource;
 
 @end
 
@@ -28,16 +31,21 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
  重写initWithFrame方法
  */
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    _personDataSource=[Person initPersonDataSource];
     self = [super initWithFrame:frame collectionViewLayout:layout];
+    _personDataSource=[Person initPersonDataSource];
     if (self) {
         self.delegate = self;
         self.dataSource = self;
         self.clipsToBounds = YES;
         self.showsHorizontalScrollIndicator = NO;
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor whiteColor];
         
+        //注册 Cell
         [self registerClass:[SimpleCollectionViewCell class] forCellWithReuseIdentifier:CellIdentiifer];
+        
+        // 注册头部尾部
+        [self registerClass:[HeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentiifer];
+        [self registerClass:[HeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerIdentiifer];
     }
     return self;
 }
@@ -45,27 +53,49 @@ static NSString *CellIdentiifer = @"CellIdentiifer";
 
 
 /**
+ UICollectionViewDataSource
  指定Section的个数
  */
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-/**
- 指定每格Section的Cell的个数
- */
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _personDataSource.count;
 }
 
 /**
+ UICollectionViewDataSource
+ 指定每格Section的Cell的个数
+ */
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _personDataSource[(int)section].count;
+}
+
+/**
+ UICollectionViewDataSource
  配置Cell的显示
  */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SimpleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentiifer forIndexPath:indexPath];
-    Person * person=self.personDataSource[indexPath.row];
-    cell.titleLabel.text=[NSString stringWithFormat:@"%zd",person.age];
+    
+    Person * person=self.personDataSource[indexPath.section][indexPath.row];
+    cell.titleLabel.text=[NSString stringWithFormat:@"%zd--%zd",indexPath.section,person.age];
     return cell;
+}
+
+/**
+ UICollectionViewDataSource
+ 配置补充视图的显示
+ */
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    if (kind == UICollectionElementKindSectionHeader) { // 返回每一组的头部视图
+        HeaderCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentiifer forIndexPath:indexPath];
+        headerView.backgroundColor = [UIColor greenColor];
+        headerView.titleLabel.text=[NSString stringWithFormat:@"Section%ld",indexPath.section];
+        return headerView;
+    } else { // 返回每一组的尾部视图
+        HeaderCollectionReusableView *footerView =  [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerIdentiifer forIndexPath:indexPath];
+        footerView.titleLabel.text=[NSString stringWithFormat:@"Count:%ld",_personDataSource[indexPath.section].count];
+        footerView.backgroundColor = [UIColor purpleColor];
+        return footerView;
+    }
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040940052243932400760381 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040940042243932400760381 /* HeaderCollectionReusableView.m */; };
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
@@ -51,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040940032243932400760381 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		040940042243932400760381 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		04217D702233E9F7006202A4 /* MyHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHomeViewController.h; sourceTree = "<group>"; };
 		04217D712233E9F7006202A4 /* MyHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeViewController.m; sourceTree = "<group>"; };
 		04217D772234C50F006202A4 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				27F36FF0222652C6009AEACD /* SimpleCollectionView.m */,
 				27F36FEA22264198009AEACD /* SimpleCollectionViewCell.h */,
 				27F36FEB22264198009AEACD /* SimpleCollectionViewCell.m */,
+				040940032243932400760381 /* HeaderCollectionReusableView.h */,
+				040940042243932400760381 /* HeaderCollectionReusableView.m */,
 				27EFD350221BCC2100D140AE /* SimpleTableViewCell.h */,
 				27EFD351221BCC2100D140AE /* SimpleTableViewCell.m */,
 				27FE7B93222F698D002069FB /* LineProcessView.h */,
@@ -495,6 +500,7 @@
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */,
 				27F116BD221FCAD1003D27F6 /* LongPressGestureVC.m in Sources */,
+				040940052243932400760381 /* HeaderCollectionReusableView.m in Sources */,
 				04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */,
 				04B8A91522423B910004789E /* Frame.m in Sources */,
 				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,

@@ -11,13 +11,16 @@
 @implementation Person
 
 +(NSArray *)initPersonDataSource{
-    
-    NSMutableArray * dataArray=@[].mutableCopy;
-    for(int i=0;i<100;i++){
-        Person * person=[Person new];
-        person.name=@"jz";
-        person.age=i;
-        [dataArray addObject:person];
+    NSMutableArray<NSArray *> * dataArray=@[].mutableCopy;
+    for(int i=0;i<3;i++){
+        NSMutableArray<Person *> * persons=@[].mutableCopy;
+        for (int j=0;j<(i+1)*10;j++){
+            Person * person=[Person new];
+            person.name=@"jz";
+            person.age=j;
+            [persons addObject:person];
+        }
+        [dataArray addObject:persons];
     }
     return dataArray.copy;
 }
