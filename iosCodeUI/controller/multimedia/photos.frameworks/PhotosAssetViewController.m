@@ -12,6 +12,7 @@
 #import "PhotosFrameworksUtility.h"
 #import "AVPlayerViewController.h"
 #import "Video.h"
+#import "AVEditorViewController.h"
 
 @interface PhotosAssetViewController ()
 
@@ -31,7 +32,9 @@
 
 -(void)initNavigation{
     self.navigationItem.title=@"Collectionable View";
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"播放" style:(UIBarButtonItemStylePlain) target:self action:@selector(playVideo)];
+    UIBarButtonItem * playVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"播放" style:(UIBarButtonItemStylePlain) target:self action:@selector(playVideo)];
+    UIBarButtonItem * editVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"编辑" style:(UIBarButtonItemStylePlain) target:self action:@selector(editVideo)];
+    self.navigationItem.rightBarButtonItems=@[playVideosBBI,editVideosBBI];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
@@ -205,6 +208,34 @@
         [videos addObject:video];
     }
     AVPlayerViewController *vc=[AVPlayerViewController new];
+    vc.videos=videos;
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+-(void)editVideo{
+    NSArray<NSIndexPath *> * selectedItems=_collectionView.indexPathsForSelectedItems;
+    if((selectedItems.count>9)||(selectedItems.count<1)){
+        NSString *title = NSLocalizedString(@"警告", nil);
+        NSString *message = NSLocalizedString(@"请选择1-9个视频!", nil);
+        NSString *okTitle = NSLocalizedString(@"OK", nil);
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:OKAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+    
+    NSMutableArray<Video *> * videos=@[].mutableCopy;
+    for (NSIndexPath *selectedItem in selectedItems) {
+        Asset * asset=[_collectionView.assetDataSource objectAtIndex:selectedItem.item];
+        Video * video=[Video new];
+        video.url=asset.url;
+        video.image=asset.image;
+        video.duration=asset.duration;
+        [videos addObject:video];
+    }
+    AVEditorViewController *vc=[AVEditorViewController new];
     vc.videos=videos;
     [self.navigationController pushViewController:vc animated:NO];
 }

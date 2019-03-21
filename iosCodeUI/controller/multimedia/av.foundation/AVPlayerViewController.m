@@ -9,11 +9,20 @@
 #import "AVPlayerViewController.h"
 #import "PhotosFrameworksUtility.h"
 #import "VideoCollectionView.h"
+#import "LineProcessView.h"
 
 
-@interface AVPlayerViewController ()
+@interface AVPlayerViewController (){
+    
+}
+
+@property(nonatomic,assign) CMTime allTotalTime;
 
 @property(nonatomic,strong) UIButton * backBtn;
+
+@property (nonatomic,strong) UILabel * calCurrentTimeLabel;
+@property (nonatomic,strong) UILabel * allTotalTimeLabel;
+@property(nonatomic,strong) LineProcessView * lineProcessView;
 
 @property (nonatomic,strong) UIButton * playBtn;
 @property (nonatomic,strong) UILabel * currentTimeLabel;
@@ -42,8 +51,13 @@
     [self initAVQueuePlayer];
     
     [self.view bringSubviewToFront:_backBtn];
+    [self.view bringSubviewToFront:_calCurrentTimeLabel];
+    [self.view bringSubviewToFront:_allTotalTimeLabel];
 }
 
+/**
+ 基本界面
+ */
 -(void)initPlayControllerView{
     float videoBtnHeight=SCREEN_HEIGHT-88;
     
@@ -52,6 +66,20 @@
     [_backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
     [_backBtn setTitle:@"返回" forState:UIControlStateNormal];
     [_backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _calCurrentTimeLabel=[UILabel new];
+    _calCurrentTimeLabel.frame=CGRectMake(3, videoBtnHeight-20, 100, 14);
+    _calCurrentTimeLabel.text=@"00:00";
+    _calCurrentTimeLabel.textAlignment=NSTextAlignmentLeft;
+    _calCurrentTimeLabel.textColor=[UIColor whiteColor];
+    _calCurrentTimeLabel.font=[UIFont systemFontOfSize:(14)];
+    
+    _allTotalTimeLabel=[UILabel new];
+    _allTotalTimeLabel.frame=CGRectMake(SCREEN_WIDTH-103, videoBtnHeight-20, 100, 14);
+    _allTotalTimeLabel.text=@"00:00";
+    _allTotalTimeLabel.textAlignment=NSTextAlignmentRight;
+    _allTotalTimeLabel.textColor=[UIColor whiteColor];
+    _allTotalTimeLabel.font=[UIFont systemFontOfSize:(14)];
     
     _playBtn=[UIButton new];
     _playBtn.frame=CGRectMake(2, videoBtnHeight, 30, 30);
@@ -78,12 +106,29 @@
     _durationLabel.font=[UIFont systemFontOfSize:(12)];
     
     [self.view addSubview:_backBtn];
+    [self.view addSubview:_calCurrentTimeLabel];
+    [self.view addSubview:_allTotalTimeLabel];
+    [self.view addSubview:self.lineProcessView];
     [self.view addSubview:_playBtn];
     [self.view addSubview:_currentTimeLabel];
     [self.view addSubview:_slider];
     [self.view addSubview:_durationLabel];
 }
 
+/**
+ 初始化进度条
+ */
+-(LineProcessView *)lineProcessView{
+    if (!_lineProcessView) {
+        _lineProcessView = [[LineProcessView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 2)];
+        _lineProcessView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, SCREEN_HEIGHT-90);
+    }
+    return _lineProcessView;
+}
+
+/**
+ 播放项目队列
+ */
 -(void)initPlayerItemsView{
     UICollectionViewFlowLayout * flowLayout=[UICollectionViewFlowLayout new];
     flowLayout.minimumLineSpacing = 1;
@@ -97,6 +142,9 @@
     [self.view addSubview:_videoCollectionView];
 }
 
+/**
+ 播放器
+ */
 -(void)initAVQueuePlayer{
     NSMutableArray<AVPlayerItem * >* avPlayerItems=@[].mutableCopy;
     for (Video * video in _videos){
@@ -106,7 +154,6 @@
     }
     _playerItems=avPlayerItems;
     _player=[AVQueuePlayer queuePlayerWithItems:_playerItems];
-    //_player.actionAtItemEnd=AVPlayerActionAtItemEndPause;
     // 插入周期时间观察器
     __weak __typeof(self) weakSelf=self;
     [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 24) queue:dispatch_get_main_queue() usingBlock:^(CMTime time){
@@ -116,13 +163,40 @@
         weakSelf.currentTimeLabel.text=[PhotosFrameworksUtility formatCMTime:time];
         weakSelf.durationLabel.text=[PhotosFrameworksUtility formatCMTime:durationTime];
         [weakSelf.slider setValue:(currentTime*100)/totalTime];
+        //
+        int index=(int)[weakSelf.playerItems indexOfObject:weakSelf.player.currentItem];
+        CMTime calTime=[weakSelf calALLCurrentTime:index];
+        calTime=CMTimeAdd(calTime, time);
+        weakSelf.calCurrentTimeLabel.text=[PhotosFrameworksUtility formatCMTime:calTime];
+        weakSelf.allTotalTimeLabel.text=[PhotosFrameworksUtility formatCMTime:weakSelf.allTotalTime];
+        [weakSelf.lineProcessView setProcessValue:CMTimeGetSeconds(calTime)/CMTimeGetSeconds(weakSelf.allTotalTime)];
     }];
     // 3. 创建视频显示图层
     AVPlayerLayer *avLayer=[AVPlayerLayer playerLayerWithPlayer:_player];
-    avLayer.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-90);
+    avLayer.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-91);
     avLayer.backgroundColor=[UIColor blackColor].CGColor;
     // 4. 把视频显示图层添加到self.view上面
     [self.view.layer addSublayer:avLayer];
+    
+    [self calAllTotalTime];
+}
+
+/**
+ 计算总时长
+ */
+-(void)calAllTotalTime{
+    _allTotalTime=CMTimeMake(0, 1);
+    for(Video * video in _videos){
+        _allTotalTime=CMTimeAdd(_allTotalTime, video.duration);
+    }
+}
+
+-(CMTime)calALLCurrentTime:(int)index{
+    CMTime calTime=CMTimeMake(0, 1);
+    for(int i=0;i<index;i++){
+        calTime=CMTimeAdd(calTime, _videos[i].duration);
+    }
+    return calTime;
 }
 
 /*
@@ -163,6 +237,9 @@
 }
  */
 
+/**
+ 进度条跳转
+ */
 -(void)sliderValueChanged:(UISlider *)slider{
     if(self.player.status == AVPlayerStatusReadyToPlay){
         [self.player pause];
@@ -176,15 +253,6 @@
     }
 }
 
--(void)playVideo:(UIButton*)sender{
-    if ((self.player.status == AVPlayerStatusReadyToPlay)&&(!_playBtn.selected)){
-        _playBtn.selected=YES;
-        [self.player play];
-    }else{
-        _playBtn.selected=NO;
-        [self.player pause];
-    }
-}
 
 
 /**
@@ -223,6 +291,41 @@
 }
 
 /**
+ 代理方法响应CollectionView的点击事件
+ */
+- (void) replacePlayerItem:(NSInteger)index{
+    [_player pause];
+    [self.player removeAllItems];
+    for (int i=(int)index;i<_playerItems.count;i++){
+        [self.player insertItem:[_playerItems objectAtIndex:i] afterItem:self.player.currentItem];
+    }
+    [_player seekToTime:CMTimeMake(0, 1)];
+    _playBtn.selected=YES;
+    [_player play];
+}
+
+/**
+ 返回按钮事件
+ */
+-(void)back:(UIButton*)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+/**
+ 播放按钮事件
+ */
+-(void)playVideo:(UIButton*)sender{
+    if ((self.player.status == AVPlayerStatusReadyToPlay)&&(!_playBtn.selected)){
+        _playBtn.selected=YES;
+        [self.player play];
+    }else{
+        _playBtn.selected=NO;
+        [self.player pause];
+    }
+}
+
+
+/**
  重载viewWillAppear方法，隐藏TabBar
  */
 -(void)viewWillAppear:(BOOL)animated{
@@ -242,26 +345,5 @@
     //self.playerItem = nil;
     self.player = nil;
 }
-
--(void)back:(UIButton*)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (void) replacePlayerItem:(NSInteger)index{
-    [_player pause];
-    //[self.player advanceToNextItem];
-    //[self.player insertItem:[_playerItems objectAtIndex:0] afterItem:[_playerItems objectAtIndex:1]];
-    //[AVPlayerLooper playerLooperWithPlayer:self.player templateItem:[_playerItems objectAtIndex:0]];
-    [self.player removeAllItems];
-    //[self.player removeItem:[_playerItems objectAtIndex:1]];
-    for (int i=(int)index;i<_playerItems.count;i++){
-        [self.player insertItem:[_playerItems objectAtIndex:i] afterItem:self.player.currentItem];
-    }
-    [_player seekToTime:CMTimeMake(0, 1)];
-    _playBtn.selected=YES;
-    [_player play];
-}
-
 
 @end
