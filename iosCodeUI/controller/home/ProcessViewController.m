@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     _slider=[UISlider new];
     _slider.frame=CGRectMake(20, SCREEN_HEIGHT-100, SCREEN_WIDTH-40, 20);

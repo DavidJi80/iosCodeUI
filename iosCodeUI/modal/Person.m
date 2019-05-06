@@ -10,8 +10,8 @@
 
 @implementation Person
 
-+(NSArray *)initPersonDataSource{
-    NSMutableArray<NSArray *> * dataArray=@[].mutableCopy;
++(NSMutableArray<NSMutableArray *> *)initPersonDataSource{
+    NSMutableArray<NSMutableArray *> * dataArray=@[].mutableCopy;
     for(int i=0;i<3;i++){
         NSMutableArray<Person *> * persons=@[].mutableCopy;
         for (int j=0;j<(i+1)*10;j++){
