@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040940052243932400760381 /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040940042243932400760381 /* HeaderCollectionReusableView.m */; };
+		0409400B2244D55900760381 /* AVCompositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409400A2244D55900760381 /* AVCompositionViewController.m */; };
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		040940032243932400760381 /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		040940042243932400760381 /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		040940092244D55900760381 /* AVCompositionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCompositionViewController.h; sourceTree = "<group>"; };
+		0409400A2244D55900760381 /* AVCompositionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCompositionViewController.m; sourceTree = "<group>"; };
 		04217D702233E9F7006202A4 /* MyHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHomeViewController.h; sourceTree = "<group>"; };
 		04217D712233E9F7006202A4 /* MyHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeViewController.m; sourceTree = "<group>"; };
 		04217D772234C50F006202A4 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */,
 				04B8A90A224219470004789E /* AVEditorViewController.h */,
 				04B8A90B224219470004789E /* AVEditorViewController.m */,
+				040940092244D55900760381 /* AVCompositionViewController.h */,
+				0409400A2244D55900760381 /* AVCompositionViewController.m */,
 			);
 			path = av.foundation;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,
 				27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */,
+				0409400B2244D55900760381 /* AVCompositionViewController.m in Sources */,
 				04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
 				046D0DCC22390E5500FF7D44 /* PhotosFrameworksUtility.m in Sources */,

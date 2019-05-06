@@ -95,6 +95,9 @@
             }
         });
     }];
+    
+    
+    
     // 添加取消按钮才能点击空白隐藏
     [alertController addAction:cancelAction];
     [alertController addAction:OKAction];

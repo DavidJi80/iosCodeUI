@@ -232,12 +232,13 @@
     NSURL * nsUrl=[NSURL URLWithString:_videos[index].url];
     AVAsset * avAsset=[AVAsset assetWithURL:nsUrl];
     AVAssetImageGenerator * generator=[AVAssetImageGenerator assetImageGeneratorWithAsset:avAsset];
-    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    CMTime time = CMTimeMakeWithSeconds(0, 1);
     NSError * error = nil;
     CMTime actualTime;
     CGImageRef image =[generator copyCGImageAtTime:time actualTime:&actualTime error:&error];
     UIImage * videoImage = [[UIImage alloc] initWithCGImage:image];
     CGImageRelease(image);
+    //UIImageWriteToSavedPhotosAlbum(videoImage, nil, nil, nil);
     //视频总秒数
     CMTime cmTime = avAsset.duration;
     NSTimeInterval timeInterVal=CMTimeGetSeconds(cmTime);

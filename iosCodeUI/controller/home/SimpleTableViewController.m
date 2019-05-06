@@ -92,6 +92,7 @@
     Person * person=self.dataSource[indexPath.row];
     cell.textLabel.text=person.name;
     cell.ageLabel.text=[NSString stringWithFormat:@"%zd",person.age];
+    
     return cell;
 }
 

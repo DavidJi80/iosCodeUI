@@ -13,6 +13,7 @@
 #import "AVPlayerViewController.h"
 #import "Video.h"
 #import "AVEditorViewController.h"
+#import "AVCompositionViewController.h"
 
 @interface PhotosAssetViewController ()
 
@@ -33,8 +34,9 @@
 -(void)initNavigation{
     self.navigationItem.title=@"Collectionable View";
     UIBarButtonItem * playVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"播放" style:(UIBarButtonItemStylePlain) target:self action:@selector(playVideo)];
-    UIBarButtonItem * editVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"编辑" style:(UIBarButtonItemStylePlain) target:self action:@selector(editVideo)];
-    self.navigationItem.rightBarButtonItems=@[playVideosBBI,editVideosBBI];
+    UIBarButtonItem * editVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"取帧" style:(UIBarButtonItemStylePlain) target:self action:@selector(editVideo)];
+    UIBarButtonItem * compositionAssetBBI=[[UIBarButtonItem alloc]initWithTitle:@"组合" style:(UIBarButtonItemStylePlain) target:self action:@selector(compositionAsset)];
+    self.navigationItem.rightBarButtonItems=@[compositionAssetBBI,editVideosBBI,playVideosBBI];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
@@ -236,6 +238,34 @@
         [videos addObject:video];
     }
     AVEditorViewController *vc=[AVEditorViewController new];
+    vc.videos=videos;
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+-(void)compositionAsset{
+    NSArray<NSIndexPath *> * selectedItems=_collectionView.indexPathsForSelectedItems;
+    if((selectedItems.count>9)||(selectedItems.count<1)){
+        NSString *title = NSLocalizedString(@"警告", nil);
+        NSString *message = NSLocalizedString(@"请选择1-9个视频!", nil);
+        NSString *okTitle = NSLocalizedString(@"OK", nil);
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:OKAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+    
+    NSMutableArray<Video *> * videos=@[].mutableCopy;
+    for (NSIndexPath *selectedItem in selectedItems) {
+        Asset * asset=[_collectionView.assetDataSource objectAtIndex:selectedItem.item];
+        Video * video=[Video new];
+        video.url=asset.url;
+        video.image=asset.image;
+        video.duration=asset.duration;
+        [videos addObject:video];
+    }
+    AVCompositionViewController *vc=[AVCompositionViewController new];
     vc.videos=videos;
     [self.navigationController pushViewController:vc animated:NO];
 }
