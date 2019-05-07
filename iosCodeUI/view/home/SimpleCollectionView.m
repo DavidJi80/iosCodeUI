@@ -155,6 +155,12 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
     [[self.personDataSource objectAtIndex:destinationIndexPath.section] insertObject:person atIndex:destinationIndexPath.row];
 }
 
+- (NSIndexPath *)collectionView:(UICollectionView *)collectionView indexPathForIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    NSIndexPath * indexPath=[NSIndexPath new];
+    return indexPath;
+}
+
+
 #pragma mark - UICollectionViewDelegate
 #pragma mark -- 单元格的选中
 

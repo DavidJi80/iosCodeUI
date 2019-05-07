@@ -65,6 +65,8 @@
     for (NSIndexPath *selectedItem in selectedItems) {
         NSLog(@"item index:###%ld",selectedItem.item);
     }
+    NSArray * a=[self.collectionView.dataSource indexTitlesForCollectionView:self.collectionView];
+    NSLog(@"%ld",a.count);
 }
 
 @end
