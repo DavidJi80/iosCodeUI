@@ -11,9 +11,9 @@
 @implementation Person
 
 +(NSMutableArray<NSMutableArray *> *)initPersonDataSource{
-    NSMutableArray<NSMutableArray *> * dataArray=@[].mutableCopy;
+    NSMutableArray<NSMutableArray<Person *> *> * dataArray= [NSMutableArray array];
     for(int i=0;i<3;i++){
-        NSMutableArray<Person *> * persons=@[].mutableCopy;
+        NSMutableArray<Person *> * persons=[NSMutableArray array];
         for (int j=0;j<(i+1)*10;j++){
             Person * person=[Person new];
             person.name=@"jz";
@@ -22,7 +22,7 @@
         }
         [dataArray addObject:persons];
     }
-    return dataArray.copy;
+    return dataArray.mutableCopy;
 }
 
 

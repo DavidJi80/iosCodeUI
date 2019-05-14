@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,weak) NSString * nameError;
 @property (nonatomic,assign) NSInteger age;
 
-+(NSMutableArray<NSMutableArray *> *)initPersonDataSource;
++(NSMutableArray<NSMutableArray<Person *> *> *)initPersonDataSource;
 
 @end
 

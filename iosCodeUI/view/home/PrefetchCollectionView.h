@@ -1,8 +1,8 @@
 //
-//  SimpleCollectionView.h
+//  PrefetchCollectionView.h
 //  iosCodeUI
 //
-//  Created by 季舟 on 2019/2/26.
+//  Created by mac on 2019/5/14.
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SimpleCollectionView : UICollectionView
+@interface PrefetchCollectionView : UICollectionView
 
 @property (nonatomic,strong) NSMutableArray<NSMutableArray<Person *> *> * personDataSource;
 

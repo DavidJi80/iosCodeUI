@@ -24,6 +24,8 @@
 		046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */; };
 		046D0DD3223B39C100FF7D44 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD2223B39C100FF7D44 /* Utility.m */; };
 		046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */; };
+		046E1C0C228A9C5F000839EF /* PrefetchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E1C0B228A9C5F000839EF /* PrefetchCollectionView.m */; };
+		046E1C0F228A9DE0000839EF /* PreFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E1C0E228A9DE0000839EF /* PreFetchViewController.m */; };
 		04B8A900224089B20004789E /* VideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A8FF224089B20004789E /* VideoCollectionView.m */; };
 		04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A902224089CC0004789E /* VideoCollectionViewCell.m */; };
 		04B8A90722408F7E0004789E /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A90622408F7E0004789E /* Video.m */; };
@@ -88,6 +90,10 @@
 		046D0DD2223B39C100FF7D44 /* Utility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		046D0DD8223B88B000FF7D44 /* AVPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerViewController.h; sourceTree = "<group>"; };
 		046D0DD9223B88B000FF7D44 /* AVPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVPlayerViewController.m; sourceTree = "<group>"; };
+		046E1C0A228A9C5F000839EF /* PrefetchCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefetchCollectionView.h; sourceTree = "<group>"; };
+		046E1C0B228A9C5F000839EF /* PrefetchCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrefetchCollectionView.m; sourceTree = "<group>"; };
+		046E1C0D228A9DE0000839EF /* PreFetchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreFetchViewController.h; sourceTree = "<group>"; };
+		046E1C0E228A9DE0000839EF /* PreFetchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreFetchViewController.m; sourceTree = "<group>"; };
 		04B8A8FE224089B20004789E /* VideoCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionView.h; sourceTree = "<group>"; };
 		04B8A8FF224089B20004789E /* VideoCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionView.m; sourceTree = "<group>"; };
 		04B8A901224089CC0004789E /* VideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				27167FF2222780B9000CBD47 /* HomeViewController.m */,
 				27F36FE722263D86009AEACD /* CollectionViewController.h */,
 				27F36FE822263D86009AEACD /* CollectionViewController.m */,
+				046E1C0D228A9DE0000839EF /* PreFetchViewController.h */,
+				046E1C0E228A9DE0000839EF /* PreFetchViewController.m */,
 				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
 				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
 				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
@@ -299,6 +307,8 @@
 			children = (
 				27F36FEF222652C6009AEACD /* SimpleCollectionView.h */,
 				27F36FF0222652C6009AEACD /* SimpleCollectionView.m */,
+				046E1C0A228A9C5F000839EF /* PrefetchCollectionView.h */,
+				046E1C0B228A9C5F000839EF /* PrefetchCollectionView.m */,
 				27F36FEA22264198009AEACD /* SimpleCollectionViewCell.h */,
 				27F36FEB22264198009AEACD /* SimpleCollectionViewCell.m */,
 				040940032243932400760381 /* HeaderCollectionReusableView.h */,
@@ -437,7 +447,6 @@
 				110FC0091D160F59E6C3717B /* Pods-iosCodeUI.debug.xcconfig */,
 				943B242123C8FB0D0C1011CA /* Pods-iosCodeUI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -549,6 +558,7 @@
 				27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */,
 				046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */,
 				04B8A90C224219470004789E /* AVEditorViewController.m in Sources */,
+				046E1C0C228A9C5F000839EF /* PrefetchCollectionView.m in Sources */,
 				04B8A900224089B20004789E /* VideoCollectionView.m in Sources */,
 				04B8A90722408F7E0004789E /* Video.m in Sources */,
 				046D0DD3223B39C100FF7D44 /* Utility.m in Sources */,
@@ -560,6 +570,7 @@
 				04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */,
 				04B8A91522423B910004789E /* Frame.m in Sources */,
 				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,
+				046E1C0F228A9DE0000839EF /* PreFetchViewController.m in Sources */,
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				27F9092A222E390C00B5C22F /* VideoPlayerViewController.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,

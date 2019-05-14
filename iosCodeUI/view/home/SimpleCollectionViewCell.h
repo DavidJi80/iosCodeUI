@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SimpleCollectionViewCell : UICollectionViewCell
 
-@property IBOutlet UILabel * titleLabel;
+@property (nonatomic,strong) UILabel * titleLabel;
 
 @end
 

@@ -12,6 +12,7 @@
 #import "SimpleTableViewController.h"
 #import "GestureTableViewController.h"
 #import "CollectionViewController.h"
+#import "PreFetchViewController.h"
 #import "GcdDemoViewController.h"
 #import "VideoPlayerViewController.h"
 #import "ProcessViewController.h"
@@ -27,6 +28,7 @@
 @property(nonatomic,strong) UIButton * gestureBtn;
 @property(nonatomic,strong) UIButton * gestureNavBtn;
 @property(nonatomic,strong) UIButton * collectionBtn;
+@property(nonatomic,strong) UIButton * preFetchCollectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
 @property(nonatomic,strong) UIButton * alertBtn;
 @property(nonatomic,strong) UIButton * videoNavBtn;
@@ -119,13 +121,19 @@
     [_gestureNavBtn.layer setCornerRadius:10.0];
     [_gestureNavBtn addTarget:self action:@selector(openGestureNavView:) forControlEvents:UIControlEventTouchUpInside];
     
-    // 添加按钮
     _collectionBtn=[UIButton new];
     _collectionBtn.backgroundColor=[UIColor redColor];
     _collectionBtn.frame=CGRectMake(30, 270, 145, 45);
     [_collectionBtn setTitle:@"Collection View" forState:UIControlStateNormal];
     [_collectionBtn.layer setCornerRadius:10.0];
     [_collectionBtn addTarget:self action:@selector(openCollectionView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _preFetchCollectionBtn=[UIButton new];
+    _preFetchCollectionBtn.backgroundColor=[UIColor redColor];
+    _preFetchCollectionBtn.frame=CGRectMake(200, 270, 145, 45);
+    [_preFetchCollectionBtn setTitle:@"PreFetch CV" forState:UIControlStateNormal];
+    [_preFetchCollectionBtn.layer setCornerRadius:10.0];
+    [_preFetchCollectionBtn addTarget:self action:@selector(openPrefetchCollectionView:) forControlEvents:UIControlEventTouchUpInside];
     
     _gcdBtn=[UIButton new];
     _gcdBtn.backgroundColor=[UIColor darkGrayColor];
@@ -163,6 +171,7 @@
     [self.view addSubview:self.gestureBtn];
     [self.view addSubview:self.gestureNavBtn];
     [self.view addSubview:self.collectionBtn];
+    [self.view addSubview:self.preFetchCollectionBtn];
     [self.view addSubview:self.gcdBtn];
     [self.view addSubview:self.alertBtn];
     [self.view addSubview:self.videoNavBtn];
@@ -226,6 +235,14 @@
  */
 -(void)openCollectionView:(UIButton*)sender{
     CollectionViewController * vc=[[CollectionViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/**
+ Open Prefetch Collection View
+ */
+-(void)openPrefetchCollectionView:(UIButton*)sender{
+    PreFetchViewController * vc=[[PreFetchViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

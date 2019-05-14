@@ -17,7 +17,7 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
 
 @interface SimpleCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic,strong) NSMutableArray<NSMutableArray *> * personDataSource;
+
 
 @end
 
@@ -31,15 +31,25 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
     self = [super initWithFrame:frame collectionViewLayout:layout];
     _personDataSource=[Person initPersonDataSource];
     if (self) {
-        self.delegate = self;
-        self.dataSource = self;
         self.clipsToBounds = YES;
         self.showsHorizontalScrollIndicator = NO;
         self.backgroundColor = [UIColor whiteColor];
+        self.decelerationRate=UIScrollViewDecelerationRateFast;
         
+        
+        //UICollectionView
+        self.delegate = self;           //UICollectionViewDataSource
+        self.dataSource = self;         //UICollectionViewDelegate
+        //选择
+        self.allowsSelection=YES;                   //允许选中
+        self.allowsMultipleSelection=YES;           //允许多选
+        //背景视图
+        UIView * backgroundView=[UIView new];
+        backgroundView.frame=CGRectMake(0, 0, 200, 400);
+        backgroundView.backgroundColor=[UIColor redColor];
+        self.backgroundView=backgroundView;
         //注册 Cell
         [self registerClass:[SimpleCollectionViewCell class] forCellWithReuseIdentifier:CellIdentiifer];
-        
         //注册头部尾部
         [self registerClass:[HeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentiifer];
         [self registerClass:[HeaderCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerIdentiifer];
@@ -86,9 +96,6 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
         }
     }
 }
-
-
-#pragma mark - UICollectionView
 
 #pragma mark - UICollectionViewDataSource
 /**
@@ -227,6 +234,94 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
     cell.backgroundColor=[UIColor grayColor];
 }
 
+#pragma mark -- 跟踪视图的添加和删除
+/**
+ 在Cell被添加之前调用
+ */
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Cell%@将被添加",indexPath);
+}
+
+/**
+ 在Cell被删除之后调用
+ */
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Cell%@被删除",indexPath);
+}
+
+/**
+ 在Section被添加之前调用
+ */
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Section%@将被添加",indexPath);
+}
+
+/**
+ 在Section被删除之后调用
+ */
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath{
+   NSLog(@"Section%@被删除",indexPath);
+}
+
+#pragma mark -- 管理焦点
+- (BOOL)collectionView:(UICollectionView *)collectionView canFocusItemAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+/**
+ 设置Item尺寸
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(60, 60);
+}
+
+/**
+ 设置特定section的margin
+ */
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout *)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(10, 10, 10, 10);
+}
+
+/**
+ 设置特定section的最小行距
+ */
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+
+/**
+ 设置特定section的item最小水平间距
+ */
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 5;
+}
+
+/**
+ 设置特定section的页眉尺寸
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(50, 50);
+}
+
+/**
+ 设置特定section的页脚尺寸
+ */
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForFooterInSection:(NSInteger)section{
+    return CGSizeMake(30, 30);
+}
+
+
 
 #pragma mark - scrollView
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -237,6 +332,7 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
         NSLog(@"--------- is decelerating!");
     }
 }
+
 
 
 
