@@ -165,53 +165,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04217D6F2233E9B5006202A4 /* my */ = {
-			isa = PBXGroup;
-			children = (
-				04217D702233E9F7006202A4 /* MyHomeViewController.h */,
-				04217D712233E9F7006202A4 /* MyHomeViewController.m */,
-			);
-			path = my;
-			sourceTree = "<group>";
-		};
-		04217D762234C3F0006202A4 /* multimedia */ = {
-			isa = PBXGroup;
-			children = (
-				046D0DD4223B6EF400FF7D44 /* av.foundation */,
-				046D0DCD223A600F00FF7D44 /* image.picker */,
-				046D0DB92237841D00FF7D44 /* photos.frameworks */,
-				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
-				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
-			);
-			path = multimedia;
-			sourceTree = "<group>";
-		};
-		04217D7A2234CCBD006202A4 /* home */ = {
-			isa = PBXGroup;
-			children = (
-				27F0192C221FA91800632F6F /* gesture */,
-				27167FF1222780B9000CBD47 /* HomeViewController.h */,
-				27167FF2222780B9000CBD47 /* HomeViewController.m */,
-				27F36FE722263D86009AEACD /* CollectionViewController.h */,
-				27F36FE822263D86009AEACD /* CollectionViewController.m */,
-				046E1C0D228A9DE0000839EF /* PreFetchViewController.h */,
-				046E1C0E228A9DE0000839EF /* PreFetchViewController.m */,
-				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
-				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
-				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
-				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
-				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
-				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
-				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
-				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
-				27FE7B90222F630D002069FB /* ProcessViewController.h */,
-				27FE7B91222F630D002069FB /* ProcessViewController.m */,
-				046D0DB62237560F00FF7D44 /* AlertViewController.h */,
-				046D0DB72237560F00FF7D44 /* AlertViewController.m */,
-			);
-			path = home;
-			sourceTree = "<group>";
-		};
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,15 +198,6 @@
 				046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */,
 			);
 			path = photos.frameworks;
-			sourceTree = "<group>";
-		};
-		046D0DC422389EFF00FF7D44 /* multimedia */ = {
-			isa = PBXGroup;
-			children = (
-				04B8A90422408F4C0004789E /* av.foundation */,
-				046D0DC522389F1D00FF7D44 /* potos.frameworks */,
-			);
-			path = multimedia;
 			sourceTree = "<group>";
 		};
 		046D0DC522389F1D00FF7D44 /* potos.frameworks */ = {
@@ -302,7 +246,52 @@
 			path = av.foundation;
 			sourceTree = "<group>";
 		};
-		04B8A8FC223F92470004789E /* home */ = {
+		04810DAE2293C68C00C64CC1 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				04810DB12293C73B00C64CC1 /* view */,
+				04810DB02293C6F000C64CC1 /* controller */,
+				04810DAF2293C6D600C64CC1 /* modal */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		04810DAF2293C6D600C64CC1 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				27D0BD54221A573000C7AD30 /* Person.h */,
+				27D0BD55221A573000C7AD30 /* Person.m */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		04810DB02293C6F000C64CC1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				27F0192C221FA91800632F6F /* gesture */,
+				27167FF1222780B9000CBD47 /* HomeViewController.h */,
+				27167FF2222780B9000CBD47 /* HomeViewController.m */,
+				27F36FE722263D86009AEACD /* CollectionViewController.h */,
+				27F36FE822263D86009AEACD /* CollectionViewController.m */,
+				046E1C0D228A9DE0000839EF /* PreFetchViewController.h */,
+				046E1C0E228A9DE0000839EF /* PreFetchViewController.m */,
+				27EFD34D221BB1AD00D140AE /* SimpleTableViewController.h */,
+				27EFD34E221BB1AD00D140AE /* SimpleTableViewController.m */,
+				27EE5C76221FBF2800BB1BAA /* GestureTableViewController.h */,
+				27EE5C77221FBF2900BB1BAA /* GestureTableViewController.m */,
+				27D0BD3E2216B99B00C7AD30 /* ViewController.h */,
+				27D0BD3F2216B99B00C7AD30 /* ViewController.m */,
+				2723BEE6222933E200CC552B /* GcdDemoViewController.h */,
+				2723BEE7222933E200CC552B /* GcdDemoViewController.m */,
+				27FE7B90222F630D002069FB /* ProcessViewController.h */,
+				27FE7B91222F630D002069FB /* ProcessViewController.m */,
+				046D0DB62237560F00FF7D44 /* AlertViewController.h */,
+				046D0DB72237560F00FF7D44 /* AlertViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		04810DB12293C73B00C64CC1 /* view */ = {
 			isa = PBXGroup;
 			children = (
 				27F36FEF222652C6009AEACD /* SimpleCollectionView.h */,
@@ -318,7 +307,65 @@
 				27FE7B93222F698D002069FB /* LineProcessView.h */,
 				27FE7B94222F698D002069FB /* LineProcessView.m */,
 			);
-			path = home;
+			path = view;
+			sourceTree = "<group>";
+		};
+		04810DB22293C79700C64CC1 /* multimedia */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DC922390E0400FF7D44 /* utility */,
+				04B8A9082240C1500004789E /* protocol */,
+				04810DB52293C82400C64CC1 /* view */,
+				04810DB42293C80400C64CC1 /* controller */,
+				04810DB32293C7B500C64CC1 /* modal */,
+			);
+			path = multimedia;
+			sourceTree = "<group>";
+		};
+		04810DB32293C7B500C64CC1 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				04B8A90422408F4C0004789E /* av.foundation */,
+				046D0DC522389F1D00FF7D44 /* potos.frameworks */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		04810DB42293C80400C64CC1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DD4223B6EF400FF7D44 /* av.foundation */,
+				046D0DCD223A600F00FF7D44 /* image.picker */,
+				046D0DB92237841D00FF7D44 /* photos.frameworks */,
+				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
+				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		04810DB52293C82400C64CC1 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				046D0DAF2236703900FF7D44 /* multimedia */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		04810DB62293C86900C64CC1 /* my */ = {
+			isa = PBXGroup;
+			children = (
+				04810DB72293C87800C64CC1 /* controller */,
+			);
+			path = my;
+			sourceTree = "<group>";
+		};
+		04810DB72293C87800C64CC1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				04217D702233E9F7006202A4 /* MyHomeViewController.h */,
+				04217D712233E9F7006202A4 /* MyHomeViewController.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		04B8A8FD2240892D0004789E /* av.foundation */ = {
@@ -376,11 +423,10 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
-				04B8A9082240C1500004789E /* protocol */,
-				046D0DC922390E0400FF7D44 /* utility */,
-				27EDB1DF221BDB89008F5C94 /* view */,
-				27EDB1DE221BDB7E008F5C94 /* controller */,
-				27EDB1DD221BDB59008F5C94 /* modal */,
+				04810DB62293C86900C64CC1 /* my */,
+				04810DB22293C79700C64CC1 /* multimedia */,
+				04810DAE2293C68C00C64CC1 /* home */,
+				27EDB1DE221BDB7E008F5C94 /* root */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27F36FED22264F62009AEACD /* Constant.h */,
@@ -393,35 +439,13 @@
 			path = iosCodeUI;
 			sourceTree = "<group>";
 		};
-		27EDB1DD221BDB59008F5C94 /* modal */ = {
-			isa = PBXGroup;
-			children = (
-				046D0DC422389EFF00FF7D44 /* multimedia */,
-				27D0BD54221A573000C7AD30 /* Person.h */,
-				27D0BD55221A573000C7AD30 /* Person.m */,
-			);
-			path = modal;
-			sourceTree = "<group>";
-		};
-		27EDB1DE221BDB7E008F5C94 /* controller */ = {
+		27EDB1DE221BDB7E008F5C94 /* root */ = {
 			isa = PBXGroup;
 			children = (
 				27F6190622252F340026BE03 /* SimpleTabBarController.h */,
 				27F6190722252F340026BE03 /* SimpleTabBarController.m */,
-				04217D7A2234CCBD006202A4 /* home */,
-				04217D6F2233E9B5006202A4 /* my */,
-				04217D762234C3F0006202A4 /* multimedia */,
 			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		27EDB1DF221BDB89008F5C94 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				04B8A8FC223F92470004789E /* home */,
-				046D0DAF2236703900FF7D44 /* multimedia */,
-			);
-			path = view;
+			path = root;
 			sourceTree = "<group>";
 		};
 		27F0192C221FA91800632F6F /* gesture */ = {
