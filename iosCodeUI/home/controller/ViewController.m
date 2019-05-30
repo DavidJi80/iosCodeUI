@@ -202,11 +202,8 @@
  打开Table View
  */
 -(void)openTableView:(UIButton*)sender{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SimpleTableViewController * tableViewController=[[SimpleTableViewController alloc]init];
-        [self presentViewController:tableViewController animated:YES completion:nil];
-    });
-    
+    SimpleTableViewController * tableViewController=[[SimpleTableViewController alloc]init];
+    [self.navigationController pushViewController:tableViewController animated:YES];
 }
 
 -(void)navTableView:(UIButton*)sender{

@@ -249,9 +249,9 @@
 		04810DAE2293C68C00C64CC1 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				04810DAF2293C6D600C64CC1 /* modal */,
 				04810DB12293C73B00C64CC1 /* view */,
 				04810DB02293C6F000C64CC1 /* controller */,
-				04810DAF2293C6D600C64CC1 /* modal */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -423,10 +423,10 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
-				04810DB62293C86900C64CC1 /* my */,
-				04810DB22293C79700C64CC1 /* multimedia */,
-				04810DAE2293C68C00C64CC1 /* home */,
 				27EDB1DE221BDB7E008F5C94 /* root */,
+				04810DAE2293C68C00C64CC1 /* home */,
+				04810DB22293C79700C64CC1 /* multimedia */,
+				04810DB62293C86900C64CC1 /* my */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27F36FED22264F62009AEACD /* Constant.h */,
@@ -752,6 +752,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iosCodeUI/PrefixHeader.pch;
 				INFOPLIST_FILE = iosCodeUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -773,6 +774,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iosCodeUI/PrefixHeader.pch;
 				INFOPLIST_FILE = iosCodeUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
