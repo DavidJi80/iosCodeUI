@@ -57,7 +57,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 -(void)initTableView{
     self.dataSource=[Person initPersonDataSource];
     //1.6. TableView外观
-    NSLog(@"%ld",self.tableView.style);             //style
+    NSLog(@"%d",self.tableView.style);             //style
     //tableHeaderView
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 20)];
     headerView.frame=CGRectMake(0, 0, SCREEN_WIDTH, 45);
@@ -117,7 +117,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 -(void)showSelect{
     NSString * selectedIndexPaths=@"";
     for (NSIndexPath * indexPath in self.tableView.indexPathsForSelectedRows){
-        selectedIndexPaths=[NSString stringWithFormat:@"%@[%ld,%ld],",selectedIndexPaths,indexPath.section,indexPath.row];
+        selectedIndexPaths=[NSString stringWithFormat:@"%@[%d,%d],",selectedIndexPaths,indexPath.section,indexPath.row];
     }
     UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"选中" message:selectedIndexPaths preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -161,7 +161,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
     }
     Person * person=self.dataSource[indexPath.section][indexPath.row];
     cell.textLabel.text=person.name;
-    cell.ageLabel.text=[NSString stringWithFormat:@"%ld-%zd",indexPath.section,person.age];
+    cell.ageLabel.text=[NSString stringWithFormat:@"%d-%zd",indexPath.section,person.age];
     return cell;
 }
 
@@ -169,7 +169,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
  Section的页眉
  */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return [NSString stringWithFormat:@"Section%ld",section];
+    return [NSString stringWithFormat:@"Section%d",section];
 }
 
 /**
@@ -177,7 +177,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
  */
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     NSMutableArray<Person *> * persons=[self.dataSource objectAtIndex:section];
-    return [NSString stringWithFormat:@"Count：%ld",persons.count];
+    return [NSString stringWithFormat:@"Count：%d",persons.count];
 }
 
 #pragma mark - UITableViewDelegate
@@ -199,7 +199,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 /**
  SpringLoad
  */
-- (BOOL)tableView:(UITableView *)tableView shouldSpringLoadRowAtIndexPath:(NSIndexPath *)indexPath withContext:(id<UISpringLoadedInteractionContext>)context{
+- (BOOL)tableView:(UITableView *)tableView shouldSpringLoadRowAtIndexPath:(NSIndexPath *)indexPath withContext:(id<UISpringLoadedInteractionContext>)context  NS_AVAILABLE_IOS(11_0){
     return YES;
 }
 
@@ -217,7 +217,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
  */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"MSG" message:data[indexPath.row] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"didSelect:%ld--%ld",indexPath.section,indexPath.row] style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"didSelect:%d--%d",indexPath.section,indexPath.row] style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alert animated:true completion:nil];
 }
 
@@ -227,7 +227,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"MSG" message:data[indexPath.row] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"didDeselect:%ld--%ld",indexPath.section,indexPath.row] style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"didDeselect:%d--%d",indexPath.section,indexPath.row] style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alert animated:true completion:nil];
 }
 
@@ -243,7 +243,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
     titleLabel.frame=CGRectMake(12, 14, SCREEN_WIDTH, 17);
     titleLabel.textColor=[UIColor redColor];
     titleLabel.font=[UIFont systemFontOfSize:(17)];
-    titleLabel.text=[NSString stringWithFormat:@"Section%ld",section];
+    titleLabel.text=[NSString stringWithFormat:@"Section%d",section];
     [headerView addSubview:titleLabel];
     [headerView.layer setBackgroundColor:UIColor.yellowColor.CGColor];
     return headerView;
@@ -261,7 +261,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
     titleLabel.frame=CGRectMake(12, 14, width, 17);
     titleLabel.textColor=[UIColor redColor];
     titleLabel.font=[UIFont systemFontOfSize:(17)];
-    titleLabel.text=[NSString stringWithFormat:@"Count:%ld",persons.count];
+    titleLabel.text=[NSString stringWithFormat:@"Count:%d",persons.count];
     [headerView addSubview:titleLabel];
     [headerView.layer setBackgroundColor:UIColor.greenColor.CGColor];
     return headerView;
@@ -271,14 +271,14 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
  将显示指定Section的页眉视图
  */
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section{
-    NSLog(@"willDisplayHeaderView:%ld",section);
+    NSLog(@"willDisplayHeaderView:%d",section);
 }
 
 /**
  将显示指定Section的页脚视图
  */
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section{
-    NSLog(@"willDisplayFooterView:%ld",section);
+    NSLog(@"willDisplayFooterView:%d",section);
 }
 
 
