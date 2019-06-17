@@ -9,6 +9,7 @@
 #import "MediaHomeViewController.h"
 #import "VideoViewController.h"
 #import "PhotosViewController.h"
+#import "AVCaptureViewController.h"
 
 @interface MediaHomeViewController ()
 
@@ -16,6 +17,8 @@
 @property(nonatomic,strong) UIButton * imgPickerBtn;
 //photos frameworks
 @property(nonatomic,strong) UIButton * photosBtn;
+//AVFoundation Capture
+@property(nonatomic,strong) UIButton * captureBtn;
 
 @end
 
@@ -38,9 +41,17 @@
     [_photosBtn.layer setCornerRadius:10.0];
     [_photosBtn addTarget:self action:@selector(openPhotosFrame:) forControlEvents:UIControlEventTouchUpInside];
     
+    _captureBtn=[UIButton new];
+    _captureBtn.backgroundColor=[UIColor greenColor];
+    _captureBtn.frame=CGRectMake(30, 210, SCREEN_WIDTH-60, 45);
+    [_captureBtn setTitle:@"AVFoundation Capture" forState:UIControlStateNormal];
+    [_captureBtn.layer setCornerRadius:10.0];
+    [_captureBtn addTarget:self action:@selector(openCapture:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.view addSubview:self.imgPickerBtn];
     [self.view addSubview:self.photosBtn];
+    [self.view addSubview:self.captureBtn];
     
 }
 
@@ -51,6 +62,11 @@
 
 -(void)openPhotosFrame:(UIButton*)sender{
     PhotosViewController * vc=[[PhotosViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)openCapture:(UIButton*)sender{
+    AVCaptureViewController * vc=[[AVCaptureViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

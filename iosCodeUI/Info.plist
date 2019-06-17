@@ -20,6 +20,8 @@
 	<string>App需要您的同意才能使用相机</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要您的同意才能打开相册</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App需要您的同意才能打开麦克风</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
