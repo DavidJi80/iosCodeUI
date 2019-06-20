@@ -12,6 +12,8 @@
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
+		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
+		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -67,6 +69,9 @@
 		04217D782234C50F006202A4 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
+		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
+		046888C822BB6E8B003AB513 /* CoreImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreImageViewController.m; sourceTree = "<group>"; };
+		046888CA22BB7053003AB513 /* coreimage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coreimage.jpeg; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -168,6 +173,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046888C622BB6E5B003AB513 /* coreimage */ = {
+			isa = PBXGroup;
+			children = (
+				046888CA22BB7053003AB513 /* coreimage.jpeg */,
+				046888C722BB6E8B003AB513 /* CoreImageViewController.h */,
+				046888C822BB6E8B003AB513 /* CoreImageViewController.m */,
+			);
+			path = coreimage;
+			sourceTree = "<group>";
+		};
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +354,7 @@
 		04810DB42293C80400C64CC1 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				046888C622BB6E5B003AB513 /* coreimage */,
 				046D0DD4223B6EF400FF7D44 /* av.foundation */,
 				046D0DCD223A600F00FF7D44 /* image.picker */,
 				046D0DB92237841D00FF7D44 /* photos.frameworks */,
@@ -538,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D0BD482216B99E00C7AD30 /* LaunchScreen.storyboard in Resources */,
+				046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */,
 				27D0BD452216B99E00C7AD30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */,
 				046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */,
 				046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */,
 				046D0DBF2237BE2A00FF7D44 /* AssetCollectionViewCell.m in Sources */,
