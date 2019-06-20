@@ -172,7 +172,7 @@ API_AVAILABLE(ios(10.0))
     _switchCameraBtn.frame=CGRectMake(SCREEN_WIDTH-100, SCREEN_HEIGHT-130, 40, 40);
     [_switchCameraBtn setTitle:@"[]" forState:UIControlStateNormal];
     [_switchCameraBtn.layer setCornerRadius:20.0];
-    [_switchCameraBtn addTarget:self action:@selector(startPause) forControlEvents:UIControlEventTouchUpInside];
+    [_switchCameraBtn addTarget:self action:@selector(switchCameras) forControlEvents:UIControlEventTouchUpInside];
     
     
     _pictureBtn=[UIButton new];
@@ -240,13 +240,7 @@ API_AVAILABLE(ios(10.0))
     }
 }
 
-#pragma mark - 切换摄像头
-/**
- 返回可用视频捕捉设备的数量
- */
-- (NSUInteger)cameraCount {
-    return [[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count];
-}
+
 
 #pragma mark - 拍摄视频
 // 当前捕捉会话对应的摄像头，返回激活的捕捉设备输入的device属性
@@ -410,6 +404,91 @@ API_AVAILABLE(ios(10.0))
     [self saveToPhotoAlbum:image];
 }
 
+#pragma mark - 切换摄像头
+/**
+ 返回可用视频捕捉设备的数量
+ devicesWithMediaType不推荐使用了
+ */
+- (NSUInteger)cameraCount {
+    // 1. 使用devicesWithMediaType实现（不推荐使用）
+    return [[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count];
+    //2. 使用AVCaptureDeviceDiscoverySession实现
+    /**
+    if (@available(iOS 10.2, *)) {
+        AVCaptureDeviceDiscoverySession *discoverySession=[AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInDualCamera,AVCaptureDeviceTypeBuiltInWideAngleCamera,AVCaptureDeviceTypeBuiltInTelephotoCamera,AVCaptureDeviceTypeBuiltInMicrophone] mediaType:AVMediaTypeAudio position:AVCaptureDevicePositionUnspecified];
+        return discoverySession.devices.count;
+    } else {
+        return [[AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo] count];
+    }
+     */
+}
+
+/**
+ 是否可以切换摄像头
+ */
+- (BOOL)canSwitchCameras {
+    return self.cameraCount > 1;
+}
+
+/**
+ 返回指定位置的AVCaptureDevice
+ 有效位置为 AVCaptureDevicePositionFront 和 AVCaptureDevicePositionBack，
+ 遍历可用视频设备，并返回position参数对应的值
+ */
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position {
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device  in devices) {
+        if (device.position  == position) {
+            return device;
+        }
+    }
+    return nil;
+}
+
+/**
+ 返回当前未激活摄像头
+ */
+- (AVCaptureDevice *)inactiveCamera {
+    AVCaptureDevice *device = nil;
+    if (self.cameraCount > 1) {
+        if ([self activeCamera].position == AVCaptureDevicePositionBack) {
+            device = [self cameraWithPosition:AVCaptureDevicePositionFront];
+        } else {
+            device = [self cameraWithPosition:AVCaptureDevicePositionBack];
+        }
+    }
+    return device;
+}
+
+/**
+ 切换的摄像头
+ */
+- (BOOL)switchCameras {
+    //验证是否有可切换的摄像头
+    if (![self canSwitchCameras]) {
+        return NO;
+    }
+    
+    AVCaptureDevice *videoDevice = [self inactiveCamera];
+    //g根据指定设备初始化AVCaptureDeviceInput
+    NSError *error;
+    AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+    if (videoInput) {
+        [self.captureSession beginConfiguration];
+        // 标注源自配置变化的开始
+        [self.captureSession removeInput:self.activeVideoInput];
+        if ([self.captureSession canAddInput:videoInput]) {
+            [self.captureSession addInput:videoInput];
+            self.activeVideoInput = videoInput;
+        } else if (self.activeVideoInput) {
+            [self.captureSession addInput:self.activeVideoInput];
+        }
+        [self.captureSession commitConfiguration];
+    } else {
+        return NO;
+    }
+    return YES;
+}
 
 
 @end
