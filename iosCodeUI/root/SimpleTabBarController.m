@@ -62,7 +62,7 @@
     [self addChildViewController:mhNav];
     
     MyHomeViewController * myHomeVC=[MyHomeViewController new];
-    myHomeVC.title=@"我的";
+    myHomeVC.title=@"OpenGL";
     myHomeVC.tabBarItem.image = [UIImage imageNamed:@"Home"];
     myHomeVC.tabBarItem.selectedImage = [UIImage imageNamed:@"Home"];
     

@@ -14,6 +14,8 @@
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
+		046888CF22BC85EF003AB513 /* DrawTriangleGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888CE22BC85EF003AB513 /* DrawTriangleGLKVC.m */; };
+		046888D222C1BFE8003AB513 /* OfficialDemoGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888D122C1BFE8003AB513 /* OfficialDemoGLKVC.m */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -72,6 +74,10 @@
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
 		046888C822BB6E8B003AB513 /* CoreImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreImageViewController.m; sourceTree = "<group>"; };
 		046888CA22BB7053003AB513 /* coreimage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coreimage.jpeg; sourceTree = "<group>"; };
+		046888CD22BC85EF003AB513 /* DrawTriangleGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawTriangleGLKVC.h; sourceTree = "<group>"; };
+		046888CE22BC85EF003AB513 /* DrawTriangleGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawTriangleGLKVC.m; sourceTree = "<group>"; };
+		046888D022C1BFE8003AB513 /* OfficialDemoGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfficialDemoGLKVC.h; sourceTree = "<group>"; };
+		046888D122C1BFE8003AB513 /* OfficialDemoGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfficialDemoGLKVC.m; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -181,6 +187,17 @@
 				046888C822BB6E8B003AB513 /* CoreImageViewController.m */,
 			);
 			path = coreimage;
+			sourceTree = "<group>";
+		};
+		046888CC22BC7311003AB513 /* opengl */ = {
+			isa = PBXGroup;
+			children = (
+				046888CD22BC85EF003AB513 /* DrawTriangleGLKVC.h */,
+				046888CE22BC85EF003AB513 /* DrawTriangleGLKVC.m */,
+				046888D022C1BFE8003AB513 /* OfficialDemoGLKVC.h */,
+				046888D122C1BFE8003AB513 /* OfficialDemoGLKVC.m */,
+			);
+			path = opengl;
 			sourceTree = "<group>";
 		};
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
@@ -372,17 +389,18 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		04810DB62293C86900C64CC1 /* my */ = {
+		04810DB62293C86900C64CC1 /* opengl */ = {
 			isa = PBXGroup;
 			children = (
 				04810DB72293C87800C64CC1 /* controller */,
 			);
-			path = my;
+			path = opengl;
 			sourceTree = "<group>";
 		};
 		04810DB72293C87800C64CC1 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				046888CC22BC7311003AB513 /* opengl */,
 				04217D702233E9F7006202A4 /* MyHomeViewController.h */,
 				04217D712233E9F7006202A4 /* MyHomeViewController.m */,
 			);
@@ -447,7 +465,7 @@
 				27EDB1DE221BDB7E008F5C94 /* root */,
 				04810DAE2293C68C00C64CC1 /* home */,
 				04810DB22293C79700C64CC1 /* multimedia */,
-				04810DB62293C86900C64CC1 /* my */,
+				04810DB62293C86900C64CC1 /* opengl */,
 				27D0BD3B2216B99B00C7AD30 /* AppDelegate.h */,
 				27D0BD3C2216B99B00C7AD30 /* AppDelegate.m */,
 				27F36FED22264F62009AEACD /* Constant.h */,
@@ -592,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */,
+				046888CF22BC85EF003AB513 /* DrawTriangleGLKVC.m in Sources */,
 				046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */,
 				046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */,
 				046D0DBF2237BE2A00FF7D44 /* AssetCollectionViewCell.m in Sources */,
@@ -629,6 +648,7 @@
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,
 				27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */,
+				046888D222C1BFE8003AB513 /* OfficialDemoGLKVC.m in Sources */,
 				0409400B2244D55900760381 /* AVCompositionViewController.m in Sources */,
 				04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */,
 				27F36FEC22264198009AEACD /* SimpleCollectionViewCell.m in Sources */,
