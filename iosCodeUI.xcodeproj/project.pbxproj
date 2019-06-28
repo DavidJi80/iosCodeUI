@@ -18,6 +18,9 @@
 		046888D222C1BFE8003AB513 /* OfficialDemoGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888D122C1BFE8003AB513 /* OfficialDemoGLKVC.m */; };
 		046888D522C2086A003AB513 /* TextureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888D422C2086A003AB513 /* TextureViewController.m */; };
 		046888D722C20C58003AB513 /* Demo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046888D622C20C58003AB513 /* Demo.jpg */; };
+		046888DF22C5B9B5003AB513 /* AGLKContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888DE22C5B9B5003AB513 /* AGLKContext.m */; };
+		046888E222C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888E122C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m */; };
+		046888E522C5BBF2003AB513 /* Texture2GLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888E422C5BBF2003AB513 /* Texture2GLKVC.m */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -83,6 +86,12 @@
 		046888D322C2086A003AB513 /* TextureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureViewController.h; sourceTree = "<group>"; };
 		046888D422C2086A003AB513 /* TextureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureViewController.m; sourceTree = "<group>"; };
 		046888D622C20C58003AB513 /* Demo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Demo.jpg; sourceTree = "<group>"; };
+		046888DD22C5B9B5003AB513 /* AGLKContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGLKContext.h; sourceTree = "<group>"; };
+		046888DE22C5B9B5003AB513 /* AGLKContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGLKContext.m; sourceTree = "<group>"; };
+		046888E022C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGLKVertexAttribArrayBuffer.h; sourceTree = "<group>"; };
+		046888E122C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGLKVertexAttribArrayBuffer.m; sourceTree = "<group>"; };
+		046888E322C5BBF2003AB513 /* Texture2GLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Texture2GLKVC.h; sourceTree = "<group>"; };
+		046888E422C5BBF2003AB513 /* Texture2GLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Texture2GLKVC.m; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -203,6 +212,12 @@
 				046888D122C1BFE8003AB513 /* OfficialDemoGLKVC.m */,
 				046888D322C2086A003AB513 /* TextureViewController.h */,
 				046888D422C2086A003AB513 /* TextureViewController.m */,
+				046888DD22C5B9B5003AB513 /* AGLKContext.h */,
+				046888DE22C5B9B5003AB513 /* AGLKContext.m */,
+				046888E022C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.h */,
+				046888E122C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m */,
+				046888E322C5BBF2003AB513 /* Texture2GLKVC.h */,
+				046888E422C5BBF2003AB513 /* Texture2GLKVC.m */,
 			);
 			path = opengl;
 			sourceTree = "<group>";
@@ -651,6 +666,7 @@
 			files = (
 				046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */,
 				046888CF22BC85EF003AB513 /* DrawTriangleGLKVC.m in Sources */,
+				046888E522C5BBF2003AB513 /* Texture2GLKVC.m in Sources */,
 				046888D522C2086A003AB513 /* TextureViewController.m in Sources */,
 				046D0DBC2237854900FF7D44 /* PhotosAssetViewController.m in Sources */,
 				046D0DC22237BFAC00FF7D44 /* AssetCollectionView.m in Sources */,
@@ -661,6 +677,7 @@
 				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
 				04217D792234C50F006202A4 /* VideoViewController.m in Sources */,
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
+				046888E222C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
 				27167FF3222780B9000CBD47 /* HomeViewController.m in Sources */,
 				046D0DD0223A626F00FF7D44 /* LivePhotoViewController.m in Sources */,
@@ -686,6 +703,7 @@
 				04B8A90F22423B030004789E /* FrameCollectionViewCell.m in Sources */,
 				046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
+				046888DF22C5B9B5003AB513 /* AGLKContext.m in Sources */,
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,
 				27FE7B92222F630D002069FB /* ProcessViewController.m in Sources */,
