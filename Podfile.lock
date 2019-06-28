@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Hashids (0.3.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Hashids
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Hashids
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Hashids: 360cd4b45b34f37b73e7f7f6eafeb41be3ceeb98
 
-PODFILE CHECKSUM: cacb7298b6a90309519ad0dc962cd9a2c047e89f
+PODFILE CHECKSUM: ec8e3de2f69145417bbae645522646e00db3b48b
 
 COCOAPODS: 1.6.1

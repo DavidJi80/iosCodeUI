@@ -45,7 +45,6 @@
     [super viewDidLoad];
     [self initNavigationItem];
     [self initView];
-
 }
 
 -(void)initNavigationItem{
@@ -65,9 +64,6 @@
     //self.navigationController.toolbarHidden=NO;
     //设置UIToolbar的外观
     //self.navigationController.toolbar.barStyle=UIBarStyleBlackOpaque;
-    
-    
-    
 }
 
 
