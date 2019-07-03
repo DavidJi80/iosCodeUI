@@ -11,6 +11,7 @@
 #import "OfficialDemoGLKVC.h"
 #import "TextureViewController.h"
 #import "Texture2GLKVC.h"
+#import "TextureMultiGLKVC.h"
 
 @interface MyHomeViewController ()
 
@@ -18,6 +19,7 @@
 @property(nonatomic,strong) UIButton * glKitTextureBtn;
 @property(nonatomic,strong) UIButton * glKitTexture2Btn;
 @property(nonatomic,strong) UIButton * glKitOfficialBtn;
+@property(nonatomic,strong) UIButton * glKitHHBtn;
 
 @end
 
@@ -28,7 +30,7 @@
     
     
     _glKitOfficialBtn=[UIButton new];
-    _glKitOfficialBtn.backgroundColor=[UIColor yellowColor];
+    _glKitOfficialBtn.backgroundColor=[UIColor brownColor];
     _glKitOfficialBtn.frame=CGRectMake(30, 90, SCREEN_WIDTH-60, 45);
     [_glKitOfficialBtn setTitle:@"GLKit Official Demo" forState:UIControlStateNormal];
     [_glKitOfficialBtn.layer setCornerRadius:10.0];
@@ -58,6 +60,14 @@
     [_glKitTexture2Btn.layer setCornerRadius:10.0];
     [_glKitTexture2Btn addTarget:self action:@selector(drawTexture2:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.glKitTexture2Btn];
+    
+    _glKitHHBtn=[UIButton new];
+    _glKitHHBtn.backgroundColor=[UIColor redColor];
+    _glKitHHBtn.frame=CGRectMake(30, 270, 145, 45);
+    [_glKitHHBtn setTitle:@"GLKit 混合" forState:UIControlStateNormal];
+    [_glKitHHBtn.layer setCornerRadius:10.0];
+    [_glKitHHBtn addTarget:self action:@selector(drawTextureHH:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.glKitHHBtn];
 }
 
 -(void)drawTriangle:(UIButton*)sender{
@@ -77,6 +87,11 @@
 
 -(void)drawTexture2:(UIButton*)sender{
     Texture2GLKVC * vc=[[Texture2GLKVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)drawTextureHH:(UIButton*)sender{
+    TextureMultiGLKVC * vc=[[TextureMultiGLKVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

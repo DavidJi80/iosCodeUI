@@ -75,15 +75,15 @@ static const SceneVertex vertices[] = {
      6. 为缓存提供数据
      */
     /**
+     void glGenBuffers(GLsizei n, GLuint *buffers);
      为缓存生成一个独一无二的标识符
-     glGenBuffers(1, &vertexBufferID)
-        参数1: 为缓存生成一个独一无二的标识符
-        参数2：要生成缓存标识符的数量
+        参数1: 指定要生成的缓存标识符的数量
+        参数2: 是一个指针，指向生成的标识符的内存位置
      */
     glGenBuffers(1,&vertextBufferID);
     /**
+     void glBindBuffer(GLenum target, GLuint buffer);
      将标识符绑定到当前缓存，为接下来的运算绑定缓存
-     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID)
         参数1：用于指定要绑定那一种类型的缓存，
                 OPenGL ES2.0对于glbindBuffer()的实现只支持两种类型的缓存
                 GL_ARRAY_BUFFER：顶点缓冲区对象
@@ -92,8 +92,8 @@ static const SceneVertex vertices[] = {
      */
     glBindBuffer(GL_ARRAY_BUFFER, vertextBufferID);
     /**
-     复制数据到缓存中
-     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+     void glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);
+     复制顶点数据到当前上下文所绑定的顶点缓存中
          参数1：指定要更新当前上下文中所绑定的是哪一种缓存
          参数2：指定要复制这个缓存字节的数量
          参数3：复制的字节的地址
@@ -124,15 +124,14 @@ static const SceneVertex vertices[] = {
     glClearColor(0.0f,0.0f,0.0f,1.0f);                  //设置背景色
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clear Frame Buffer
     /**
-     启动
-     通过glEnableVertexAttribArray()来启动顶点缓存渲染操作。
+     void glEnableVertexAttribArray(GLuint index);
+     启动，通过glEnableVertexAttribArray()来启动顶点缓存渲染操作。
      OpenGL ES 所支持的每一个渲染操作都可以单独的使用保存在当前OpenGL ES上下文中的设置来开启或关闭。
      */
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     /**
-     设置指针。
-     glVertexAttribPointer()函数会告诉OpenGL ES顶点数据在哪里，以及怎么解释为每个顶点保存的数据。
-     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), NULL);
+     void glVertexAttribPointer(GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *ptr);
+     设置指针。glVertexAttribPointer()函数会告诉OpenGL ES顶点数据在哪里，以及怎么解释为每个顶点保存的数据。
          参数1：指示当前绑定的缓存包含每个顶点的位置信息
          参数2：指示每个位置有三个部分
          参数3：告诉OpenGL ES每个部分都保存为一个浮点类型的值
@@ -147,8 +146,8 @@ static const SceneVertex vertices[] = {
                           sizeof(SceneVertex),
                           NULL);
     /**
+     void glDrawArrays(GLenum mode, GLint first, GLsizei count);
      绘图。通过调用glDrawArrays()来执行绘图。
-     glDrawArrays(GL_TRIANGLES, 0, 3);
          参数1：告诉GPU怎么处理在绑定的顶点缓存内的顶点数据
             GL_POINTS ：把每一个顶点作为一个点进行处理，顶点n即定义了点n，共绘制N个点
             GL_LINES ：把每一个顶点作为一个独立的线段，顶点2n－1和2n之间共定义了n条线段，总共绘制N/2条线段
@@ -173,6 +172,10 @@ static const SceneVertex vertices[] = {
     GLKView *view = (GLKView *)self.view;
     [EAGLContext setCurrentContext:view.context];
     if ( 0 != vertextBufferID) {
+        /**
+         void glDeleteBuffers(GLsizei n, const GLuint *buffers);
+         删除不再需要的顶点缓存和上下文
+         */
         glDeleteBuffers(1,&vertextBufferID);    //删除缓存
         vertextBufferID = 0;
     }

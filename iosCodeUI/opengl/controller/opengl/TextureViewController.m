@@ -74,13 +74,12 @@ static const SceneVertex vertices[] = {
  设置顶点缓存buffer
  */
 - (void)fillVertexArray{
-    glGenBuffers(1, &vertextBufferID);                                          //申请一个标识符
-    glBindBuffer(GL_ARRAY_BUFFER, vertextBufferID);                             //绑定指定标识符的缓存为当前缓存
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);  //复制顶点数据从CPU到GPU
+    glGenBuffers(1, &vertextBufferID);                                          //1. 申请一个标识符
+    glBindBuffer(GL_ARRAY_BUFFER, vertextBufferID);                             //2. 绑定指定标识符的缓存为当前缓存
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);  //3. 复制顶点数据从CPU到GPU
+    glEnableVertexAttribArray(GLKVertexAttribPosition);                         //4. 顶点数据缓存
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), NULL + offsetof(SceneVertex, positionCoords));                                 //5. 设置指针从顶点数组中读取数据
     
-    
-    glEnableVertexAttribArray(GLKVertexAttribPosition);                         //顶点数据缓存
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), NULL + offsetof(SceneVertex, positionCoords));                                 //设置指针从顶点数组中读取数据
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);                        //纹理
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(SceneVertex), NULL + offsetof(SceneVertex, textureCoords));
 }
