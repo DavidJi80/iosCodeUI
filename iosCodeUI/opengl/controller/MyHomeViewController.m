@@ -13,6 +13,7 @@
 #import "Texture2GLKVC.h"
 #import "TextureMultiGLKVC.h"
 #import "TextureSamplingGLKVC.h"
+#import "MultiTextureGLKVC.h"
 
 @interface MyHomeViewController ()
 
@@ -22,6 +23,7 @@
 @property(nonatomic,strong) UIButton * glKitOfficialBtn;
 @property(nonatomic,strong) UIButton * glKitHHBtn;
 @property(nonatomic,strong) UIButton * glKitSamplingBtn;
+@property(nonatomic,strong) UIButton * glKitMultiTextureBtn;
 
 @end
 
@@ -29,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     _glKitOfficialBtn=[UIButton new];
     _glKitOfficialBtn.backgroundColor=[UIColor brownColor];
@@ -78,6 +79,14 @@
     [_glKitSamplingBtn.layer setCornerRadius:10.0];
     [_glKitSamplingBtn addTarget:self action:@selector(drawTextureSampling:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.glKitSamplingBtn];
+    
+    _glKitMultiTextureBtn=[UIButton new];
+    _glKitMultiTextureBtn.backgroundColor=[UIColor darkGrayColor];
+    _glKitMultiTextureBtn.frame=CGRectMake(30, 330, 145, 45);
+    [_glKitMultiTextureBtn setTitle:@"GLKit 多重纹理" forState:UIControlStateNormal];
+    [_glKitMultiTextureBtn.layer setCornerRadius:10.0];
+    [_glKitMultiTextureBtn addTarget:self action:@selector(drawMultiTexture:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.glKitMultiTextureBtn];
 }
 
 -(void)drawTriangle:(UIButton*)sender{
@@ -107,6 +116,11 @@
 
 -(void)drawTextureSampling:(UIButton*)sender{
     TextureSamplingGLKVC * vc=[[TextureSamplingGLKVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)drawMultiTexture:(UIButton*)sender{
+    MultiTextureGLKVC * vc=[[MultiTextureGLKVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

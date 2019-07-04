@@ -27,6 +27,8 @@
 		046888EF22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888EE22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m */; };
 		046888F222CC8283003AB513 /* TextureSamplingGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */; };
 		046888F422CC9FDA003AB513 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 046888F322CC9FDA003AB513 /* grid.png */; };
+		046888F722CDA2C8003AB513 /* MultiTextureGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888F622CDA2C8003AB513 /* MultiTextureGLKVC.m */; };
+		046888F922CDA729003AB513 /* beetle.png in Resources */ = {isa = PBXBuildFile; fileRef = 046888F822CDA729003AB513 /* beetle.png */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -107,6 +109,9 @@
 		046888F022CC8283003AB513 /* TextureSamplingGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureSamplingGLKVC.h; sourceTree = "<group>"; };
 		046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureSamplingGLKVC.m; sourceTree = "<group>"; };
 		046888F322CC9FDA003AB513 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
+		046888F522CDA2C8003AB513 /* MultiTextureGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiTextureGLKVC.h; sourceTree = "<group>"; };
+		046888F622CDA2C8003AB513 /* MultiTextureGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiTextureGLKVC.m; sourceTree = "<group>"; };
+		046888F822CDA729003AB513 /* beetle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beetle.png; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -239,6 +244,8 @@
 				046888EE22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m */,
 				046888F022CC8283003AB513 /* TextureSamplingGLKVC.h */,
 				046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */,
+				046888F522CDA2C8003AB513 /* MultiTextureGLKVC.h */,
+				046888F622CDA2C8003AB513 /* MultiTextureGLKVC.m */,
 			);
 			path = opengl;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 			children = (
 				046888EA22CB7939003AB513 /* flower.jpg */,
 				046888E922CB7939003AB513 /* honeybee.png */,
+				046888F822CDA729003AB513 /* beetle.png */,
 				046888D622C20C58003AB513 /* Demo.jpg */,
 				046888F322CC9FDA003AB513 /* grid.png */,
 			);
@@ -633,6 +641,7 @@
 				046888EB22CB7939003AB513 /* honeybee.png in Resources */,
 				046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */,
 				046888F422CC9FDA003AB513 /* grid.png in Resources */,
+				046888F922CDA729003AB513 /* beetle.png in Resources */,
 				27D0BD452216B99E00C7AD30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,6 +734,7 @@
 				04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */,
 				04B8A91522423B910004789E /* Frame.m in Sources */,
 				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,
+				046888F722CDA2C8003AB513 /* MultiTextureGLKVC.m in Sources */,
 				046E1C0F228A9DE0000839EF /* PreFetchViewController.m in Sources */,
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
