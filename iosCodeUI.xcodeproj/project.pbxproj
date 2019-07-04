@@ -25,6 +25,8 @@
 		046888EB22CB7939003AB513 /* honeybee.png in Resources */ = {isa = PBXBuildFile; fileRef = 046888E922CB7939003AB513 /* honeybee.png */; };
 		046888EC22CB7939003AB513 /* flower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046888EA22CB7939003AB513 /* flower.jpg */; };
 		046888EF22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888EE22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m */; };
+		046888F222CC8283003AB513 /* TextureSamplingGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */; };
+		046888F422CC9FDA003AB513 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 046888F322CC9FDA003AB513 /* grid.png */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -102,6 +104,9 @@
 		046888EA22CB7939003AB513 /* flower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flower.jpg; sourceTree = "<group>"; };
 		046888ED22CB7A8A003AB513 /* AGLKTextureMultiBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGLKTextureMultiBuffer.h; sourceTree = "<group>"; };
 		046888EE22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGLKTextureMultiBuffer.m; sourceTree = "<group>"; };
+		046888F022CC8283003AB513 /* TextureSamplingGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureSamplingGLKVC.h; sourceTree = "<group>"; };
+		046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextureSamplingGLKVC.m; sourceTree = "<group>"; };
+		046888F322CC9FDA003AB513 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -232,6 +237,8 @@
 				046888E722CB76DD003AB513 /* TextureMultiGLKVC.m */,
 				046888ED22CB7A8A003AB513 /* AGLKTextureMultiBuffer.h */,
 				046888EE22CB7A8A003AB513 /* AGLKTextureMultiBuffer.m */,
+				046888F022CC8283003AB513 /* TextureSamplingGLKVC.h */,
+				046888F122CC8283003AB513 /* TextureSamplingGLKVC.m */,
 			);
 			path = opengl;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				046888EA22CB7939003AB513 /* flower.jpg */,
 				046888E922CB7939003AB513 /* honeybee.png */,
 				046888D622C20C58003AB513 /* Demo.jpg */,
+				046888F322CC9FDA003AB513 /* grid.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -624,6 +632,7 @@
 				046888EC22CB7939003AB513 /* flower.jpg in Resources */,
 				046888EB22CB7939003AB513 /* honeybee.png in Resources */,
 				046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */,
+				046888F422CC9FDA003AB513 /* grid.png in Resources */,
 				27D0BD452216B99E00C7AD30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +715,7 @@
 				04B8A90722408F7E0004789E /* Video.m in Sources */,
 				046D0DD3223B39C100FF7D44 /* Utility.m in Sources */,
 				046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */,
+				046888F222CC8283003AB513 /* TextureSamplingGLKVC.m in Sources */,
 				27D0BD56221A573000C7AD30 /* Person.m in Sources */,
 				046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */,
 				04810DBA2293C9B800C64CC1 /* VideoPlayerViewController.m in Sources */,

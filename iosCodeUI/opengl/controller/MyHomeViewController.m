@@ -12,6 +12,7 @@
 #import "TextureViewController.h"
 #import "Texture2GLKVC.h"
 #import "TextureMultiGLKVC.h"
+#import "TextureSamplingGLKVC.h"
 
 @interface MyHomeViewController ()
 
@@ -20,6 +21,7 @@
 @property(nonatomic,strong) UIButton * glKitTexture2Btn;
 @property(nonatomic,strong) UIButton * glKitOfficialBtn;
 @property(nonatomic,strong) UIButton * glKitHHBtn;
+@property(nonatomic,strong) UIButton * glKitSamplingBtn;
 
 @end
 
@@ -68,6 +70,14 @@
     [_glKitHHBtn.layer setCornerRadius:10.0];
     [_glKitHHBtn addTarget:self action:@selector(drawTextureHH:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.glKitHHBtn];
+    
+    _glKitSamplingBtn=[UIButton new];
+    _glKitSamplingBtn.backgroundColor=[UIColor redColor];
+    _glKitSamplingBtn.frame=CGRectMake(200, 270, 145, 45);
+    [_glKitSamplingBtn setTitle:@"GLKit Sampling" forState:UIControlStateNormal];
+    [_glKitSamplingBtn.layer setCornerRadius:10.0];
+    [_glKitSamplingBtn addTarget:self action:@selector(drawTextureSampling:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.glKitSamplingBtn];
 }
 
 -(void)drawTriangle:(UIButton*)sender{
@@ -92,6 +102,11 @@
 
 -(void)drawTextureHH:(UIButton*)sender{
     TextureMultiGLKVC * vc=[[TextureMultiGLKVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)drawTextureSampling:(UIButton*)sender{
+    TextureSamplingGLKVC * vc=[[TextureSamplingGLKVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
