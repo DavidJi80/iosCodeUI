@@ -117,7 +117,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 -(void)showSelect{
     NSString * selectedIndexPaths=@"";
     for (NSIndexPath * indexPath in self.tableView.indexPathsForSelectedRows){
-        selectedIndexPaths=[NSString stringWithFormat:@"%@[%d,%d],",selectedIndexPaths,indexPath.section,indexPath.row];
+        selectedIndexPaths=[NSString stringWithFormat:@"%@[%ld,%d],",selectedIndexPaths,indexPath.section,indexPath.row];
     }
     UIAlertController * alert=[UIAlertController alertControllerWithTitle:@"选中" message:selectedIndexPaths preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];

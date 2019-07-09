@@ -38,7 +38,7 @@ static const SceneVertex vertices[] = {
 @implementation TextureMultiGLKVC
 
 
-#pragma mark --  生命周期
+#pragma mark -  生命周期
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,7 +93,7 @@ static const SceneVertex vertices[] = {
     [EAGLContext setCurrentContext:nil];
 }
 
-#pragma mark --  懒加载
+#pragma mark -  懒加载
 /**
  GLKBaseEffect使我们不需要编写shader Language代码就可以简单完成图形绘制
  */
@@ -106,7 +106,7 @@ static const SceneVertex vertices[] = {
     return _baseEffect;
 }
 
-#pragma mark -- GLKViewDelegate
+#pragma mark - GLKViewDelegate
 /*
  这两个方法每帧都执行一次（循环执行），执行频率与屏幕刷新率相同。
  第一次循环时，先调用“glkView”再调用“update”。

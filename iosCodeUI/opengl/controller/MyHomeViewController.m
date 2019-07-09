@@ -14,6 +14,7 @@
 #import "TextureMultiGLKVC.h"
 #import "TextureSamplingGLKVC.h"
 #import "MultiTextureGLKVC.h"
+#import "LightGLKVC.h"
 
 @interface MyHomeViewController ()
 
@@ -24,6 +25,7 @@
 @property(nonatomic,strong) UIButton * glKitHHBtn;
 @property(nonatomic,strong) UIButton * glKitSamplingBtn;
 @property(nonatomic,strong) UIButton * glKitMultiTextureBtn;
+@property(nonatomic,strong) UIButton * glKitLightBtn;
 
 @end
 
@@ -87,6 +89,14 @@
     [_glKitMultiTextureBtn.layer setCornerRadius:10.0];
     [_glKitMultiTextureBtn addTarget:self action:@selector(drawMultiTexture:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.glKitMultiTextureBtn];
+    
+    _glKitLightBtn=[UIButton new];
+    _glKitLightBtn.backgroundColor=[UIColor darkGrayColor];
+    _glKitLightBtn.frame=CGRectMake(200, 330, 145, 45);
+    [_glKitLightBtn setTitle:@"GLKit 灯光" forState:UIControlStateNormal];
+    [_glKitLightBtn.layer setCornerRadius:10.0];
+    [_glKitLightBtn addTarget:self action:@selector(drawLight:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.glKitLightBtn];
 }
 
 -(void)drawTriangle:(UIButton*)sender{
@@ -121,6 +131,11 @@
 
 -(void)drawMultiTexture:(UIButton*)sender{
     MultiTextureGLKVC * vc=[[MultiTextureGLKVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)drawLight:(UIButton*)sender{
+    LightGLKVC * vc=[[LightGLKVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
