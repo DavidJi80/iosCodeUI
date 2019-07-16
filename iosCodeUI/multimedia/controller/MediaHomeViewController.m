@@ -11,6 +11,7 @@
 #import "PhotosViewController.h"
 #import "AVCaptureViewController.h"
 #import "CoreImageViewController.h"
+#import "AVCaptureCoreImageVC.h"
 
 @interface MediaHomeViewController ()
 
@@ -22,6 +23,7 @@
 @property(nonatomic,strong) UIButton * captureBtn;
 //Core Image Foundation
 @property(nonatomic,strong) UIButton * coreImageBtn;
+@property(nonatomic,strong) UIButton * coreImageCaptureBtn;
 
 @end
 
@@ -36,6 +38,7 @@
     [_imgPickerBtn setTitle:@"UIImagePickerController" forState:UIControlStateNormal];
     [_imgPickerBtn.layer setCornerRadius:10.0];
     [_imgPickerBtn addTarget:self action:@selector(openVideoView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.imgPickerBtn];
     
     _photosBtn=[UIButton new];
     _photosBtn.backgroundColor=[UIColor redColor];
@@ -43,6 +46,7 @@
     [_photosBtn setTitle:@"Photos Frameworks" forState:UIControlStateNormal];
     [_photosBtn.layer setCornerRadius:10.0];
     [_photosBtn addTarget:self action:@selector(openPhotosFrame:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.photosBtn];
     
     _captureBtn=[UIButton new];
     _captureBtn.backgroundColor=[UIColor greenColor];
@@ -50,6 +54,7 @@
     [_captureBtn setTitle:@"AVFoundation Capture" forState:UIControlStateNormal];
     [_captureBtn.layer setCornerRadius:10.0];
     [_captureBtn addTarget:self action:@selector(openCapture:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.captureBtn];
     
     _coreImageBtn=[UIButton new];
     _coreImageBtn.backgroundColor=[UIColor grayColor];
@@ -57,12 +62,15 @@
     [_coreImageBtn setTitle:@"Core Image Foundation" forState:UIControlStateNormal];
     [_coreImageBtn.layer setCornerRadius:10.0];
     [_coreImageBtn addTarget:self action:@selector(openCoreImage:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [self.view addSubview:self.imgPickerBtn];
-    [self.view addSubview:self.photosBtn];
-    [self.view addSubview:self.captureBtn];
     [self.view addSubview:self.coreImageBtn];
+    
+    _coreImageCaptureBtn=[UIButton new];
+    _coreImageCaptureBtn.backgroundColor=[UIColor darkGrayColor];
+    _coreImageCaptureBtn.frame=CGRectMake(30, 330, SCREEN_WIDTH-60, 45);
+    [_coreImageCaptureBtn setTitle:@"Capture & Core Image" forState:UIControlStateNormal];
+    [_coreImageCaptureBtn.layer setCornerRadius:10.0];
+    [_coreImageCaptureBtn addTarget:self action:@selector(openCoreImageCapture:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.coreImageCaptureBtn];
     
 }
 
@@ -86,5 +94,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)openCoreImageCapture:(UIButton*)sender{
+    AVCaptureCoreImageVC * vc=[[AVCaptureCoreImageVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

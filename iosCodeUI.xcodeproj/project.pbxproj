@@ -30,6 +30,11 @@
 		046888F722CDA2C8003AB513 /* MultiTextureGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888F622CDA2C8003AB513 /* MultiTextureGLKVC.m */; };
 		046888F922CDA729003AB513 /* beetle.png in Resources */ = {isa = PBXBuildFile; fileRef = 046888F822CDA729003AB513 /* beetle.png */; };
 		046888FC22CDDCC4003AB513 /* LightGLKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888FB22CDDCC4003AB513 /* LightGLKVC.m */; };
+		046888FF22D4AEF4003AB513 /* AVCaptureCoreImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888FE22D4AEF4003AB513 /* AVCaptureCoreImageVC.m */; };
+		0468890822DC52A4003AB513 /* McDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0468890722DC52A4003AB513 /* McDownloadViewController.m */; };
+		0468891022DC64A0003AB513 /* MCDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0468890A22DC64A0003AB513 /* MCDownloader.m */; };
+		0468891122DC64A0003AB513 /* MCDownloadReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0468890B22DC64A0003AB513 /* MCDownloadReceipt.m */; };
+		0468891222DC64A0003AB513 /* MCDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0468890F22DC64A0003AB513 /* MCDownloadOperation.m */; };
 		046D0DAB223619CD00FF7D44 /* MediaHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */; };
 		046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DAD2236452200FF7D44 /* PhotosViewController.m */; };
 		046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D0DB1223670C600FF7D44 /* CollectionTableViewCell.m */; };
@@ -115,6 +120,16 @@
 		046888F822CDA729003AB513 /* beetle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beetle.png; sourceTree = "<group>"; };
 		046888FA22CDDCC4003AB513 /* LightGLKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightGLKVC.h; sourceTree = "<group>"; };
 		046888FB22CDDCC4003AB513 /* LightGLKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LightGLKVC.m; sourceTree = "<group>"; };
+		046888FD22D4AEF4003AB513 /* AVCaptureCoreImageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureCoreImageVC.h; sourceTree = "<group>"; };
+		046888FE22D4AEF4003AB513 /* AVCaptureCoreImageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureCoreImageVC.m; sourceTree = "<group>"; };
+		0468890622DC52A4003AB513 /* McDownloadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = McDownloadViewController.h; sourceTree = "<group>"; };
+		0468890722DC52A4003AB513 /* McDownloadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = McDownloadViewController.m; sourceTree = "<group>"; };
+		0468890A22DC64A0003AB513 /* MCDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDownloader.m; sourceTree = "<group>"; };
+		0468890B22DC64A0003AB513 /* MCDownloadReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDownloadReceipt.m; sourceTree = "<group>"; };
+		0468890C22DC64A0003AB513 /* MCDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDownloadOperation.h; sourceTree = "<group>"; };
+		0468890D22DC64A0003AB513 /* MCDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDownloader.h; sourceTree = "<group>"; };
+		0468890E22DC64A0003AB513 /* MCDownloadReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCDownloadReceipt.h; sourceTree = "<group>"; };
+		0468890F22DC64A0003AB513 /* MCDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCDownloadOperation.m; sourceTree = "<group>"; };
 		046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaHomeViewController.h; sourceTree = "<group>"; };
 		046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaHomeViewController.m; sourceTree = "<group>"; };
 		046D0DAC2236452200FF7D44 /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
@@ -267,6 +282,27 @@
 			path = img;
 			sourceTree = "<group>";
 		};
+		0468890022DC51E3003AB513 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0468890922DC64A0003AB513 /* MCDownloadManager */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		0468890922DC64A0003AB513 /* MCDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				0468890A22DC64A0003AB513 /* MCDownloader.m */,
+				0468890B22DC64A0003AB513 /* MCDownloadReceipt.m */,
+				0468890C22DC64A0003AB513 /* MCDownloadOperation.h */,
+				0468890D22DC64A0003AB513 /* MCDownloader.h */,
+				0468890E22DC64A0003AB513 /* MCDownloadReceipt.h */,
+				0468890F22DC64A0003AB513 /* MCDownloadOperation.m */,
+			);
+			path = MCDownloadManager;
+			sourceTree = "<group>";
+		};
 		046D0DAF2236703900FF7D44 /* multimedia */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +382,8 @@
 				0409400A2244D55900760381 /* AVCompositionViewController.m */,
 				0465869222AFA8A9006002CC /* AVCaptureViewController.h */,
 				0465869322AFA8A9006002CC /* AVCaptureViewController.m */,
+				046888FD22D4AEF4003AB513 /* AVCaptureCoreImageVC.h */,
+				046888FE22D4AEF4003AB513 /* AVCaptureCoreImageVC.m */,
 			);
 			path = av.foundation;
 			sourceTree = "<group>";
@@ -391,6 +429,8 @@
 				27FE7B91222F630D002069FB /* ProcessViewController.m */,
 				046D0DB62237560F00FF7D44 /* AlertViewController.h */,
 				046D0DB72237560F00FF7D44 /* AlertViewController.m */,
+				0468890622DC52A4003AB513 /* McDownloadViewController.h */,
+				0468890722DC52A4003AB513 /* McDownloadViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -530,6 +570,7 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				0468890022DC51E3003AB513 /* libs */,
 				27EDB1DE221BDB7E008F5C94 /* root */,
 				04810DAE2293C68C00C64CC1 /* home */,
 				04810DB22293C79700C64CC1 /* multimedia */,
@@ -715,6 +756,8 @@
 				046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */,
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
+				046888FF22D4AEF4003AB513 /* AVCaptureCoreImageVC.m in Sources */,
+				0468891022DC64A0003AB513 /* MCDownloader.m in Sources */,
 				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
 				04217D792234C50F006202A4 /* VideoViewController.m in Sources */,
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
@@ -743,11 +786,14 @@
 				046888F722CDA2C8003AB513 /* MultiTextureGLKVC.m in Sources */,
 				046E1C0F228A9DE0000839EF /* PreFetchViewController.m in Sources */,
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
+				0468890822DC52A4003AB513 /* McDownloadViewController.m in Sources */,
+				0468891222DC64A0003AB513 /* MCDownloadOperation.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				04B8A90F22423B030004789E /* FrameCollectionViewCell.m in Sources */,
 				046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */,
 				27EFD34F221BB1AD00D140AE /* SimpleTableViewController.m in Sources */,
+				0468891122DC64A0003AB513 /* MCDownloadReceipt.m in Sources */,
 				046888DF22C5B9B5003AB513 /* AGLKContext.m in Sources */,
 				2723BEE8222933E200CC552B /* GcdDemoViewController.m in Sources */,
 				046D0DC822389F6D00FF7D44 /* Asset.m in Sources */,

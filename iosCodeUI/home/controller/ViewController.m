@@ -17,6 +17,7 @@
 #import "VideoPlayerViewController.h"
 #import "ProcessViewController.h"
 #import "AlertViewController.h"
+#import "McDownloadViewController.h"
 
 @interface ViewController ()
 
@@ -33,6 +34,8 @@
 @property(nonatomic,strong) UIButton * alertBtn;
 @property(nonatomic,strong) UIButton * videoNavBtn;
 @property(nonatomic,strong) UIButton * processBtn;
+
+@property(nonatomic,strong) UIButton * downloadBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -159,6 +162,15 @@
     [_processBtn.layer setCornerRadius:10.0];
     [_processBtn addTarget:self action:@selector(openProcessDemoView:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    _downloadBtn=[UIButton new];
+    _downloadBtn.backgroundColor=[UIColor magentaColor];
+    _downloadBtn.frame=CGRectMake(200, 450, 145, 45);
+    [_downloadBtn setTitle:@"Download Demo" forState:UIControlStateNormal];
+    [_downloadBtn.layer setCornerRadius:10.0];
+    [_downloadBtn addTarget:self action:@selector(download:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
     [self.view addSubview:self.enterBtn];
@@ -172,6 +184,8 @@
     [self.view addSubview:self.alertBtn];
     [self.view addSubview:self.videoNavBtn];
     [self.view addSubview:self.processBtn];
+    [self.view addSubview:self.downloadBtn];
+    
 }
 
 -(void)assignError{
@@ -273,6 +287,12 @@
         ProcessViewController * vc=[[ProcessViewController alloc]init];
         [self presentViewController:vc animated:YES completion:nil];
     });
+}
+
+-(void)download:(UIButton*)sender{
+    McDownloadViewController * vc=[[McDownloadViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
