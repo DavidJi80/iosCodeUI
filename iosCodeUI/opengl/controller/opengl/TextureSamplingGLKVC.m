@@ -5,7 +5,6 @@
 //  Created by mac on 2019/7/3.
 //  Copyright © 2019 季舟. All rights reserved.
 //
-
 #import "TextureSamplingGLKVC.h"
 
 typedef struct {
@@ -26,7 +25,6 @@ static const SceneVertex defaultVertices[] = {
     {{ 0.5f, -0.5f, 0.0f}, {1.0f, 0.0f}},
     {{-0.5f,  0.5f, 0.0f}, {0.0f, 1.0f}},
 };
-
 
 //move结构体
 static GLKVector3 movementVectors[3] = {

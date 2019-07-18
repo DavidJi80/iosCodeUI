@@ -6,11 +6,11 @@
 //  Copyright © 2019 季舟. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AVCaptureCoreImageVC : UIViewController
+@interface AVCaptureCoreImageVC : GLKViewController
 
 @end
 

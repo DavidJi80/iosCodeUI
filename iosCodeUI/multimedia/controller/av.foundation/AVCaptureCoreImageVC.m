@@ -8,22 +8,16 @@
 
 #import "AVCaptureCoreImageVC.h"
 #import <AVFoundation/AVFoundation.h>
-#import "AppDelegate.h"
-#import <GLKit/GLKit.h>
 
-@interface AVCaptureCoreImageVC ()
-
-@property (strong , nonatomic) EAGLContext *eaglContext;
-@property (strong , nonatomic) GLKView *videoPreviewView;
+@interface AVCaptureCoreImageVC ()<AVCaptureVideoDataOutputSampleBufferDelegate>
 
 //AVFoundation
-@property (strong, nonatomic) AVCaptureSession *session;
-@property (strong, nonatomic) AVCaptureAudioDataOutput *audioOutput;
-@property (strong, nonatomic) AVCaptureVideoDataOutput *videoOutput;
-/**
- 录制的数据传出的队列
- */
-@property (strong, nonatomic) dispatch_queue_t queue;
+@property (strong, nonatomic) AVCaptureSession * session;
+@property (strong, nonatomic) AVCaptureVideoDataOutput * videoOutput;
+@property (strong, nonatomic) dispatch_queue_t queue;                    //录制的数据传出的队列
+
+//UI
+@property(nonatomic,strong) UIImageView * outputImageView;
 
 @end
 
@@ -31,74 +25,84 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self initCamera];
+    [self initView];
+    [self initCapture];
 }
 
-- (void)loadView{
-    UIView *window = ((AppDelegate *)[UIApplication sharedApplication].delegate).window;
-    _eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    _videoPreviewView = [[GLKView alloc] initWithFrame:window.bounds context:_eaglContext];
-    _videoPreviewView.enableSetNeedsDisplay = NO;
-    /**
-     because the native video image from the back camera is in UIDeviceOrientationLandscapeLeft
-     (i.e. the home button is on the right),we need to apply a clockwise 90 degree transform so
-     that we can draw the video preview as if we were in a landscape-oriented view; if you're
-     using the front camera and you want to have a mirrored preview (so that the user is seeing
-     themselves in the mirror), you need to apply an additional horizontal flip (by concatenating
-     CGAffineTransformMakeScale(-1.0, 1.0) to the rotation transform)
-     因为从后置摄像头获取的原始视频图像在UIDeviceOrientationLandscapeLeft(即HOME按钮在右边),
-     我们需要顺时针方向变换90度,这样能呈现好像我们是在面向景观视频预览;如果您使用的是前置摄像头，
-     并且希望得到镜像预览(以便用户在镜子中看到自己)，则需要应用额外的水平翻转
-     (通过将CGAffineTransformMakeScale(-1.0, 1.0)连接到旋转转换)
-     */
-    _videoPreviewView.transform = CGAffineTransformMakeRotation(M_PI_2);
-    _videoPreviewView.frame = window.bounds;
-    /**
-     we make our video preview view a subview of the window, and send it to the back; this makes
-     FHViewController's view (and its UI elements) on top of the video preview, and also makes
-     video preview unaffected by device rotation
-     使我们的视频预览视图作为窗口的子视图，并将其发送到后面;这使得FHViewController的视图(及其UI元素)之上的视频预览，
-     并使
-     不受设备旋转影响的视频预览
-     */
-    [window addSubview:_videoPreviewView];
-    [window sendSubviewToBack:_videoPreviewView];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
-#pragma mark - Camera Demo
--(void)initCamera{
-    //视频输入
-    AVCaptureDevice *video = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:video error:nil];
-    
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+-(void)initView{
+    _outputImageView=[UIImageView new];
+    _outputImageView.frame=CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    _outputImageView.contentMode =  UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.outputImageView];
+}
+
+
+#pragma mark - AVFountion Capture
+/**
+ 创建简单捕捉会话
+ */
+-(void)initCapture{
+    //1. 视频输入
+    AVCaptureDevice * video = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDeviceInput * videoInput = [AVCaptureDeviceInput deviceInputWithDevice:video error:nil];
+    //2. AVCaptureSession
     AVCaptureSession *session = [[AVCaptureSession alloc] init];
     if ([session canAddInput:videoInput]) {
         [session addInput:videoInput];
     }
     _session = session;
-    [session startRunning];
-    //视频输出
-    _queue = dispatch_queue_create("DataOutputQueue", DISPATCH_QUEUE_SERIAL);
     
+    //3. 视频输出
+    _queue = dispatch_queue_create("DataOutputQueue", DISPATCH_QUEUE_SERIAL);
+    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,nil];
     _videoOutput = [AVCaptureVideoDataOutput new];
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
-                                   nil];
     _videoOutput.videoSettings = videoSettings;
     [_videoOutput setAlwaysDiscardsLateVideoFrames:YES];
     [_videoOutput setSampleBufferDelegate:self queue:self.queue];
     if ([session canAddOutput:_videoOutput]){
         [session addOutput:_videoOutput];
     }
-    AVCaptureConnection *connection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
-    connection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-    //音频输出
-    _audioOutput = [AVCaptureAudioDataOutput new];
-    [_audioOutput setSampleBufferDelegate:self queue:self.queue];
-    if ([session canAddOutput:_audioOutput]){
-        [session addOutput:_audioOutput];
-    }
+    
+    /**
+    //创建图像预览层AVCaptureVideoPreviewLayer
+    AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    previewLayer.frame = self.view.frame;
+    [self.view.layer addSublayer:previewLayer];
+     */
+    
+    //开始会话
+    [session startRunning];
 }
+
+
+
+#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CIImage * sourceImage = [CIImage imageWithCVPixelBuffer:(CVPixelBufferRef)imageBuffer options:nil];
+    CIImage * sepiaCIImage = [self sepiaFilterImage:sourceImage withIntensity:0.9];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.outputImageView.image = [UIImage imageWithCIImage:sepiaCIImage];
+    });
+}
+
+#pragma mark - CoreImage
+- (CIImage*) sepiaFilterImage: (CIImage*)inputImage withIntensity:(CGFloat)intensity{
+    CIFilter* sepiaFilter = [CIFilter filterWithName:@"CISepiaTone"];
+    [sepiaFilter setValue:inputImage forKey:kCIInputImageKey];
+    [sepiaFilter setValue:@(intensity) forKey:kCIInputIntensityKey];
+    return sepiaFilter.outputImage;
+}
+
 
 @end

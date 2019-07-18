@@ -96,7 +96,7 @@
 
 -(void)openCoreImageCapture:(UIButton*)sender{
     AVCaptureCoreImageVC * vc=[[AVCaptureCoreImageVC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 @end

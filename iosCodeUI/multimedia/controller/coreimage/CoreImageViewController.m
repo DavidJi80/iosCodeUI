@@ -71,7 +71,7 @@
 }
 
 -(void)filterImage:(UIButton*)sender{
-    CIImage* sepiaCIImage = [self sepiaFilterImage:self.originalCIImage withIntensity:0.9];
+    CIImage * sepiaCIImage = [self sepiaFilterImage:self.originalCIImage withIntensity:0.9];
     self.outputImageView.image = [UIImage imageWithCIImage:sepiaCIImage];
 }
 
