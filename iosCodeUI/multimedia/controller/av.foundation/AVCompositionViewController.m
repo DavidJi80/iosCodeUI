@@ -24,34 +24,53 @@
 }
 
 -(void)composition{
-    //创建AVMutableComposition
+    //创建一个空的AVMutableComposition对象
     AVMutableComposition *composition = [AVMutableComposition composition];
-    
-    //添加一个空的Track
+    /**
+     添加一个空的Track
+        @mediaType :  媒体类型，AVMediaTypeVideo（视频）
+        @preferredTrackID : 首选Track ID,传入kCMPersistentTrackID_Invalid，则生成一个惟一的Track ID。
+     */
     AVMutableCompositionTrack *videoTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
     //AVMutableCompositionTrack *audioTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
     
+    //定义CMTime表示插入光标点，表示插入媒体片段的位置
+    CMTime cursorTime = kCMTimeZero;
     for (Video * video in _videos){
         NSURL * nsUrl=[NSURL URLWithString:video.url];
+        //AVURLAssetPreferPreciseDurationAndTimingKey值为YES确保当资源的属性使用
         NSDictionary * options=@{AVURLAssetPreferPreciseDurationAndTimingKey:@YES};
         AVAsset * asset=[AVURLAsset URLAssetWithURL:nsUrl options:options];
-        
+        /**
+         AVAsynchronousKeyValueLoading协议载入时可以计算出准确的时长和时间信息。
+         会对载入过程增加一些额外开销，但可以保证资源正处于合适的编辑状态。
+         */
         NSArray * keys=@[@"tracks",@"duration",@"commonMetadata"];
         [asset loadValuesAsynchronouslyForKeys:keys completionHandler:^{
             
         }];
         
-        //从第一个AVAsset中提取视频轨道，返回一个匹配给定媒体类型的轨道数组
-        //不过由于这个媒体只包含一个单独的视频轨道，只取第一个对象
+        /**
+         从一个AVAsset中提取视频轨道，返回一个匹配给定媒体类型的轨道数组
+         不过由于这个媒体只包含一个单独的视频轨道，取第一个对象
+         */
         AVAssetTrack *assetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
-        
-        //定义CMTime表示插入光标点，表示插入媒体片段的位置
-        CMTime cursorTime = kCMTimeZero;
-        //目标是捕捉每个视频前5秒的内容，创建一个CMTimeRange，从kCMTimeZero开始，持续时间5秒
+        /**
+         目标是捕捉每个视频前5秒的内容
+         创建一个CMTimeRange，从kCMTimeZero开始，持续时间5秒
+         */
         CMTime videoDuration = CMTimeMake(5, 1);
         CMTimeRange videoTimeRange = CMTimeRangeMake(kCMTimeZero, videoDuration);
-        //在视频轨道上将视频片段插入到轨道中。
+        /**
+         在视频轨道上将视频片段插入到轨道中。
+             @timeRange:要插入的轨道的时间范围。
+             @track:要插入的轨道源
+             @startTime:在合成轨道中表示的开始时间
+             @error:如果没有成功插入track，则返回描述问题的NSError对象。
+         */
         [videoTrack insertTimeRange:videoTimeRange ofTrack:assetTrack atTime:cursorTime error:nil];
+        //移动光标插入时间，让下一段内容在另一段内容最后插入。
+        cursorTime = CMTimeAdd(cursorTime, CMTimeMake(6, 1));   //插入1秒黑屏
         
     }
     

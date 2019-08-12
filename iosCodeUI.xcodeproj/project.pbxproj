@@ -11,6 +11,7 @@
 		0409400B2244D55900760381 /* AVCompositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0409400A2244D55900760381 /* AVCompositionViewController.m */; };
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
+		04435958230110A3009E481D /* IOAssetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04435957230110A3009E481D /* IOAssetVC.m */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
@@ -51,6 +52,7 @@
 		046E1C0C228A9C5F000839EF /* PrefetchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E1C0B228A9C5F000839EF /* PrefetchCollectionView.m */; };
 		046E1C0F228A9DE0000839EF /* PreFetchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E1C0E228A9DE0000839EF /* PreFetchViewController.m */; };
 		04810DBA2293C9B800C64CC1 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04810DB92293C9B800C64CC1 /* VideoPlayerViewController.m */; };
+		049D406922FAD953006F4576 /* PickViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D406822FAD953006F4576 /* PickViewVC.m */; };
 		04B8A900224089B20004789E /* VideoCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A8FF224089B20004789E /* VideoCollectionView.m */; };
 		04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A902224089CC0004789E /* VideoCollectionViewCell.m */; };
 		04B8A90722408F7E0004789E /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8A90622408F7E0004789E /* Video.m */; };
@@ -88,6 +90,8 @@
 		04217D712233E9F7006202A4 /* MyHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeViewController.m; sourceTree = "<group>"; };
 		04217D772234C50F006202A4 /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		04217D782234C50F006202A4 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		04435956230110A3009E481D /* IOAssetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOAssetVC.h; sourceTree = "<group>"; };
+		04435957230110A3009E481D /* IOAssetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOAssetVC.m; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 		046E1C0E228A9DE0000839EF /* PreFetchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreFetchViewController.m; sourceTree = "<group>"; };
 		04810DB82293C99900C64CC1 /* VideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPlayerViewController.h; sourceTree = "<group>"; };
 		04810DB92293C9B800C64CC1 /* VideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerViewController.m; sourceTree = "<group>"; };
+		049D406722FAD953006F4576 /* PickViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickViewVC.h; sourceTree = "<group>"; };
+		049D406822FAD953006F4576 /* PickViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickViewVC.m; sourceTree = "<group>"; };
 		04B8A8FE224089B20004789E /* VideoCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionView.h; sourceTree = "<group>"; };
 		04B8A8FF224089B20004789E /* VideoCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCollectionView.m; sourceTree = "<group>"; };
 		04B8A901224089CC0004789E /* VideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -384,6 +390,8 @@
 				0465869322AFA8A9006002CC /* AVCaptureViewController.m */,
 				046888FD22D4AEF4003AB513 /* AVCaptureCoreImageVC.h */,
 				046888FE22D4AEF4003AB513 /* AVCaptureCoreImageVC.m */,
+				04435956230110A3009E481D /* IOAssetVC.h */,
+				04435957230110A3009E481D /* IOAssetVC.m */,
 			);
 			path = av.foundation;
 			sourceTree = "<group>";
@@ -431,6 +439,8 @@
 				046D0DB72237560F00FF7D44 /* AlertViewController.m */,
 				0468890622DC52A4003AB513 /* McDownloadViewController.h */,
 				0468890722DC52A4003AB513 /* McDownloadViewController.m */,
+				049D406722FAD953006F4576 /* PickViewVC.h */,
+				049D406822FAD953006F4576 /* PickViewVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -761,6 +771,7 @@
 				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
 				04217D792234C50F006202A4 /* VideoViewController.m in Sources */,
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
+				04435958230110A3009E481D /* IOAssetVC.m in Sources */,
 				046888E222C5BAC1003AB513 /* AGLKVertexAttribArrayBuffer.m in Sources */,
 				046888FC22CDDCC4003AB513 /* LightGLKVC.m in Sources */,
 				27D0BD4B2216B99E00C7AD30 /* main.m in Sources */,
@@ -788,6 +799,7 @@
 				27EE5C78221FBF2900BB1BAA /* GestureTableViewController.m in Sources */,
 				0468890822DC52A4003AB513 /* McDownloadViewController.m in Sources */,
 				0468891222DC64A0003AB513 /* MCDownloadOperation.m in Sources */,
+				049D406922FAD953006F4576 /* PickViewVC.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				04B8A90F22423B030004789E /* FrameCollectionViewCell.m in Sources */,

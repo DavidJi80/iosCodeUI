@@ -18,6 +18,7 @@
 #import "ProcessViewController.h"
 #import "AlertViewController.h"
 #import "McDownloadViewController.h"
+#import "PickViewVC.h"
 
 @interface ViewController ()
 
@@ -36,6 +37,7 @@
 @property(nonatomic,strong) UIButton * processBtn;
 
 @property(nonatomic,strong) UIButton * downloadBtn;
+@property(nonatomic,strong) UIButton * pickViewBtn;
 
 
 @property (nonatomic,strong) NSArray * dataSource;
@@ -170,6 +172,13 @@
     [_downloadBtn.layer setCornerRadius:10.0];
     [_downloadBtn addTarget:self action:@selector(download:) forControlEvents:UIControlEventTouchUpInside];
     
+    _pickViewBtn=[UIButton new];
+    _pickViewBtn.backgroundColor=[UIColor blackColor];
+    _pickViewBtn.frame=CGRectMake(30, 510, 145, 45);
+    [_pickViewBtn setTitle:@"Picker View" forState:UIControlStateNormal];
+    [_pickViewBtn.layer setCornerRadius:10.0];
+    [_pickViewBtn addTarget:self action:@selector(pickviewDemo:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [self.view addSubview:self.phoneLabel];
     [self.view addSubview:self.phoneTextField];
@@ -185,6 +194,7 @@
     [self.view addSubview:self.videoNavBtn];
     [self.view addSubview:self.processBtn];
     [self.view addSubview:self.downloadBtn];
+    [self.view addSubview:self.pickViewBtn];
     
 }
 
@@ -291,6 +301,12 @@
 
 -(void)download:(UIButton*)sender{
     McDownloadViewController * vc=[[McDownloadViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)pickviewDemo:(UIButton*)sender{
+    PickViewVC * vc=[[PickViewVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
     
 }
