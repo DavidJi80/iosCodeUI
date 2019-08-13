@@ -12,6 +12,7 @@
 		04217D722233E9F7006202A4 /* MyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D712233E9F7006202A4 /* MyHomeViewController.m */; };
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
 		04435958230110A3009E481D /* IOAssetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04435957230110A3009E481D /* IOAssetVC.m */; };
+		0443595B2301555F009E481D /* IOCaptureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443595A2301555F009E481D /* IOCaptureVC.m */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
@@ -92,6 +93,8 @@
 		04217D782234C50F006202A4 /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		04435956230110A3009E481D /* IOAssetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOAssetVC.h; sourceTree = "<group>"; };
 		04435957230110A3009E481D /* IOAssetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOAssetVC.m; sourceTree = "<group>"; };
+		044359592301555F009E481D /* IOCaptureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOCaptureVC.h; sourceTree = "<group>"; };
+		0443595A2301555F009E481D /* IOCaptureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOCaptureVC.m; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				046888FE22D4AEF4003AB513 /* AVCaptureCoreImageVC.m */,
 				04435956230110A3009E481D /* IOAssetVC.h */,
 				04435957230110A3009E481D /* IOAssetVC.m */,
+				044359592301555F009E481D /* IOCaptureVC.h */,
+				0443595A2301555F009E481D /* IOCaptureVC.m */,
 			);
 			path = av.foundation;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				0468891222DC64A0003AB513 /* MCDownloadOperation.m in Sources */,
 				049D406922FAD953006F4576 /* PickViewVC.m in Sources */,
 				27D0BD3D2216B99B00C7AD30 /* AppDelegate.m in Sources */,
+				0443595B2301555F009E481D /* IOCaptureVC.m in Sources */,
 				27F36FE922263D86009AEACD /* CollectionViewController.m in Sources */,
 				04B8A90F22423B030004789E /* FrameCollectionViewCell.m in Sources */,
 				046D0DDA223B88B000FF7D44 /* AVPlayerViewController.m in Sources */,

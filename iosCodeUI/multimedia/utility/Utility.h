@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Utility : NSObject
 
 + (UIViewController *)getViewControllerByView:(UIView *)view;
++ (NSString *)getNowTime;
 
 @end
 

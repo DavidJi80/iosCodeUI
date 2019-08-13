@@ -20,4 +20,16 @@
     return nil;
 }
 
++ (NSString *)getNowTime{
+    // 获取时间（非本地时区，需转换）
+    NSDate * today = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate:today];
+    // 转换成当地时间
+    NSDate *localeDate = [today dateByAddingTimeInterval:interval];
+    // 时间转换成时间戳
+    NSString *timeSp = [NSString stringWithFormat:@"%ld",(long)[localeDate timeIntervalSince1970]];//@"1517468580"
+    return timeSp;
+}
+
 @end

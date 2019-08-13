@@ -12,6 +12,7 @@
 #import "AVCaptureViewController.h"
 #import "CoreImageViewController.h"
 #import "AVCaptureCoreImageVC.h"
+#import "IOCaptureVC.h"
 
 @interface MediaHomeViewController ()
 
@@ -21,6 +22,7 @@
 @property(nonatomic,strong) UIButton * photosBtn;
 //AVFoundation Capture
 @property(nonatomic,strong) UIButton * captureBtn;
+@property(nonatomic,strong) UIButton * captureWriterBtn;
 //Core Image Foundation
 @property(nonatomic,strong) UIButton * coreImageBtn;
 @property(nonatomic,strong) UIButton * coreImageCaptureBtn;
@@ -50,11 +52,19 @@
     
     _captureBtn=[UIButton new];
     _captureBtn.backgroundColor=[UIColor greenColor];
-    _captureBtn.frame=CGRectMake(30, 210, SCREEN_WIDTH-60, 45);
-    [_captureBtn setTitle:@"AVFoundation Capture" forState:UIControlStateNormal];
+    _captureBtn.frame=CGRectMake(30, 210, (SCREEN_WIDTH-80)/2, 45);
+    [_captureBtn setTitle:@"Capture" forState:UIControlStateNormal];
     [_captureBtn.layer setCornerRadius:10.0];
     [_captureBtn addTarget:self action:@selector(openCapture:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.captureBtn];
+    
+    _captureWriterBtn=[UIButton new];
+    _captureWriterBtn.backgroundColor=[UIColor blackColor];
+    _captureWriterBtn.frame=CGRectMake(30+(SCREEN_WIDTH-70)/2+5, 210, (SCREEN_WIDTH-70)/2, 45);
+    [_captureWriterBtn setTitle:@"Capture&Writer" forState:UIControlStateNormal];
+    [_captureWriterBtn.layer setCornerRadius:10.0];
+    [_captureWriterBtn addTarget:self action:@selector(ioCapture:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_captureWriterBtn];
     
     _coreImageBtn=[UIButton new];
     _coreImageBtn.backgroundColor=[UIColor grayColor];
@@ -81,6 +91,11 @@
 
 -(void)openPhotosFrame:(UIButton*)sender{
     PhotosViewController * vc=[[PhotosViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)ioCapture:(UIButton*)sender{
+    IOCaptureVC * vc=[[IOCaptureVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

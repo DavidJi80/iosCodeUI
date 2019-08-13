@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PhotosFrameworksUtility : NSObject
 
 +(NSString *)formatCMTime:(CMTime)cmTime;
++ (void)saveVideoAtUrl:(NSURL *)nsUrl;
 
 @end
 

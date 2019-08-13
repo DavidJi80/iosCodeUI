@@ -7,6 +7,7 @@
 //
 
 #import "IOAssetVC.h"
+#import "PhotosFrameworksUtility.h"
 
 @interface IOAssetVC ()
 
@@ -103,7 +104,7 @@
             [self.assetWriter finishWritingWithCompletionHandler:^{
                 AVAssetWriterStatus status = self.assetWriter.status;
                 if (status == AVAssetWriterStatusCompleted) {
-                    //
+                    [PhotosFrameworksUtility saveVideoAtUrl:outputUrl];
                 } else {
                     
                 }
