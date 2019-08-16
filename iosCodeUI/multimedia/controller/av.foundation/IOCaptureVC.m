@@ -24,8 +24,12 @@
 @property (nonatomic,strong) AVAssetWriter * assetWriter;
 @property (strong,nonatomic) AVAssetWriterInput * assetWriterVideoInput;
 @property (strong,nonatomic) AVAssetWriterInput * assetWriterAudioInput;
+@property (strong,nonatomic) AVAssetWriterInputPixelBufferAdaptor *assetWriterInputPixelBufferAdaptor;
 @property (nonatomic,assign) bool isWriting;
 @property (nonatomic,strong) NSURL * outputUrl;
+//CoreImage
+@property (nonatomic, strong) CIFilter* filter;
+@property (nonatomic, strong) CIContext* context;
 //UI
 @property(nonatomic,strong) UIButton * cameraBtn;
 @property(nonatomic,strong) UIButton * switchCameraBtn;
@@ -57,7 +61,7 @@
     _switchCameraBtn.frame=CGRectMake(SCREEN_WIDTH-100, SCREEN_HEIGHT-130, 40, 40);
     [_switchCameraBtn setTitle:@"[]" forState:UIControlStateNormal];
     [_switchCameraBtn.layer setCornerRadius:20.0];
-    [_switchCameraBtn addTarget:self action:@selector(switchCameras) forControlEvents:UIControlEventTouchUpInside];
+    //[_switchCameraBtn addTarget:self action:@selector(switchCameras) forControlEvents:UIControlEventTouchUpInside];
     
     
     _pictureBtn=[UIButton new];
@@ -149,30 +153,36 @@
             }
         }];
     }else{
-        // 创建AVAssetWriter
+        //1. 创建AVAssetWriter
         NSString *documentsDirPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)firstObject];
         NSURL *documentsDirUrl=[NSURL fileURLWithPath:documentsDirPath isDirectory:YES];
         self.outputUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@.mp4",[Utility getNowTime]] relativeToURL:documentsDirUrl];
         NSError *wError;
         self.assetWriter = [[AVAssetWriter alloc] initWithURL:self.outputUrl fileType:AVFileTypeQuickTimeMovie error:&wError];
-        // 创建AVAssetWriterInput
+        //2. 创建AVAssetWriterInput
         NSString *fileType = AVFileTypeQuickTimeMovie;
         NSDictionary *videoSettings = [self.videoDataOutput recommendedVideoSettingsForAssetWriterWithOutputFileType:fileType];
         self.assetWriterVideoInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
-        //判断用户界面方向，为输入设置一个合适的转换。
-        //写入会话期间，方向会按照这一设定保持不变。
-        UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-        //self.assetWriterVideoInput.transform = THTransformForDeviceOrientation(orientation);
-        // 将AVAssetWriterInput添加到AVAssetWriter
+        self.assetWriterVideoInput.expectsMediaDataInRealTime = YES;    //设置YES指明这个输入针对实时性进行优化
+        /*2.1. 创建AVAssetWriterInputPixelBufferAdaptor,
+               提供了一个优化的CVPixelBufferPool，使用它可以创建CVPixelBuffer对象来渲染筛选视频帧。*/
+        NSDictionary *attributes =
+        @{
+          (id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA),
+          (id)kCVPixelBufferWidthKey:videoSettings[AVVideoWidthKey],
+          (id)kCVPixelBufferHeightKey:videoSettings[AVVideoHeightKey],
+          (id)kCVPixelFormatOpenGLESCompatibility:(id)kCFBooleanTrue,
+          };
+        self.assetWriterInputPixelBufferAdaptor = [[AVAssetWriterInputPixelBufferAdaptor alloc] initWithAssetWriterInput:self.assetWriterVideoInput sourcePixelBufferAttributes:attributes];
+        //2.2. 将AVAssetWriterInput添加到AVAssetWriter
         if ([self.assetWriter canAddInput:self.assetWriterVideoInput]) {
             [self.assetWriter addInput:self.assetWriterVideoInput];
         }
         
-        //创建AVAssetWriterInput附加AVCaptureAudioDataOutput样本
+        //3. 创建AVAssetWriterInput附加AVCaptureAudioDataOutput样本
         NSDictionary *audioSettings = [self.audioDataOutput recommendedAudioSettingsForAssetWriterWithOutputFileType:fileType];
         self.assetWriterAudioInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
         self.assetWriterAudioInput.expectsMediaDataInRealTime = YES;
-        
         if ([self.assetWriter canAddInput:self.assetWriterAudioInput]) {
             [self.assetWriter addInput:self.assetWriterAudioInput];
         }
@@ -183,14 +193,12 @@
 }
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
-
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     if (self.isWriting) {
         //查看buffer的CMFormatDescription
         CMFormatDescriptionRef formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer);
         //使用CMFormatDescriptionGetMediaType判断媒体类型
         CMMediaType mediaType = CMFormatDescriptionGetMediaType(formatDesc);
-        
         if (mediaType == kCMMediaType_Video) {
             if (self.assetWriter.status==AVAssetWriterStatusUnknown){
                 // 开始写入数据
@@ -198,10 +206,8 @@
                 // 创建一个新的写入会话，传递资源样本的开始时间
                 [self.assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
             }else{
-                if ([self.assetWriterVideoInput isReadyForMoreMediaData]){
-                    // 将样本附加到接收器
-                    [self.assetWriterVideoInput appendSampleBuffer:sampleBuffer];
-                }
+                //[self appendSampleBuffer:sampleBuffer];
+                [self appendSamplePixelBuffer:sampleBuffer];
             }
         }else if(mediaType == kCMMediaType_Audio){
             if (self.assetWriterAudioInput.isReadyForMoreMediaData) {
@@ -215,7 +221,68 @@
 }
 
 
+-(void)appendSampleBuffer:(CMSampleBufferRef)sampleBuffer{
+    if ([self.assetWriterVideoInput isReadyForMoreMediaData]){
+        // 将样本附加到接收器
+        [self.assetWriterVideoInput appendSampleBuffer:sampleBuffer];
+    }
+}
 
+/**
+ 使用assetWriterInputPixelBufferAdaptor输出文件
+ */
+-(void)appendSamplePixelBuffer:(CMSampleBufferRef)sampleBuffer{
+    /**
+     1.
+     获取当前视频样本的CVPixelBufferRef
+     使用CoreImage进行图片转换（添加滤镜）
+     */
+    CVPixelBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CIImage* image = [CIImage imageWithCVImageBuffer:imageBuffer];
+    [self.filter setValue:image forKey:kCIInputImageKey];
+    image = self.filter.outputImage;
+    /**
+     2.
+     从像素buffer适配器池中创建一个空的CVPixelBufferRef
+     将筛选好的CIImage的输出渲染到newPixelBuffer
+     */
+    CVPixelBufferRef newPixelBuffer = NULL;
+    CVPixelBufferPoolCreatePixelBuffer(NULL, self.assetWriterInputPixelBufferAdaptor.pixelBufferPool, &newPixelBuffer);
+    [self.context render:image toCVPixelBuffer:newPixelBuffer bounds:image.extent colorSpace:nil];
+    /**
+     3.
+     将渲染好的newPixelBuffer输出到文件
+     */
+    if (self.assetWriterInputPixelBufferAdaptor.assetWriterInput.isReadyForMoreMediaData && self.assetWriter.status == AVAssetWriterStatusWriting) {
+        if (newPixelBuffer) {
+            //获取样本时间
+            CMTime currentSampleTime = CMSampleBufferGetOutputPresentationTimeStamp(sampleBuffer);
+            //NSLog(@"%@",[PhotosFrameworksUtility formatCMTime:currentSampleTime]);
+            if(! [self.assetWriterInputPixelBufferAdaptor appendPixelBuffer:newPixelBuffer withPresentationTime:currentSampleTime]){
+                NSLog(@"append pixel buffer failed");
+            }
+            CFRelease(newPixelBuffer);
+        }else{
+            NSLog(@"newPixelBuffer is nil");
+        }
+    }
+}
+
+#pragma mark - 懒加载
+- (CIFilter *)filter{
+    if (_filter == nil) {
+        _filter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+    }
+    return _filter;
+}
+
+-(CIContext *)context{
+    // default creates a context based on GPU
+    if (_context == nil) {
+        _context = [CIContext contextWithOptions:nil];
+    }
+    return _context;
+}
 
 
 @end
