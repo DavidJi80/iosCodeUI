@@ -94,6 +94,7 @@
             self.activeVideoInput = videoInput;
         }
     }
+    
     //2. AVCaptureDevice 获取设备麦克风功能
     AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
@@ -268,7 +269,7 @@
     }
 }
 
-#pragma mark - 懒加载
+#pragma mark - lazy load
 - (CIFilter *)filter{
     if (_filter == nil) {
         _filter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];

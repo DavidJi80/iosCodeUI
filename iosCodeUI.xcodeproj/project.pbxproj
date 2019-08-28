@@ -13,6 +13,8 @@
 		04217D792234C50F006202A4 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04217D782234C50F006202A4 /* VideoViewController.m */; };
 		04435958230110A3009E481D /* IOAssetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04435957230110A3009E481D /* IOAssetVC.m */; };
 		0443595B2301555F009E481D /* IOCaptureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443595A2301555F009E481D /* IOCaptureVC.m */; };
+		04443FC2231500CD0009B3C7 /* VTCompressionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC1231500CD0009B3C7 /* VTCompressionVC.m */; };
+		04443FC62315019C0009B3C7 /* BaseCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC42315019C0009B3C7 /* BaseCameraVC.m */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
@@ -95,6 +97,10 @@
 		04435957230110A3009E481D /* IOAssetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOAssetVC.m; sourceTree = "<group>"; };
 		044359592301555F009E481D /* IOCaptureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOCaptureVC.h; sourceTree = "<group>"; };
 		0443595A2301555F009E481D /* IOCaptureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOCaptureVC.m; sourceTree = "<group>"; };
+		04443FC0231500CD0009B3C7 /* VTCompressionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VTCompressionVC.h; sourceTree = "<group>"; };
+		04443FC1231500CD0009B3C7 /* VTCompressionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VTCompressionVC.m; sourceTree = "<group>"; };
+		04443FC42315019C0009B3C7 /* BaseCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCameraVC.m; sourceTree = "<group>"; };
+		04443FC52315019C0009B3C7 /* BaseCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCameraVC.h; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
@@ -240,6 +246,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04443FBF231500800009B3C7 /* VideoToolbox */ = {
+			isa = PBXGroup;
+			children = (
+				04443FC0231500CD0009B3C7 /* VTCompressionVC.h */,
+				04443FC1231500CD0009B3C7 /* VTCompressionVC.m */,
+			);
+			path = VideoToolbox;
+			sourceTree = "<group>";
+		};
+		04443FC3231501780009B3C7 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				04443FC52315019C0009B3C7 /* BaseCameraVC.h */,
+				04443FC42315019C0009B3C7 /* BaseCameraVC.m */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
 		046888C622BB6E5B003AB513 /* coreimage */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +517,8 @@
 		04810DB42293C80400C64CC1 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				04443FC3231501780009B3C7 /* base */,
+				04443FBF231500800009B3C7 /* VideoToolbox */,
 				046888C622BB6E5B003AB513 /* coreimage */,
 				046D0DD4223B6EF400FF7D44 /* av.foundation */,
 				046D0DCD223A600F00FF7D44 /* image.picker */,
@@ -773,6 +799,7 @@
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
 				046888FF22D4AEF4003AB513 /* AVCaptureCoreImageVC.m in Sources */,
 				0468891022DC64A0003AB513 /* MCDownloader.m in Sources */,
+				04443FC2231500CD0009B3C7 /* VTCompressionVC.m in Sources */,
 				27FE7B95222F698D002069FB /* LineProcessView.m in Sources */,
 				04217D792234C50F006202A4 /* VideoViewController.m in Sources */,
 				27F36FF1222652C6009AEACD /* SimpleCollectionView.m in Sources */,
@@ -786,6 +813,7 @@
 				046E1C0C228A9C5F000839EF /* PrefetchCollectionView.m in Sources */,
 				0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */,
 				04B8A900224089B20004789E /* VideoCollectionView.m in Sources */,
+				04443FC62315019C0009B3C7 /* BaseCameraVC.m in Sources */,
 				04B8A90722408F7E0004789E /* Video.m in Sources */,
 				046D0DD3223B39C100FF7D44 /* Utility.m in Sources */,
 				046D0DB2223670C600FF7D44 /* CollectionTableViewCell.m in Sources */,

@@ -13,6 +13,7 @@
 #import "CoreImageViewController.h"
 #import "AVCaptureCoreImageVC.h"
 #import "IOCaptureVC.h"
+#import "VTCompressionVC.h"
 
 @interface MediaHomeViewController ()
 
@@ -26,6 +27,8 @@
 //Core Image Foundation
 @property(nonatomic,strong) UIButton * coreImageBtn;
 @property(nonatomic,strong) UIButton * coreImageCaptureBtn;
+//VideoToolbox
+@property(nonatomic,strong) UIButton * vtCaptureBtn;
 
 @end
 
@@ -82,6 +85,14 @@
     [_coreImageCaptureBtn addTarget:self action:@selector(openCoreImageCapture:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.coreImageCaptureBtn];
     
+    _vtCaptureBtn=[UIButton new];
+    _vtCaptureBtn.backgroundColor=[UIColor brownColor];
+    _vtCaptureBtn.frame=CGRectMake(30, 390, SCREEN_WIDTH-60, 45);
+    [_vtCaptureBtn setTitle:@"VTCompressionSession" forState:UIControlStateNormal];
+    [_vtCaptureBtn.layer setCornerRadius:10.0];
+    [_vtCaptureBtn addTarget:self action:@selector(vtCompressionDemo:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_vtCaptureBtn];
+    
 }
 
 -(void)openVideoView:(UIButton*)sender{
@@ -113,5 +124,11 @@
     AVCaptureCoreImageVC * vc=[[AVCaptureCoreImageVC alloc]init];
     [self.navigationController pushViewController:vc animated:NO];
 }
+
+-(void)vtCompressionDemo:(UIButton*)sender{
+    VTCompressionVC * vc=[[VTCompressionVC alloc]init];
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
 
 @end
