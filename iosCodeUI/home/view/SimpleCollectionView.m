@@ -76,22 +76,26 @@ static NSString * footerIdentiifer = @"Footerdentiifer";
             if (selectedIndexPath) {
                 //开始移动
                 [self beginInteractiveMovementForItemAtIndexPath:selectedIndexPath];
+                NSLog(@"开始移动%@",selectedIndexPath);
             }
             break;
         }
         case UIGestureRecognizerStateChanged:{// 手势变化
             //移动过程根据新的位置坐标更新UI
             [self updateInteractiveMovementTargetPosition:touchPoint];
+            NSLog(@"移动过程根据新的位置坐标更新UI[%lf,%lf]",touchPoint.x,touchPoint.y);
             break;
         }
         case UIGestureRecognizerStateEnded:{// 手势结束
             //结束移动
             [self endInteractiveMovement];
+            NSLog(@"结束移动%@",selectedIndexPath);
             break;
         }
         default:{
             //取消移动，回到原始位置
             [self cancelInteractiveMovement];
+            NSLog(@"取消移动，回到原始位置%@",selectedIndexPath);
             break;
         }
     }
@@ -327,9 +331,9 @@ referenceSizeForFooterInSection:(NSInteger)section{
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     if (scrollView.tracking){
-        NSLog(@"--------- is tracking!");
+//        NSLog(@"--------- is tracking!");
     }else if (scrollView.decelerating){
-        NSLog(@"--------- is decelerating!");
+//        NSLog(@"--------- is decelerating!");
     }
 }
 

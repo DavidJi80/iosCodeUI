@@ -25,22 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iosCodeUI/multimedia/controller/photos.frameworks/PhotosAssetViewController.m"
-            timestampString = "587273936.513078"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-playVideo"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "iosCodeUI/multimedia/view/multimedia/photos.frameworks/AssetCollectionView.m"
             timestampString = "584613812.073774"
             startingColumnNumber = "9223372036854775807"
@@ -58,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosCodeUI/multimedia/controller/photos.frameworks/PhotosViewController.m"
-            timestampString = "585127626.293901"
+            timestampString = "589013825.497196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosCodeUI/multimedia/controller/photos.frameworks/PhotosViewController.m"
-            timestampString = "585127626.2939759"
+            timestampString = "589013825.49727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -90,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosCodeUI/multimedia/controller/photos.frameworks/PhotosViewController.m"
-            timestampString = "585127626.294031"
+            timestampString = "589013825.497323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -106,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosCodeUI/multimedia/controller/photos.frameworks/PhotosAssetViewController.m"
-            timestampString = "587273936.5135601"
+            timestampString = "589021793.830343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
