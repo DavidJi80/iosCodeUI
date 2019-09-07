@@ -14,6 +14,7 @@
 #import "AVCaptureCoreImageVC.h"
 #import "IOCaptureVC.h"
 #import "VTCompressionVC.h"
+#import "CoreAnimationVC.h"
 
 @interface MediaHomeViewController ()
 
@@ -26,6 +27,7 @@
 @property(nonatomic,strong) UIButton * captureWriterBtn;
 //Core Image Foundation
 @property(nonatomic,strong) UIButton * coreImageBtn;
+@property(nonatomic,strong) UIButton * coreAnimationBtn;
 @property(nonatomic,strong) UIButton * coreImageCaptureBtn;
 //VideoToolbox
 @property(nonatomic,strong) UIButton * vtCaptureBtn;
@@ -71,11 +73,19 @@
     
     _coreImageBtn=[UIButton new];
     _coreImageBtn.backgroundColor=[UIColor grayColor];
-    _coreImageBtn.frame=CGRectMake(30, 270, SCREEN_WIDTH-60, 45);
-    [_coreImageBtn setTitle:@"Core Image Foundation" forState:UIControlStateNormal];
+    _coreImageBtn.frame=CGRectMake(30, 270, (SCREEN_WIDTH-80)/2, 45);
+    [_coreImageBtn setTitle:@"Core Image" forState:UIControlStateNormal];
     [_coreImageBtn.layer setCornerRadius:10.0];
     [_coreImageBtn addTarget:self action:@selector(openCoreImage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.coreImageBtn];
+    
+    _coreAnimationBtn=[UIButton new];
+    _coreAnimationBtn.backgroundColor=UIColor.magentaColor;
+    _coreAnimationBtn.frame=CGRectMake(30+(SCREEN_WIDTH-70)/2+5, 270, (SCREEN_WIDTH-70)/2, 45);
+    [_coreAnimationBtn setTitle:@"Core Animation" forState:UIControlStateNormal];
+    [_coreAnimationBtn.layer setCornerRadius:10.0];
+    [_coreAnimationBtn addTarget:self action:@selector(openCoreAnimation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_coreAnimationBtn];
     
     _coreImageCaptureBtn=[UIButton new];
     _coreImageCaptureBtn.backgroundColor=[UIColor darkGrayColor];
@@ -117,6 +127,11 @@
 
 -(void)openCoreImage:(UIButton*)sender{
     CoreImageViewController * vc=[[CoreImageViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)openCoreAnimation:(UIButton*)sender{
+    CoreAnimationVC * vc=[[CoreAnimationVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

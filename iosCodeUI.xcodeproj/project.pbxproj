@@ -15,6 +15,7 @@
 		0443595B2301555F009E481D /* IOCaptureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443595A2301555F009E481D /* IOCaptureVC.m */; };
 		04443FC2231500CD0009B3C7 /* VTCompressionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC1231500CD0009B3C7 /* VTCompressionVC.m */; };
 		04443FC62315019C0009B3C7 /* BaseCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC42315019C0009B3C7 /* BaseCameraVC.m */; };
+		04591AD7232253A8006E8D81 /* CoreAnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04591AD6232253A8006E8D81 /* CoreAnimationVC.m */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
@@ -101,6 +102,8 @@
 		04443FC1231500CD0009B3C7 /* VTCompressionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VTCompressionVC.m; sourceTree = "<group>"; };
 		04443FC42315019C0009B3C7 /* BaseCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCameraVC.m; sourceTree = "<group>"; };
 		04443FC52315019C0009B3C7 /* BaseCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCameraVC.h; sourceTree = "<group>"; };
+		04591AD5232253A8006E8D81 /* CoreAnimationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreAnimationVC.h; sourceTree = "<group>"; };
+		04591AD6232253A8006E8D81 /* CoreAnimationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationVC.m; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,15 @@
 				04443FC42315019C0009B3C7 /* BaseCameraVC.m */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		04591AD423225357006E8D81 /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				04591AD5232253A8006E8D81 /* CoreAnimationVC.h */,
+				04591AD6232253A8006E8D81 /* CoreAnimationVC.m */,
+			);
+			path = CoreAnimation;
 			sourceTree = "<group>";
 		};
 		046888C622BB6E5B003AB513 /* coreimage */ = {
@@ -517,6 +529,7 @@
 		04810DB42293C80400C64CC1 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				04591AD423225357006E8D81 /* CoreAnimation */,
 				04443FC3231501780009B3C7 /* base */,
 				04443FBF231500800009B3C7 /* VideoToolbox */,
 				046888C622BB6E5B003AB513 /* coreimage */,
@@ -825,6 +838,7 @@
 				040940052243932400760381 /* HeaderCollectionReusableView.m in Sources */,
 				046888E822CB76DD003AB513 /* TextureMultiGLKVC.m in Sources */,
 				04B8A903224089CC0004789E /* VideoCollectionViewCell.m in Sources */,
+				04591AD7232253A8006E8D81 /* CoreAnimationVC.m in Sources */,
 				04B8A91522423B910004789E /* Frame.m in Sources */,
 				046D0DAE2236452200FF7D44 /* PhotosViewController.m in Sources */,
 				046888F722CDA2C8003AB513 /* MultiTextureGLKVC.m in Sources */,

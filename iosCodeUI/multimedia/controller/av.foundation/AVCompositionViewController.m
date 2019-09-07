@@ -95,18 +95,58 @@
  */
 -(AVMutableAudioMix *)adjustVolumeForTrack:(AVCompositionTrack *)audioTrack{
     CMTime twoSec=CMTimeMake(2, 1);
-    CMTime fourSec=CMTimeMake(4, 1);
-    CMTime sevenSec=CMTimeMake(7, 1);
+    CMTime fourSec=CMTimeMake(7, 1);
+    CMTime sevenSec=CMTimeMake(11, 1);
     
     AVMutableAudioMixInputParameters * parameters=[AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:audioTrack];
-    [parameters setVolume:0.5f atTime:kCMTimeZero];
+    [parameters setVolume:1.0f atTime:kCMTimeZero];
     CMTimeRange range=CMTimeRangeMake(twoSec, fourSec);
-    [parameters setVolumeRampFromStartVolume:0.5f toEndVolume:0.8f timeRange:range];
-    [parameters setVolume:0.2f atTime:sevenSec];
+    [parameters setVolumeRampFromStartVolume:0.1f toEndVolume:1.0f timeRange:range];
+    [parameters setVolume:0.0f atTime:sevenSec];
     
     AVMutableAudioMix * audioMix=[AVMutableAudioMix audioMix];
     audioMix.inputParameters=@[parameters];
     return audioMix;
+}
+
+/**
+ AVVideoCompositionCoreAnimationTool
+ 给视频添加边框
+ */
+-(AVVideoComposition *)configVideoCompositionHaveBound:(AVAsset * )avAsset{
+    //获取视频尺寸
+    AVAssetTrack *assetVideoTrack = [[avAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize videoSize = assetVideoTrack.naturalSize;
+    
+    //背景层
+    CALayer *backgroundLayer = [CALayer layer];
+    backgroundLayer.backgroundColor=UIColor.yellowColor.CGColor;
+    backgroundLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [backgroundLayer setMasksToBounds:YES];
+    //视频层
+    CALayer *videoLayer = [CALayer layer];
+    videoLayer.frame = CGRectMake(20, 20,videoSize.width-40, videoSize.height-40);
+    //最终的动画层
+    CALayer *parentLayer = [CALayer layer];
+    parentLayer.frame=CGRectMake(0,0,videoSize.width,videoSize.height);
+    [parentLayer addSublayer:backgroundLayer];
+    [parentLayer addSublayer:videoLayer];
+    
+    //AVVideoComposition
+    AVMutableVideoComposition * videoComposition=[AVMutableVideoComposition videoCompositionWithPropertiesOfAsset:avAsset];
+    /**
+     使用核心动画（Core Animation）层合成视频帧
+     将合成的视频帧放置在videoLayer中，并渲染animationLayer以生成最终帧。
+     videoLayer应该在animationLayer子层树中。animationLayer不应该来自或添加到另一层树。
+     @param videoLayer
+     视频层
+     @param animationLayer
+     动画层
+     @return
+     一个组合的动画工具
+     */
+    videoComposition.animationTool = [AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    return [videoComposition copy];
 }
 
 /**
@@ -128,11 +168,14 @@
  导出合并的视频
  */
 -(void)exportComposition{
-    NSString *preset = AVAssetExportPreset960x540;
+    self.avComposition=[self createAVCompositionWithAVAssets];
+    NSString *preset = AVAssetExportPresetHighestQuality;
     AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:[self.avComposition copy] presetName:preset];
     NSURL * outputURL=[self generateNSURL];
     exportSession.outputURL = outputURL;
     exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.videoComposition=[self configVideoCompositionHaveBound:self.avComposition];
+    [exportSession setAudioMix:[self adjustVolumeForTrack:[[self.avComposition tracksWithMediaType:AVMediaTypeAudio] firstObject]]];
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
         if ([exportSession status] == AVAssetExportSessionStatusCompleted) {
             NSLog(@"文件大小：%lld",exportSession.estimatedOutputFileLength);
