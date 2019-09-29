@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIViewController *)getViewControllerByView:(UIView *)view;
 + (NSString *)getNowTime;
++(NSURL *)generateNSURL;
 
 @end
 

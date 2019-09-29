@@ -32,4 +32,15 @@
     return timeSp;
 }
 
+/**
+ 生成沙盒地址
+ */
++(NSURL *)generateNSURL{
+    //url
+    NSString *documentsDirPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)firstObject];
+    NSURL *documentsDirUrl=[NSURL fileURLWithPath:documentsDirPath isDirectory:YES];
+    NSURL * outputURL=[NSURL URLWithString:[NSString stringWithFormat:@"%@.mp4",[self getNowTime]] relativeToURL:documentsDirUrl];
+    return outputURL;
+}
+
 @end

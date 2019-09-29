@@ -129,7 +129,10 @@ API_AVAILABLE(ios(10.0))
     AVCaptureOutput * imageOutput;
     //设置 静态图片输出
     if (@available(iOS 10.0, *)) {
-        self.capturePhotoOutput = [[AVCapturePhotoOutput alloc] init];
+        AVCapturePhotoOutput *capturePhotoOutput = [[AVCapturePhotoOutput alloc] init];
+        capturePhotoOutput.highResolutionCaptureEnabled=YES;       //为高分辨率静态图像捕获配置捕获管道
+        capturePhotoOutput.livePhotoCaptureEnabled=capturePhotoOutput.livePhotoCaptureSupported;
+        self.capturePhotoOutput=capturePhotoOutput;
         imageOutput=self.capturePhotoOutput;
     }else{
         self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
@@ -251,6 +254,12 @@ API_AVAILABLE(ios(10.0))
 - (void)startRecording {
     if ([self isRecording]) return;
     AVCaptureConnection * videoConnection = [self.movieOutput connectionWithMediaType:AVMediaTypeVideo];
+    //将默认的HEVC格式更改为H.264
+    if (@available(iOS 11.0, *)) {
+        if ([self.movieOutput.availableVideoCodecTypes containsObject:AVVideoCodecTypeH264]) {
+            [self.movieOutput setOutputSettings:@{AVVideoCodecKey: AVVideoCodecTypeH264} forConnection:videoConnection];
+        }
+    }
     if ([videoConnection isVideoStabilizationSupported]) {
         videoConnection.preferredVideoStabilizationMode = YES;
     }
@@ -385,14 +394,12 @@ API_AVAILABLE(ios(10.0))
 
 #pragma mark -- AVCapturePhotoOutput
 - (void)captureCapturePhoto {
-    NSLog(@"Capture Photo");
     if (@available(iOS 10.0, *)) {
-        AVCapturePhotoSettings * avCapturePhotoSettings=[AVCapturePhotoSettings new];
-        [self.capturePhotoOutput capturePhotoWithSettings:avCapturePhotoSettings delegate:self];
-    } else {
-        // Fallback on earlier versions
+        AVCapturePhotoSettings * capturePhotoSettings=[AVCapturePhotoSettings new];
+        capturePhotoSettings.flashMode=AVCaptureFlashModeAuto;
+        capturePhotoSettings.autoStillImageStabilizationEnabled=_capturePhotoOutput.isStillImageStabilizationSupported;
+        [self.capturePhotoOutput capturePhotoWithSettings:capturePhotoSettings delegate:self];
     }
-    
 }
 
 #pragma mark --- AVCapturePhotoCaptureDelegate

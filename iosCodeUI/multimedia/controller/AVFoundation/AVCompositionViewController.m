@@ -17,6 +17,7 @@
 
 @property (nonatomic,strong) AVPlayerLayer * avPlayerLayer;
 @property (nonatomic,strong) AVComposition * avComposition;
+@property (nonatomic,strong) CALayer * testLayer;
 
 @end
 
@@ -43,7 +44,7 @@
 -(void)initNavigation{
     //AVComposition
     UIBarButtonItem * compositionBBI=[[UIBarButtonItem alloc]initWithTitle:@"合并" style:(UIBarButtonItemStylePlain) target:self action:@selector(startPlayComposition)];
-    UIBarButtonItem * exportBBI=[[UIBarButtonItem alloc]initWithTitle:@"导出" style:(UIBarButtonItemStylePlain) target:self action:@selector(exportComposition)];
+    UIBarButtonItem * exportBBI=[[UIBarButtonItem alloc]initWithTitle:@"导出" style:(UIBarButtonItemStylePlain) target:self action:@selector(openExportActionSheet:)];
     //AVVideoComposition
     UIBarButtonItem * videoCompositionBBI=[[UIBarButtonItem alloc]initWithTitle:@"video组合" style:(UIBarButtonItemStylePlain) target:self action:@selector(startPlayVideoComposition)];
     UIBarButtonItem * exportVBBBI=[[UIBarButtonItem alloc]initWithTitle:@"导出" style:(UIBarButtonItemStylePlain) target:self action:@selector(exportVideoComposition)];
@@ -109,6 +110,54 @@
     return audioMix;
 }
 
+
+
+/**
+ 播放AVComposition视频
+ */
+-(void)startPlayComposition{
+    self.avComposition=[self createAVCompositionWithAVAssets];
+    AVPlayerItem * playerItem=[AVPlayerItem playerItemWithAsset:self.avComposition];
+    AVCompositionTrack * audioTrack=[[self.avComposition tracksWithMediaType:AVMediaTypeAudio] firstObject];
+    [playerItem setAudioMix:[self adjustVolumeForTrack:audioTrack]];
+    AVPlayer * player=[AVPlayer playerWithPlayerItem:playerItem];
+    self.avPlayerLayer=[AVPlayerLayer playerLayerWithPlayer:player];
+    self.avPlayerLayer.frame=self.view.bounds;
+    //self.avPlayerLayer.videoGravity=AVLayerVideoGravityResizeAspectFill;
+    [self.view.layer addSublayer:self.avPlayerLayer];
+    [self initAnimation];
+    [self execKeyframeAnimation];
+    [player play];
+}
+
+#pragma mark -- AVComposition 导出
+
+/**
+ 打开导出选项
+ */
+-(void)openExportActionSheet:(UIButton*)sender{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *exportComBoundAction = [UIAlertAction actionWithTitle:@"带边框" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self exportCompositionHaveBound];
+    }];
+    UIAlertAction *exportComWaterMarkAction = [UIAlertAction actionWithTitle:@"带水印" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self exportCompositionHaveWaterMark];
+    }];
+    UIAlertAction *exportComAnimationAction = [UIAlertAction actionWithTitle:@"带动画" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self exportCompositionHaveAnimation];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [cancelAction setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    
+    [alert addAction:exportComBoundAction];
+    [alert addAction:exportComWaterMarkAction];
+    [alert addAction:exportComAnimationAction];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 /**
  AVVideoCompositionCoreAnimationTool
  给视频添加边框
@@ -126,7 +175,10 @@
     //视频层
     CALayer *videoLayer = [CALayer layer];
     videoLayer.frame = CGRectMake(20, 20,videoSize.width-40, videoSize.height-40);
-    //最终的动画层
+    /**
+     最终的动画层
+     先添加backgroundLayer，再添加videoLayer，videoLayer在backgroundLayer上面达到边框的效果
+     */
     CALayer *parentLayer = [CALayer layer];
     parentLayer.frame=CGRectMake(0,0,videoSize.width,videoSize.height);
     [parentLayer addSublayer:backgroundLayer];
@@ -150,24 +202,9 @@
 }
 
 /**
- 播放AVComposition视频
+ 导出带边框的合并视频
  */
--(void)startPlayComposition{
-    self.avComposition=[self createAVCompositionWithAVAssets];
-    AVPlayerItem * playerItem=[AVPlayerItem playerItemWithAsset:self.avComposition];
-    AVCompositionTrack * audioTrack=[[self.avComposition tracksWithMediaType:AVMediaTypeAudio] firstObject];
-    [playerItem setAudioMix:[self adjustVolumeForTrack:audioTrack]];
-    AVPlayer * player=[AVPlayer playerWithPlayerItem:playerItem];
-    self.avPlayerLayer=[AVPlayerLayer playerLayerWithPlayer:player];
-    self.avPlayerLayer.frame=self.view.bounds;
-    [self.view.layer addSublayer:self.avPlayerLayer];
-    [player play];
-}
-
-/**
- 导出合并的视频
- */
--(void)exportComposition{
+-(void)exportCompositionHaveBound{
     self.avComposition=[self createAVCompositionWithAVAssets];
     NSString *preset = AVAssetExportPresetHighestQuality;
     AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:[self.avComposition copy] presetName:preset];
@@ -186,6 +223,198 @@
         NSLog(@"%@",exportSession.error);
     }];
 }
+
+
+#pragma mark -- AVComposition 导出水印
+/**
+ AVVideoCompositionCoreAnimationTool
+ 给视频添加边框
+ */
+-(AVVideoComposition *)configVideoCompositionHaveWaterMark:(AVAsset * )avAsset{
+    //获取视频尺寸
+    AVAssetTrack *assetVideoTrack = [[avAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize videoSize = assetVideoTrack.naturalSize;
+    
+    // 水印层 这个subtitle1Text就是用来显示水印的。
+    CATextLayer *subtitle1Text = [[CATextLayer alloc] init];
+    [subtitle1Text setFont:@"Helvetica-Bold"];
+    [subtitle1Text setFontSize:36];
+    [subtitle1Text setFrame:CGRectMake(0, 0, videoSize.width, 100)];
+    [subtitle1Text setString:@"我是水印！I am watermark!"];
+    [subtitle1Text setAlignmentMode:kCAAlignmentCenter];
+    [subtitle1Text setForegroundColor:[[UIColor whiteColor] CGColor]];
+    // 叠加层 overlayLayer
+    CALayer *overlayLayer = [CALayer layer];
+    overlayLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [overlayLayer setMasksToBounds:YES];
+    [overlayLayer addSublayer:subtitle1Text];
+    // 视频层
+    CALayer *videoLayer = [CALayer layer];
+    videoLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    /**
+     最终的动画层
+     先添加videoLayer，再添加水印层overlayLayer
+     这里看出区别了吧，把overlayLayer放在了videolayer的上面，所以水印总是显示在视频之上的。
+     */
+    CALayer *parentLayer = [CALayer layer];
+    parentLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [parentLayer addSublayer:videoLayer];
+    [parentLayer addSublayer:overlayLayer];
+    //AVVideoComposition
+    AVMutableVideoComposition * videoComposition=[AVMutableVideoComposition videoCompositionWithPropertiesOfAsset:avAsset];
+    videoComposition.animationTool = [AVVideoCompositionCoreAnimationTool
+                                 videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    return [videoComposition copy];
+}
+
+/**
+ 导出带水印的合并视频
+ */
+-(void)exportCompositionHaveWaterMark{
+    self.avComposition=[self createAVCompositionWithAVAssets];
+    NSString *preset = AVAssetExportPresetHighestQuality;
+    AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:[self.avComposition copy] presetName:preset];
+    NSURL * outputURL=[self generateNSURL];
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.videoComposition=[self configVideoCompositionHaveWaterMark:self.avComposition];
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        if ([exportSession status] == AVAssetExportSessionStatusCompleted) {
+            NSLog(@"文件大小：%lld",exportSession.estimatedOutputFileLength);
+            [self saveVideoAtUrl:outputURL];
+        }else{
+            NSLog(@"当前压缩进度:%f",exportSession.progress);
+        }
+        NSLog(@"%@",exportSession.error);
+    }];
+}
+
+#pragma mark - Animation
+-(void)initAnimation{
+    self.testLayer = ({
+        CALayer *tempLayer = [CALayer new];
+        UIImage *image = [UIImage imageNamed:@"basketball80.png"];
+        //内容
+        tempLayer.contents=(id)image.CGImage;                       //内容
+        //图层的外观
+        tempLayer.opacity=1.0;                                      //不透明度
+        tempLayer.hidden=NO;                                        //是否显示
+        tempLayer.cornerRadius=30;                                  //圆角
+        tempLayer.borderWidth=0;                                    //边框的宽度
+        //图层的几何形状
+        tempLayer.bounds = CGRectMake(0, 0, 60, 60);                //边界
+        tempLayer.position = CGPointMake(100.0, 100.0);             //位置
+        
+        [self.view.layer addSublayer:tempLayer];
+        tempLayer;
+    });
+}
+
+-(void)execKeyframeAnimation{
+    // create a CGPath that implements two arcs (a bounce)
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathMoveToPoint(thePath,NULL,100.0,100.0);
+    CGPathAddCurveToPoint(thePath,NULL,100.0,500.0,
+                          160.0,500.0,
+                          160.0,100.0);
+    CGPathAddCurveToPoint(thePath,NULL,160.0,500.0,
+                          320.0,500.0,
+                          320.0,100.0);
+    
+    CAKeyframeAnimation * theAnimation;
+    
+    // Create the animation object, specifying the position property as the key path.
+    theAnimation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
+    theAnimation.path=thePath;
+    theAnimation.duration=5.0;
+    
+    // Add the animation to the layer.
+    [self.testLayer addAnimation:theAnimation forKey:@"position"];
+}
+
+/**
+ AVVideoCompositionCoreAnimationTool
+ 给视频添动画
+ */
+-(AVVideoComposition *)configVideoCompositionHaveAnimation:(AVAsset * )avAsset{
+    //获取视频尺寸
+    AVAssetTrack *assetVideoTrack = [[avAsset tracksWithMediaType:AVMediaTypeVideo] firstObject];
+    CGSize videoSize = assetVideoTrack.naturalSize;
+    
+    //
+    CALayer *tempLayer = [CALayer new];
+    UIImage *image = [UIImage imageNamed:@"basketball80.png"];
+    tempLayer.contents=(id)image.CGImage;                       //内容
+    tempLayer.opacity=1.0;                                      //不透明度
+    tempLayer.cornerRadius=30;                                  //圆角
+    tempLayer.bounds = CGRectMake(0, 0, 60, 60);                //边界
+    tempLayer.position = CGPointMake(100.0, 100.0);             //位置
+    CGMutablePathRef thePath = CGPathCreateMutable();
+    CGPathMoveToPoint(thePath,NULL,100.0,100.0);
+    CGPathAddCurveToPoint(thePath,NULL,100.0,500.0,
+                          160.0,500.0,
+                          160.0,100.0);
+    CGPathAddCurveToPoint(thePath,NULL,160.0,500.0,
+                          320.0,500.0,
+                          320.0,100.0);
+    CAKeyframeAnimation * theAnimation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
+    theAnimation.path=thePath;
+    theAnimation.duration=5.0;
+    theAnimation.removedOnCompletion = NO;
+    theAnimation.repeatCount = 2;
+    theAnimation.duration = 3.0f;
+    theAnimation.beginTime = AVCoreAnimationBeginTimeAtZero;
+    theAnimation.fillMode = kCAFillModeForwards;
+    
+    [tempLayer addAnimation:theAnimation forKey:@"position"];
+
+    // 叠加层 overlayLayer
+    CALayer *overlayLayer = [CALayer layer];
+    overlayLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [overlayLayer setMasksToBounds:YES];
+    [overlayLayer addSublayer:tempLayer];
+    // 视频层
+    CALayer *videoLayer = [CALayer layer];
+    videoLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    /**
+     最终的动画层
+     先添加videoLayer，再添加水印层overlayLayer
+     这里看出区别了吧，把overlayLayer放在了videolayer的上面，所以水印总是显示在视频之上的。
+     */
+    CALayer *parentLayer = [CALayer layer];
+    parentLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [parentLayer addSublayer:videoLayer];
+    [parentLayer addSublayer:overlayLayer];
+    //AVVideoComposition
+    AVMutableVideoComposition * videoComposition=[AVMutableVideoComposition videoCompositionWithPropertiesOfAsset:avAsset];
+    videoComposition.animationTool = [AVVideoCompositionCoreAnimationTool
+                                      videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    return [videoComposition copy];
+}
+
+/**
+ 导出动画的合并视频
+ */
+-(void)exportCompositionHaveAnimation{
+    self.avComposition=[self createAVCompositionWithAVAssets];
+    NSString *preset = AVAssetExportPresetHighestQuality;
+    AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:[self.avComposition copy] presetName:preset];
+    NSURL * outputURL=[self generateNSURL];
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.videoComposition=[self configVideoCompositionHaveAnimation:self.avComposition];
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        if ([exportSession status] == AVAssetExportSessionStatusCompleted) {
+            NSLog(@"文件大小：%lld",exportSession.estimatedOutputFileLength);
+            [self saveVideoAtUrl:outputURL];
+        }else{
+            NSLog(@"当前压缩进度:%f",exportSession.progress);
+        }
+        NSLog(@"%@",exportSession.error);
+    }];
+}
+
+
 
 #pragma mark - 过渡
 /**

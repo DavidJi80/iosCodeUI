@@ -15,6 +15,7 @@
 #import "IOCaptureVC.h"
 #import "VTCompressionVC.h"
 #import "CoreAnimationVC.h"
+#import "AnimationDemoVC.h"
 
 @interface MediaHomeViewController ()
 
@@ -22,6 +23,7 @@
 @property(nonatomic,strong) UIButton * imgPickerBtn;
 //photos frameworks
 @property(nonatomic,strong) UIButton * photosBtn;
+@property(nonatomic,strong) UIButton * animationDemoBtn;
 //AVFoundation Capture
 @property(nonatomic,strong) UIButton * captureBtn;
 @property(nonatomic,strong) UIButton * captureWriterBtn;
@@ -49,11 +51,19 @@
     
     _photosBtn=[UIButton new];
     _photosBtn.backgroundColor=[UIColor redColor];
-    _photosBtn.frame=CGRectMake(30, 150, SCREEN_WIDTH-60, 45);
-    [_photosBtn setTitle:@"Photos Frameworks" forState:UIControlStateNormal];
+    _photosBtn.frame=CGRectMake(30, 150, (SCREEN_WIDTH-80)/2, 45);
+    [_photosBtn setTitle:@"PhotoKit" forState:UIControlStateNormal];
     [_photosBtn.layer setCornerRadius:10.0];
     [_photosBtn addTarget:self action:@selector(openPhotosFrame:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.photosBtn];
+    
+    _animationDemoBtn=[UIButton new];
+    _animationDemoBtn.backgroundColor=[UIColor magentaColor];
+    _animationDemoBtn.frame=CGRectMake(30+(SCREEN_WIDTH-70)/2+5, 150, (SCREEN_WIDTH-70)/2, 45);
+    [_animationDemoBtn setTitle:@"Animation Demo" forState:UIControlStateNormal];
+    [_animationDemoBtn.layer setCornerRadius:10.0];
+    [_animationDemoBtn addTarget:self action:@selector(openAnimationDemo:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_animationDemoBtn];
     
     _captureBtn=[UIButton new];
     _captureBtn.backgroundColor=[UIColor greenColor];
@@ -142,6 +152,12 @@
 
 -(void)vtCompressionDemo:(UIButton*)sender{
     VTCompressionVC * vc=[[VTCompressionVC alloc]init];
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+
+-(void)openAnimationDemo:(UIButton*)sender{
+    AnimationDemoVC * vc=[[AnimationDemoVC alloc]init];
     [self.navigationController pushViewController:vc animated:NO];
 }
 

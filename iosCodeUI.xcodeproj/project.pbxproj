@@ -16,6 +16,11 @@
 		04443FC2231500CD0009B3C7 /* VTCompressionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC1231500CD0009B3C7 /* VTCompressionVC.m */; };
 		04443FC62315019C0009B3C7 /* BaseCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04443FC42315019C0009B3C7 /* BaseCameraVC.m */; };
 		04591AD7232253A8006E8D81 /* CoreAnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04591AD6232253A8006E8D81 /* CoreAnimationVC.m */; };
+		04591ADE23264DFD006E8D81 /* basketball80.png in Resources */ = {isa = PBXBuildFile; fileRef = 04591ADD23264DFD006E8D81 /* basketball80.png */; };
+		04591AE423279AA8006E8D81 /* AnimationDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04591AE323279AA8006E8D81 /* AnimationDemoVC.m */; };
+		04591AE823288FE7006E8D81 /* whitelight.png in Resources */ = {isa = PBXBuildFile; fileRef = 04591AE723288FE7006E8D81 /* whitelight.png */; };
+		04591AEA2328C783006E8D81 /* bluelight.png in Resources */ = {isa = PBXBuildFile; fileRef = 04591AE92328C782006E8D81 /* bluelight.png */; };
+		04591AEC2328EAD0006E8D81 /* crown.png in Resources */ = {isa = PBXBuildFile; fileRef = 04591AEB2328EAD0006E8D81 /* crown.png */; };
 		0465869422AFA8A9006002CC /* AVCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465869322AFA8A9006002CC /* AVCaptureViewController.m */; };
 		046888C922BB6E8B003AB513 /* CoreImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046888C822BB6E8B003AB513 /* CoreImageViewController.m */; };
 		046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 046888CA22BB7053003AB513 /* coreimage.jpeg */; };
@@ -104,6 +109,12 @@
 		04443FC52315019C0009B3C7 /* BaseCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCameraVC.h; sourceTree = "<group>"; };
 		04591AD5232253A8006E8D81 /* CoreAnimationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreAnimationVC.h; sourceTree = "<group>"; };
 		04591AD6232253A8006E8D81 /* CoreAnimationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationVC.m; sourceTree = "<group>"; };
+		04591ADD23264DFD006E8D81 /* basketball80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball80.png; sourceTree = "<group>"; };
+		04591AE223279AA8006E8D81 /* AnimationDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationDemoVC.h; sourceTree = "<group>"; };
+		04591AE323279AA8006E8D81 /* AnimationDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationDemoVC.m; sourceTree = "<group>"; };
+		04591AE723288FE7006E8D81 /* whitelight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelight.png; sourceTree = "<group>"; };
+		04591AE92328C782006E8D81 /* bluelight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluelight.png; sourceTree = "<group>"; };
+		04591AEB2328EAD0006E8D81 /* crown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crown.png; sourceTree = "<group>"; };
 		0465869222AFA8A9006002CC /* AVCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVCaptureViewController.h; sourceTree = "<group>"; };
 		0465869322AFA8A9006002CC /* AVCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCaptureViewController.m; sourceTree = "<group>"; };
 		046888C722BB6E8B003AB513 /* CoreImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreImageViewController.h; sourceTree = "<group>"; };
@@ -272,8 +283,21 @@
 			children = (
 				04591AD5232253A8006E8D81 /* CoreAnimationVC.h */,
 				04591AD6232253A8006E8D81 /* CoreAnimationVC.m */,
+				04591AE223279AA8006E8D81 /* AnimationDemoVC.h */,
+				04591AE323279AA8006E8D81 /* AnimationDemoVC.m */,
 			);
 			path = CoreAnimation;
+			sourceTree = "<group>";
+		};
+		04591AD8232646A8006E8D81 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				04591AEB2328EAD0006E8D81 /* crown.png */,
+				04591AE92328C782006E8D81 /* bluelight.png */,
+				04591AE723288FE7006E8D81 /* whitelight.png */,
+				04591ADD23264DFD006E8D81 /* basketball80.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		046888C622BB6E5B003AB513 /* coreimage */ = {
@@ -357,7 +381,7 @@
 			path = multimedia;
 			sourceTree = "<group>";
 		};
-		046D0DB92237841D00FF7D44 /* photos.frameworks */ = {
+		046D0DB92237841D00FF7D44 /* PhotoKit */ = {
 			isa = PBXGroup;
 			children = (
 				046D0DAC2236452200FF7D44 /* PhotosViewController.h */,
@@ -367,7 +391,7 @@
 				046D0DCE223A626F00FF7D44 /* LivePhotoViewController.h */,
 				046D0DCF223A626F00FF7D44 /* LivePhotoViewController.m */,
 			);
-			path = photos.frameworks;
+			path = PhotoKit;
 			sourceTree = "<group>";
 		};
 		046D0DC32237BFC500FF7D44 /* photos.frameworks */ = {
@@ -414,7 +438,7 @@
 			path = image.picker;
 			sourceTree = "<group>";
 		};
-		046D0DD4223B6EF400FF7D44 /* av.foundation */ = {
+		046D0DD4223B6EF400FF7D44 /* AVFoundation */ = {
 			isa = PBXGroup;
 			children = (
 				04810DB82293C99900C64CC1 /* VideoPlayerViewController.h */,
@@ -434,7 +458,7 @@
 				044359592301555F009E481D /* IOCaptureVC.h */,
 				0443595A2301555F009E481D /* IOCaptureVC.m */,
 			);
-			path = av.foundation;
+			path = AVFoundation;
 			sourceTree = "<group>";
 		};
 		04810DAE2293C68C00C64CC1 /* home */ = {
@@ -533,9 +557,9 @@
 				04443FC3231501780009B3C7 /* base */,
 				04443FBF231500800009B3C7 /* VideoToolbox */,
 				046888C622BB6E5B003AB513 /* coreimage */,
-				046D0DD4223B6EF400FF7D44 /* av.foundation */,
+				046D0DD4223B6EF400FF7D44 /* AVFoundation */,
 				046D0DCD223A600F00FF7D44 /* image.picker */,
-				046D0DB92237841D00FF7D44 /* photos.frameworks */,
+				046D0DB92237841D00FF7D44 /* PhotoKit */,
 				046D0DA9223619CD00FF7D44 /* MediaHomeViewController.h */,
 				046D0DAA223619CD00FF7D44 /* MediaHomeViewController.m */,
 			);
@@ -624,6 +648,7 @@
 		27D0BD3A2216B99B00C7AD30 /* iosCodeUI */ = {
 			isa = PBXGroup;
 			children = (
+				04591AD8232646A8006E8D81 /* images */,
 				0468890022DC51E3003AB513 /* libs */,
 				27EDB1DE221BDB7E008F5C94 /* root */,
 				04810DAE2293C68C00C64CC1 /* home */,
@@ -739,10 +764,14 @@
 				27D0BD482216B99E00C7AD30 /* LaunchScreen.storyboard in Resources */,
 				046888EC22CB7939003AB513 /* flower.jpg in Resources */,
 				046888EB22CB7939003AB513 /* honeybee.png in Resources */,
+				04591AEA2328C783006E8D81 /* bluelight.png in Resources */,
+				04591AE823288FE7006E8D81 /* whitelight.png in Resources */,
 				046888CB22BB7053003AB513 /* coreimage.jpeg in Resources */,
 				046888F422CC9FDA003AB513 /* grid.png in Resources */,
 				046888F922CDA729003AB513 /* beetle.png in Resources */,
+				04591AEC2328EAD0006E8D81 /* crown.png in Resources */,
 				27D0BD452216B99E00C7AD30 /* Assets.xcassets in Resources */,
+				04591ADE23264DFD006E8D81 /* basketball80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +839,7 @@
 				046D0DB52237439B00FF7D44 /* AssetCollection.m in Sources */,
 				27D0BD402216B99B00C7AD30 /* ViewController.m in Sources */,
 				27EFD352221BCC2100D140AE /* SimpleTableViewCell.m in Sources */,
+				04591AE423279AA8006E8D81 /* AnimationDemoVC.m in Sources */,
 				046888FF22D4AEF4003AB513 /* AVCaptureCoreImageVC.m in Sources */,
 				0468891022DC64A0003AB513 /* MCDownloader.m in Sources */,
 				04443FC2231500CD0009B3C7 /* VTCompressionVC.m in Sources */,
