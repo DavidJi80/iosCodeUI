@@ -15,6 +15,7 @@
 #import "AVEditorViewController.h"
 #import "AVCompositionViewController.h"
 #import "IOAssetVC.h"
+#import "AddAnimationVC.h"
 
 @interface PhotosAssetViewController ()
 
@@ -38,7 +39,8 @@
     UIBarButtonItem * editVideosBBI=[[UIBarButtonItem alloc]initWithTitle:@"取帧" style:(UIBarButtonItemStylePlain) target:self action:@selector(editVideo)];
     UIBarButtonItem * compositionAssetBBI=[[UIBarButtonItem alloc]initWithTitle:@"组合" style:(UIBarButtonItemStylePlain) target:self action:@selector(compositionAsset)];
     UIBarButtonItem * ioAssetBBI=[[UIBarButtonItem alloc]initWithTitle:@"读写" style:(UIBarButtonItemStylePlain) target:self action:@selector(ioAsset)];
-    self.navigationItem.rightBarButtonItems=@[ioAssetBBI,compositionAssetBBI,editVideosBBI,playVideosBBI];
+    UIBarButtonItem * addCABBI=[[UIBarButtonItem alloc]initWithTitle:@"动画" style:(UIBarButtonItemStylePlain) target:self action:@selector(addCADemo)];
+    self.navigationItem.rightBarButtonItems=@[addCABBI,ioAssetBBI,compositionAssetBBI,editVideosBBI,playVideosBBI];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
@@ -292,6 +294,18 @@
     }
     
     IOAssetVC *vc=[IOAssetVC new];
+    vc.videos=videos;
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
+-(void)addCADemo{
+    NSArray<NSIndexPath *> * selectedItems=_collectionView.indexPathsForSelectedItems;
+    NSMutableArray<Asset *> * videos=@[].mutableCopy;
+    for (NSIndexPath *selectedItem in selectedItems) {
+        Asset * asset=[_collectionView.assetDataSource objectAtIndex:selectedItem.item];
+        [videos addObject:asset];
+    }
+    AddAnimationVC *vc=[AddAnimationVC new];
     vc.videos=videos;
     [self.navigationController pushViewController:vc animated:NO];
 }

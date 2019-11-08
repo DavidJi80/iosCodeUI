@@ -21,7 +21,7 @@ DEPENDENCIES:
   - Hashids
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - Hashids
 
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ec8e3de2f69145417bbae645522646e00db3b48b
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

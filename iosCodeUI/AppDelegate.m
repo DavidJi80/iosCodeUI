@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "SimpleTabBarController.h"
+#import "MyPaymentTransactionObserver.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self tabbedApp];
     //[self navigationApp];
+    MyPaymentTransactionObserver *observer=[MyPaymentTransactionObserver new];
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:observer];
     return YES;
 }
 

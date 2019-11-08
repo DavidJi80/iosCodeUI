@@ -19,6 +19,9 @@
 #import "AlertViewController.h"
 #import "McDownloadViewController.h"
 #import "PickViewVC.h"
+#import "PhotoKitVC.h"
+#import "AutoLayoutVC.h"
+#import "IAPDemoVC.h"
 
 @interface ViewController ()
 
@@ -32,6 +35,7 @@
 @property(nonatomic,strong) UIButton * collectionBtn;
 @property(nonatomic,strong) UIButton * preFetchCollectionBtn;
 @property(nonatomic,strong) UIButton * gcdBtn;
+@property(nonatomic,strong) UIButton * iapBtn;
 @property(nonatomic,strong) UIButton * alertBtn;
 @property(nonatomic,strong) UIButton * videoNavBtn;
 @property(nonatomic,strong) UIButton * processBtn;
@@ -94,11 +98,11 @@
     
     // 添加按钮，绑定事件
     _tableViewBtn=[UIButton new];
-    _tableViewBtn.backgroundColor=[UIColor blueColor];
+    _tableViewBtn.backgroundColor=[UIColor brownColor];
     _tableViewBtn.frame=CGRectMake(30, 150, 145, 45);
-    [_tableViewBtn setTitle:@"Table View" forState:UIControlStateNormal];
+    [_tableViewBtn setTitle:@"特效" forState:UIControlStateNormal];
     [_tableViewBtn.layer setCornerRadius:10.0];
-    [_tableViewBtn addTarget:self action:@selector(openTableView:) forControlEvents:UIControlEventTouchUpInside];
+    [_tableViewBtn addTarget:self action:@selector(openPhotoKit:) forControlEvents:UIControlEventTouchUpInside];
     
     _tableViewNavBtn=[UIButton new];
     _tableViewNavBtn.backgroundColor=[UIColor blueColor];
@@ -109,11 +113,11 @@
     
     // 添加按钮
     _gestureBtn=[UIButton new];
-    _gestureBtn.backgroundColor=[UIColor blackColor];
+    _gestureBtn.backgroundColor=[UIColor darkGrayColor];
     _gestureBtn.frame=CGRectMake(30, 210, 145, 45);
-    [_gestureBtn setTitle:@"Gesture View" forState:UIControlStateNormal];
+    [_gestureBtn setTitle:@"Auto Layout" forState:UIControlStateNormal];
     [_gestureBtn.layer setCornerRadius:10.0];
-    [_gestureBtn addTarget:self action:@selector(openGestureView:) forControlEvents:UIControlEventTouchUpInside];
+    [_gestureBtn addTarget:self action:@selector(openAutoLayout:) forControlEvents:UIControlEventTouchUpInside];
     
     _gestureNavBtn=[UIButton new];
     _gestureNavBtn.backgroundColor=[UIColor blackColor];
@@ -137,11 +141,18 @@
     [_preFetchCollectionBtn addTarget:self action:@selector(openPrefetchCollectionView:) forControlEvents:UIControlEventTouchUpInside];
     
     _gcdBtn=[UIButton new];
-    _gcdBtn.backgroundColor=[UIColor darkGrayColor];
-    _gcdBtn.frame=CGRectMake(30, 330, 315, 45);
-    [_gcdBtn setTitle:@"Open GCD Demo View" forState:UIControlStateNormal];
+    _gcdBtn.backgroundColor=[UIColor blueColor];
+    _gcdBtn.frame=CGRectMake(30, 330, 145, 45);
+    [_gcdBtn setTitle:@"GCD" forState:UIControlStateNormal];
     [_gcdBtn.layer setCornerRadius:10.0];
     [_gcdBtn addTarget:self action:@selector(openGCDDemoView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _iapBtn=[UIButton new];
+    _iapBtn.backgroundColor=[UIColor darkGrayColor];
+    _iapBtn.frame=CGRectMake(200, 330, 145, 45);
+    [_iapBtn setTitle:@"IAP" forState:UIControlStateNormal];
+    [_iapBtn.layer setCornerRadius:10.0];
+    [_iapBtn addTarget:self action:@selector(iapBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     _alertBtn=[UIButton new];
     _alertBtn.backgroundColor=[UIColor blackColor];
@@ -190,6 +201,7 @@
     [self.view addSubview:self.collectionBtn];
     [self.view addSubview:self.preFetchCollectionBtn];
     [self.view addSubview:self.gcdBtn];
+    [self.view addSubview:self.iapBtn];
     [self.view addSubview:self.alertBtn];
     [self.view addSubview:self.videoNavBtn];
     [self.view addSubview:self.processBtn];
@@ -274,6 +286,12 @@
 }
 
 
+-(void)iapBtnClick:(UIButton*)sender{
+    IAPDemoVC * vc=[[IAPDemoVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 -(void)openAlertDemoView:(UIButton*)sender{
     AlertViewController * vc=[[AlertViewController alloc]init];
@@ -310,6 +328,23 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+
+-(void)openPhotoKit:(UIButton*)sender{
+    PhotoKitVC * vc=[[PhotoKitVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+-(void)openAutoLayout:(UIButton*)sender{
+    AutoLayoutVC * vc=[[AutoLayoutVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+
+
 
 
 @end

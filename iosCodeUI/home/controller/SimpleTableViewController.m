@@ -57,7 +57,7 @@ static NSString * cellIdentifier=@"SimpleTableViewControllerCell";
 -(void)initTableView{
     self.dataSource=[Person initPersonDataSource];
     //1.6. TableView外观
-    NSLog(@"%d",self.tableView.style);             //style
+    NSLog(@"%ld",(long)self.tableView.style);             //style
     //tableHeaderView
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 20)];
     headerView.frame=CGRectMake(0, 0, SCREEN_WIDTH, 45);
